@@ -43,156 +43,88 @@ window.addEventListener('scroll', () => {
 
 //   catogory 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const video = document.getElementById('main-video');
-    const sourceElement = video.querySelector('source');
-    const videoSections = Array.from(document.querySelectorAll('.video-section'));
-    const discItems = Array.from(document.querySelectorAll('.custom-list li'));
-    const gatewaySection = document.getElementById('gateway');
-    const categorySection = document.querySelector('.category');
-    const gatewayUpperSection = document.getElementById('gatewayUpperSide');
-    let activeSectionIndex = 0;
-    let currentListItemIndex = 0;
-    let isCategoryFullyVisible = false;
-  
-    const isMobileDevice = () => window.innerWidth <= 768;
-  
-    // Set and play the video for a given section index
-    const setVideoForSection = (index) => {
-        const section = videoSections[index];
-        const newSource = section.getAttribute('data-video');
-        if (sourceElement.getAttribute('src') !== newSource) {
-            sourceElement.setAttribute('src', newSource);
-            video.load();
-            video.play().catch(error => console.warn('Play error:', error));
+const videoSections = document.querySelectorAll('.video-section');
+const mainVideo = document.getElementById('main-video');
+let currentIndex = 0;
+let isScrolling = false;
+
+// Helper function to check if an element is fully (100%) visible in the viewport
+function isElementFullyVisible(el) {
+    const rect = el.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    
+    // Ensure the top is at the top of the viewport and the bottom is at the bottom of the viewport
+    return rect.top >= 0 && rect.bottom <= windowHeight;
+}
+
+function setActive(index) {
+    videoSections.forEach((section, i) => {
+        const videoLink = section.querySelector('.video-link');
+        if (i === index) {
+            section.classList.add('active-disc');
+            videoLink.classList.add('active-link');
+        } else {
+            section.classList.remove('active-disc');
+            videoLink.classList.remove('active-link');
         }
-    };
-  
-    // Highlight the active section and disc item
-    const highlightActiveItems = (index) => {
-        document.querySelector('.video-link.active-link')?.classList.remove('active-link');
-        discItems.forEach(item => item.classList.remove('active-disc'));
-        videoSections[index].querySelector('.video-link').classList.add('active-link');
-        discItems[index]?.classList.add('active-disc');
-    };
-  
-    // Initialize video playback and highlight for the initial section
-    const initializeVideoPlayback = () => {
-        setVideoForSection(activeSectionIndex);
-        highlightActiveItems(activeSectionIndex);
-    };
-  
-    // Scroll event handler to update video and highlight
-    const handleScrollEvent = (entries) => {
-        const visibleEntry = entries.find(entry => entry.isIntersecting);
-        if (visibleEntry) {
-            activeSectionIndex = videoSections.indexOf(visibleEntry.target);
-            setVideoForSection(activeSectionIndex);
-            highlightActiveItems(activeSectionIndex);
+    });
+
+    // Change video source smoothly
+    const videoSrc = videoSections[index].dataset.video;
+    mainVideo.querySelector('source').src = videoSrc;
+    mainVideo.load(); // Reload the video with the new source
+}
+
+function handleScroll(event) {
+    // Ensure scrolling only works when the current section is 100% visible
+    if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
+
+    isScrolling = true;
+    setTimeout(() => { isScrolling = false; }, 300); // Throttle scroll events
+
+    if (event.deltaY > 0) { // Scrolling down
+        if (currentIndex < videoSections.length - 1) {
+            currentIndex++;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
         }
-    };
-  
-    // Add event listeners for desktop interactions
-    const initializeDesktopInteractions = () => {
-        const observerOptions = { root: null, threshold: [1.0] };
-        const observer = new IntersectionObserver(handleScrollEvent, observerOptions);
-        videoSections.forEach(section => observer.observe(section));
-  
-        // Handle wheel scrolling to navigate through list items and sections
-        document.addEventListener('wheel', (event) => {
-            if (isCategoryFullyVisible) {
-                if (event.deltaY > 0) {
-                    // Scrolling down
-                    if (currentListItemIndex < discItems.length - 1) {
-                        currentListItemIndex++;
-                        discItems[currentListItemIndex].scrollIntoView({ behavior: "smooth", block: "center" });
-                        discItems[currentListItemIndex].classList.add("active-disc");
-                        discItems[currentListItemIndex - 1]?.classList.remove("active-disc");
-                    } else {
-                        // If at the last list item, move to the gateway section
-                        gatewaySection.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                } else {
-                    // Scrolling up
-                    if (currentListItemIndex > 0) {
-                        currentListItemIndex--;
-                        discItems[currentListItemIndex].scrollIntoView({ behavior: "smooth", block: "center" });
-                        discItems[currentListItemIndex].classList.add("active-disc");
-                        discItems[currentListItemIndex + 1]?.classList.remove("active-disc");
-                    } else {
-                        // Scroll back to the previous section if scrolling up from the first item
-                        gatewayUpperSection.scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                }
-                event.preventDefault(); // Prevent default scroll behavior
-            } else {
-                // Handle section scrolling
-                if (event.deltaY > 0) {
-                    if (activeSectionIndex < videoSections.length - 1) {
-                        activeSectionIndex++;
-                        setVideoForSection(activeSectionIndex);
-                        highlightActiveItems(activeSectionIndex);
-                        videoSections[activeSectionIndex].scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                } else {
-                    if (activeSectionIndex > 0) {
-                        activeSectionIndex--;
-                        setVideoForSection(activeSectionIndex);
-                        highlightActiveItems(activeSectionIndex);
-                        videoSections[activeSectionIndex].scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                }
-                event.preventDefault(); // Prevent default scroll behavior
-            }
-        });
-  
-        // Handle keyboard navigation
-        document.addEventListener('keydown', (event) => {
-            if (['ArrowDown', 'ArrowUp'].includes(event.key)) {
-                event.preventDefault();
-                if (event.key === 'ArrowDown') {
-                    if (isCategoryFullyVisible && currentListItemIndex < discItems.length - 1) {
-                        currentListItemIndex++;
-                        discItems[currentListItemIndex].scrollIntoView({ behavior: "smooth", block: "center" });
-                        discItems[currentListItemIndex].classList.add("active-disc");
-                        discItems[currentListItemIndex - 1]?.classList.remove("active-disc");
-                    } else if (activeSectionIndex < videoSections.length - 1) {
-                        activeSectionIndex++;
-                        setVideoForSection(activeSectionIndex);
-                        highlightActiveItems(activeSectionIndex);
-                        videoSections[activeSectionIndex].scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                } else if (event.key === 'ArrowUp') {
-                    if (isCategoryFullyVisible && currentListItemIndex > 0) {
-                        currentListItemIndex--;
-                        discItems[currentListItemIndex].scrollIntoView({ behavior: "smooth", block: "center" });
-                        discItems[currentListItemIndex].classList.add("active-disc");
-                        discItems[currentListItemIndex + 1]?.classList.remove("active-disc");
-                    } else if (activeSectionIndex > 0) {
-                        activeSectionIndex--;
-                        setVideoForSection(activeSectionIndex);
-                        highlightActiveItems(activeSectionIndex);
-                        videoSections[activeSectionIndex].scrollIntoView({ behavior: "smooth", block: "start" });
-                    }
-                }
-            }
-        });
-    };
-  
-    // Handle visibility changes (tab switching)
-    document.addEventListener('visibilitychange', () => {
-        document.visibilityState === 'visible' ? video.play().catch(console.warn) : video.pause();
-    });
-  
-    // Initialize based on device type
-    initializeVideoPlayback();
-    if (!isMobileDevice()) initializeDesktopInteractions();
-  
-    // Reinitialize on window resize
-    window.addEventListener('resize', () => {
-        location.reload(); // Refresh on resize to reapply appropriate settings
-    });
-  });
+    } else if (event.deltaY < 0) { // Scrolling up
+        if (currentIndex > 0) {
+            currentIndex--;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // Prevent default scrolling behavior
+    event.preventDefault();
+}
+
+function handleKeyNavigation(event) {
+    // Ensure scrolling only works when the current section is 100% visible
+    if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
+
+    if (event.key === 'ArrowDown') {
+        if (currentIndex < videoSections.length - 1) {
+            currentIndex++;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    } else if (event.key === 'ArrowUp') {
+        if (currentIndex > 0) {
+            currentIndex--;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
+// Initialize the first item as active
+setActive(0);
+
+// Event listeners for mouse scrolling and keyboard navigation
+document.addEventListener('wheel', handleScroll);
+document.addEventListener('keydown', handleKeyNavigation);
 
 
 
@@ -269,5 +201,29 @@ document.querySelector('.reserch-count img').addEventListener('click', function(
 // Gateway 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+    const section = document.querySelector('#gateway');
+    
+    // Add 'no-animation' class initially to prevent animations
+    section.classList.add('no-animation');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // When section is visible, remove 'no-animation' class
+                entry.target.classList.remove('no-animation');
+                // Stop observing the section if you only want to trigger the animations once
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 }); // Adjust threshold as needed
+
+    // Start observing the section
+    observer.observe(section);
+});
+  
+  
+  
+  
 
 

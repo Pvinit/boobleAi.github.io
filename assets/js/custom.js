@@ -1,157 +1,22 @@
-///// Test new
-if (history.scrollRestoration) {
-    history.scrollRestoration = 'manual';
-} else {
-    window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-    }
-}
-let last_scroll_val = 0;
-
-const isElementXPercentInViewport = function(el, percentVisible) {
-  let
-    rect = el.getBoundingClientRect(),
-    windowHeight = (window.innerHeight || document.documentElement.clientHeight);
-
-  return !(
-    Math.floor(100 - (((rect.top >= 0 ? 0 : rect.top) / +-rect.height) * 100)) < percentVisible ||
-    Math.floor(100 - ((rect.bottom - windowHeight) / rect.height) * 100) < percentVisible
-  )
-};
-
-const customScrollSpeed = (pos, time) => {
-    var currentPos = window.pageYOffset;
-    var start = null;
-    if(time == null) time = 500;
-    pos = +pos, time = +time;
-    window.requestAnimationFrame(function step(currentTime) {
-        start = !start ? currentTime : start;
-        var progress = currentTime - start;
-        if (currentPos < pos) {
-            window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos);
-        } else {
-            window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time));
-        }
-        if (progress < time) {
-            window.requestAnimationFrame(step);
-        } else {
-            window.scrollTo(0, pos);
-        }
-    });
-}
-
-let scrolled = false;
-let section_scroll_completed = false;
-let scroll_function = function(event){
-    if(!section_scroll_completed){
-        console.log("scroll");
-        if(scrolled){
-            return;
-        }
-
-        scrolled = true;
-        document.body.classList.add("stop-scrolling");
-
-
-        event.preventDefault();
-
-        let new_scroll_val = window.pageYOffset;
-        let scroll_dir = null;
-
-        if(last_scroll_val - new_scroll_val < 0){
-            scroll_dir = "up";
-        } else if(last_scroll_val - new_scroll_val > 0){
-            scroll_dir = "down";
-        }
-
-        last_scroll_val = new_scroll_val;
-
-        console.log("scroll_dir", scroll_dir);
-        if(scroll_dir == "up"){
-            // scrolled = true;
-            // document.removeEventListener("scroll", scroll_function);
-
-            let gatewayUpperSideSection = document.getElementById("gatewayUpperSide");
-            let categorySection = document.getElementById("category");
-
-
-            if(isElementXPercentInViewport(gatewayUpperSideSection, 90)){
-                // document.body.classList.add("stop-scrolling");
-                // categorySection.scrollIntoView({ behavior: 'smooth' })
-                customScrollSpeed(categorySection.offsetTop - 108, 2);
-                let first_video_section_elm = categorySection.querySelectorAll("li.video-section")[0];
-
-                first_video_section_elm.classList.add("active-disc");
-                first_video_section_elm.querySelector(".video-link").classList.add("active-link");
-                setTimeout(function(){
-                // document.addEventListener("scrollend", function(){
-                    scrolled = false;
-                    document.body.classList.remove("stop-scrolling");
-                // });
-                },1500);
-            }
-
-            if(isElementFullyVisible(categorySection)){
-                // document.body.classList.add("stop-scrolling");
-                let current_video_section_elm = categorySection.querySelector("li.video-section.active-disc");
-                let next_video_section_elm = current_video_section_elm.nextElementSibling;
-                if(next_video_section_elm){
-                    current_video_section_elm.classList.remove("active-disc");
-                    current_video_section_elm.querySelector(".video-link").classList.remove("active-link");
-                    
-                    next_video_section_elm.classList.add("active-disc");
-                    next_video_section_elm.querySelector(".video-link").classList.add("active-link");
-
-                    categorySection.querySelector("#main-video").src = next_video_section_elm.getAttribute("data-video");
-                    document.addEventListener("scrollend", function(){
-                        scrolled = false;
-                        document.body.classList.remove("stop-scrolling");
-                    });
-                } else {
-                    section_scroll_completed = true;
-                    scrolled = false;
-                    document.body.classList.remove("stop-scrolling");
-                }
-
-                
-                // setTimeout(function(){
-                //     scrolled = false;
-                //     document.body.classList.remove("stop-scrolling");
-                // },1000);
-                
-            }
-
-        }
-    }
-
-};
-
-
-document.addEventListener("scroll", scroll_function);
-
-
-//// Test new end
-
-
 
 // for nav bar scroll effect
 
 let lastScrollTop = 0;
 const header = document.querySelector('header');
 
-// window.addEventListener('scroll', function() {
-//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+window.addEventListener('scroll', function() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-//     if (scrollTop > lastScrollTop) {
-//         // Scrolling down
-//         header.style.top = '-100px'; // Adjust this value to hide the header smoothly
-//     } else {
-//         // Scrolling up
-//         header.style.top = '0';
-//     }
+    if (scrollTop > lastScrollTop) {
+        // Scrolling down
+        header.style.top = '-100px'; // Adjust this value to hide the header smoothly
+    } else {
+        // Scrolling up
+        header.style.top = '0';
+    }
 
-//     lastScrollTop = scrollTop;
-// });
+    lastScrollTop = scrollTop;
+});
 
 
 
@@ -159,31 +24,31 @@ const header = document.querySelector('header');
 
 const scrollSection = document.getElementById('scroll-section');
 
-// window.addEventListener('scroll', () => {
-//     const scrollPosition = window.scrollY;
-//     const sectionOffset = scrollSection.offsetTop;
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
+    const sectionOffset = scrollSection.offsetTop;
 
-//     // Adjust the threshold value to control when the section disappears
-//     if (scrollPosition > sectionOffset + 150) {
-//         scrollSection.style.transform = 'translateY(50%) scale(0.5)'; // Squeeze and move down
-//         scrollSection.style.opacity = '0'; // Fade out section
-//     } else {
-//         scrollSection.style.transform = 'translateY(0) scale(1)'; // Reset position and size
-//         scrollSection.style.opacity = '1'; // Reset opacity
-//     }
-// });
+    // Adjust the threshold value to control when the section disappears
+    if (scrollPosition > sectionOffset + 150) {
+        scrollSection.style.transform = 'translateY(50%) scale(0.5)'; // Squeeze and move down
+        scrollSection.style.opacity = '0'; // Fade out section
+    } else {
+        scrollSection.style.transform = 'translateY(0) scale(1)'; // Reset position and size
+        scrollSection.style.opacity = '1'; // Reset opacity
+    }
+});
 
 
 
 
 //   catogory 
 
-// const videoSections = document.querySelectorAll('.video-section');
-// const mainVideo = document.getElementById('main-video');
-// let currentIndex = 0;
-// let isScrolling = false;
+const videoSections = document.querySelectorAll('.video-section');
+const mainVideo = document.getElementById('main-video');
+let currentIndex = 0;
+let isScrolling = false;
 
-// // Helper function to check if an element is fully (100%) visible in the viewport
+// Helper function to check if an element is fully (100%) visible in the viewport
 function isElementFullyVisible(el) {
     const rect = el.getBoundingClientRect();
     const windowHeight = window.innerHeight || document.documentElement.clientHeight;
@@ -192,74 +57,74 @@ function isElementFullyVisible(el) {
     return rect.top >= 0 && rect.bottom <= windowHeight;
 }
 
-// function setActive(index) {
-//     videoSections.forEach((section, i) => {
-//         const videoLink = section.querySelector('.video-link');
-//         if (i === index) {
-//             section.classList.add('active-disc');
-//             videoLink.classList.add('active-link');
-//         } else {
-//             section.classList.remove('active-disc');
-//             videoLink.classList.remove('active-link');
-//         }
-//     });
+function setActive(index) {
+    videoSections.forEach((section, i) => {
+        const videoLink = section.querySelector('.video-link');
+        if (i === index) {
+            section.classList.add('active-disc');
+            videoLink.classList.add('active-link');
+        } else {
+            section.classList.remove('active-disc');
+            videoLink.classList.remove('active-link');
+        }
+    });
 
-//     // Change video source smoothly
-//     const videoSrc = videoSections[index].dataset.video;
-//     mainVideo.querySelector('source').src = videoSrc;
-//     mainVideo.load(); // Reload the video with the new source
-// }
+    // Change video source smoothly
+    const videoSrc = videoSections[index].dataset.video;
+    mainVideo.querySelector('source').src = videoSrc;
+    mainVideo.load(); // Reload the video with the new source
+}
 
-// function handleScroll(event) {
-//     // Ensure scrolling only works when the current section is 100% visible
-//     if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
+function handleScroll(event) {
+    // Ensure scrolling only works when the current section is 100% visible
+    if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
 
-//     isScrolling = true;
-//     setTimeout(() => { isScrolling = false; }, 300); // Throttle scroll events
+    isScrolling = true;
+    setTimeout(() => { isScrolling = false; }, 300); // Throttle scroll events
 
-//     if (event.deltaY > 0) { // Scrolling down
-//         if (currentIndex < videoSections.length - 1) {
-//             currentIndex++;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     } else if (event.deltaY < 0) { // Scrolling up
-//         if (currentIndex > 0) {
-//             currentIndex--;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     }
+    if (event.deltaY > 0) { // Scrolling down
+        if (currentIndex < videoSections.length - 1) {
+            currentIndex++;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    } else if (event.deltaY < 0) { // Scrolling up
+        if (currentIndex > 0) {
+            currentIndex--;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
 
-//     // Prevent default scrolling behavior
-//     event.preventDefault();
-// }
+    // Prevent default scrolling behavior
+    event.preventDefault();
+}
 
-// function handleKeyNavigation(event) {
-//     // Ensure scrolling only works when the current section is 100% visible
-//     if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
+function handleKeyNavigation(event) {
+    // Ensure scrolling only works when the current section is 100% visible
+    if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
 
-//     if (event.key === 'ArrowDown') {
-//         if (currentIndex < videoSections.length - 1) {
-//             currentIndex++;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     } else if (event.key === 'ArrowUp') {
-//         if (currentIndex > 0) {
-//             currentIndex--;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     }
-// }
+    if (event.key === 'ArrowDown') {
+        if (currentIndex < videoSections.length - 1) {
+            currentIndex++;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    } else if (event.key === 'ArrowUp') {
+        if (currentIndex > 0) {
+            currentIndex--;
+            setActive(currentIndex);
+            videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
 
-// // Initialize the first item as active
-// setActive(0);
+// Initialize the first item as active
+setActive(0);
 
-// // Event listeners for mouse scrolling and keyboard navigation
-// document.addEventListener('wheel', handleScroll);
-// document.addEventListener('keydown', handleKeyNavigation);
+// Event listeners for mouse scrolling and keyboard navigation
+document.addEventListener('wheel', handleScroll);
+document.addEventListener('keydown', handleKeyNavigation);
 
 
 

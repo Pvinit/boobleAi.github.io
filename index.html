@@ -18,39 +18,45 @@
     <link href="./assets/css/responsive.css" rel="stylesheet">
   </head>
   <body>
-    <div class="scroll-container">
+    <div class="main-container">
       <!--===== Header =====-->
-      <header>
-        <div class="container">
-          <div class="header">
-            <div class="logo">
-              <a href="./index.html" title="Bobble AI">
-                <img src="./assets/./images/bobbleAI-logo.webp" alt="Bobble AI" />
-              </a>
+    <header >
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container header">
+                <div class="logo">
+                    <a href="./index.html" title="Bobble AI">
+                        <img src="./assets/./images/bobbleAI-logo.webp" alt="Bobble AI" />
+                    </a>
+                </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">For Consumers</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">For Businesses</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-            <ul class="menu">
-              <li class="active">
-                <a href="" title="Home">Home</a>
-              </li>
-              <li>
-                <a href="" title="For Consumers">For Consumers</a>
-              </li>
-              <li>
-                <a href="" title="For Businesses">For Businesses</a>
-              </li>
-              <li>
-                <a href="" title="About Us">About Us</a>
-              </li>
-              <li>
-                <a href="" title="Contact Us">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </header>
+          </nav>
+    </header>  
+  
       <!--===== Grid videos =====-->
-      <!-- <section id="gatewayUpperSide" class=" sections grid-videos  section" style="padding-top: 80px"><div class="container-fluid"><ul class="grid-video-list"><li><figure><img src="./assets/./images/grid_videos.JPG" alt="Always on Display" width="100px"/></figure></li></ul></div></section> -->
-      <section class="sections masonry " id="gatewayUpperSide">
+      <!-- <section id="section0" class=" sections grid-videos  section" style="padding-top: 80px"><div class="container-fluid"><ul class="grid-video-list"><li><figure><img src="./assets/./images/grid_videos.JPG" alt="Always on Display" width="100px"/></figure></li></ul></div></section> -->
+      <!-- <section class="sections section masonry " id="section0">
         <figure class="cell cell--1">
           <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80" alt="Food picture 1">
         </figure>
@@ -93,15 +99,29 @@
         <figure class="cell cell--14">
           <img src="https://images.unsplash.com/photo-1559912553-fc5637d88768?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=735&q=80" alt="Food picture 1">
         </figure>
-      </section>
+      </section> -->
+     
+      <section id="section0" class="sections grid-videos section section0">
+        <div class="container-fluid">
+            <ul class="grid-video-list">
+                <li>
+                    <figure>
+                        <video class="home_video d-none d-lg-block d-xl-block d-sm-block pt-5" src="./assets/images/bobble_web.mp4" autoplay loop muted playsinline width="100%"></video>
+                        <video class="home_video_mobile d-block d-sm-none" src="./assets/images/bobble_Mobile.mov" autoplay loop muted playsinline width="100%" style="padding-top: 93px;"></video>
+                    </figure>
+                </li>
+            </ul>
+        </div>
+    </section>
       <!--===== Category =====-->
-      <section class="sections   section" id="category">
+      <section class="sections   section section1" id="section1">
         <div class="category container">
           <div class="row align-items-center">
             <div class="col-sm-7 category-height">
               <div class="content-wrapper">
-                <h2>A Category Defining Business Model</h2>
-                <p style="padding-right: 100px;">Offering unique solutions for a Multi-billion-dollar AI market with</p>
+                <h1>A category defining business model</h1>
+                <p >Offering unique solutions for a 
+                  <span class="text-dark"> AI market leveraging</span></p>
                 <ul class="custom-list points">
                   <li class="video-section" data-video="./assets/./images/category-keyboard.mp4">
                     <span class="video-link">Keyboard real estate</span>
@@ -122,20 +142,47 @@
               <video id="main-video" autoplay muted loop>
                 <source src="./assets/./images/category-keyboard.mp4" type="video/mp4">
               </video>
+              <!-- <video id="main-video" autoplay muted loop>
+                <source src="./assets/./images/data-service.mp4" type="video/mp4">
+              </video>
+              <video id="main-video" autoplay muted loop>
+                <source src="./assets/./images/category-creativeIP.mp4" type="video/mp4">
+              </video>
+              <video id="main-video" autoplay muted loop>
+                <source src="./assets/./images/category-ai.mp4" type="video/mp4">
+              </video> -->
             </div>
           </div>
         </div>
       </section>
+
+        <!--===== app statics =====-->
+<!-- <section>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">fsdf</div>
+      <div class="col-3">sfsdf</div>
+      <div class="col-3"></div>
+      <div class="col-3"></div>
+    </div>
+
+    </div>
+
+</section> -->
+          <!--===== app statics =====-->
+
+
       <!--===== Gateway =====-->
-      <section class="gateway hidden-section section" id="gateway">
+      <section class="gateway  section section2" id="section2">
         <div class="container">
           <h2>
-            <span>Bobble AI</span> is the gateway
+           <span>Bobble AI </span><span>is the gateway </span>
           </h2>
-          <p>to all your end-to-end mobile usage enhancing your creative expression and helping you accomplish things across all aspects of mobile usage.</p>
+          <p>is the gateway to your end-to-end smartphone usage </p>
+          <p>enhancing your creative expression and helping you accomplish things.</p>
           <ul class="gateway-list">
             <li class="pinkBg">
-              <h4>Expression</h4>
+              <h4>Creative Expression</h4>
               <figure>
                 <div class="row">
                   <div class="col card-one">
@@ -159,7 +206,7 @@
               </figure>
             </li>
             <li class="purpleBg">
-              <h4>Assistance</h4>
+              <h4>Mobile-native AI assistance</h4>
               <figure>
                 <div class="row">
                   <div class="col card-two">
@@ -186,7 +233,7 @@
               </figure>
             </li>
             <li class="greenBg">
-              <h4>Recommendation</h4>
+              <h4>Contextual Recommendations</h4>
               <figure>
                 <div class="row">
                   <div class="col card-three">
@@ -223,40 +270,80 @@
               </figure>
             </li>
           </ul>
-          <h5>Try out the Magic!</h5>
-          <ul class="gateway-plateform">
-            <li>
-              <a href="" title="Play Store">
-                <img src="./assets/./images/play-store.webp" alt="Play Store" />
-                <div class="icon-text">
-                  <small>Get App on</small>
-                  <span>Playstore</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="App Store">
-                <img src="./assets/./images/app-store.webp" alt="App Store" />
-                <div class="icon-text">
-                  <small>Get App on</small>
-                  <span>App Store</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="Android">
-                <img src="./assets/./images/android.webp" alt="Android" />
-                <div class="icon-text">
-                  <small>Android App</small>
-                  <span>Download</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+         
         </div>
+        <div class="d-none d-lg-block d-xl-block d-sm-block">
+
+        <h4 class="text-center">Experience the magic yourself!</h4>
+        <ul class="gateway-plateform">
+          
+          <li>
+            <a href="" title="Play Store">
+              <img src="./assets/./images/play-store.webp" alt="Play Store" />
+              <div class="icon-text">
+                <small>Get App on</small>
+                <span>Playstore</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="App Store">
+              <img src="./assets/./images/app-store.webp" alt="App Store" />
+              <div class="icon-text">
+                <small>Get App on</small>
+                <span>App Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="Android">
+              <img src="./assets/./images/android.webp" alt="Android" />
+              <div class="icon-text">
+                <small>Android App</small>
+                <span>Download</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
       </section>
+
+ <section class="bobble_btn section d-block d-sm-none"  >
+      <div><h4 class="text-center">Experience the magic yourself!</h4>
+        <ul class="gateway-plateform">
+          
+          <li>
+            <a href="" title="Play Store">
+              <img src="./assets/./images/play-store.webp" alt="Play Store" />
+              <div class="icon-text">
+                <small>Get App on</small>
+                <span>Playstore</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="App Store">
+              <img src="./assets/./images/app-store.webp" alt="App Store" />
+              <div class="icon-text">
+                <small>Get App on</small>
+                <span>App Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="Android">
+              <img src="./assets/./images/android.webp" alt="Android" />
+              <div class="icon-text">
+                <small>Android App</small>
+                <span>Download</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      </section> 
       <!--===== Keyboard Platform =====-->
-      <section class="keyboard-platform scroll-section section" id="scroll-section">
+      <section class="keyboard-platform scroll-section section section3" >
         <div class="container">
           <h2>Keyboard as-a-platform</h2>
           <p>A Unique Right To Play</p>
@@ -282,8 +369,34 @@
           </ul>
         </div>
       </section>
+      <!-- <section class="keyboard-platform scroll-section section" id="section3">
+        <div class="container">
+          <h2>Keyboard as-a-platform</h2>
+          <p>A Unique Right To Play</p>
+          <ul class="keyboard-platform-list">
+            <li>
+              <h5>Always on Display</h5>
+              <figure>
+                <video class="video" src="./assets/./images/for-consumers-video-one.mp4" width="200" muted autoplay></video>
+              </figure>
+            </li>
+            <li>
+              <h5>Horizontal Visibility</h5>
+              <figure>
+                <video class="video" src="./assets/./images/for-consumers-video-one.mp4" width="200" muted autoplay></video>
+              </figure>
+            </li>
+            <li>
+              <h5>Real time Intent</h5>
+              <figure>
+                <video class="video" src="./assets/./images/for-consumers-video-one.mp4" width="200" muted autoplay></video>
+              </figure>
+            </li>
+          </ul>
+        </div>
+      </section> -->
       <!--===== For Businesses =====-->
-      <section class="businesses-consumers section">
+      <section class="businesses-consumers section section-auto" >
         <div class="container">
           <h2>For Businesses</h2>
           <ul class="businesses-consumers-list">
@@ -292,20 +405,20 @@
                 <img src="./assets/./images/advertisement-marketing.webp" alt="Advertisement & Marketing" />
               </figure>
               <h4>Advertisement & Marketing</h4>
-              <p>Branding solutions to make your content viral on social and messaging apps, plus search-based recommendations to boost performance.</p>
+              <p>Branding solutions to make your brand go viral on social and messaging apps,or to contextually target audience with intent based recommendations.</p>
             </li>
             <li>
               <video id="mobVideo" autoplay loop muted width="100%" height="auto" playsinline>
                 <source src="./assets/images/forBusiness-data_service.mp4" type="video/mp4"> Your browser does not support the video tag.
               </video>
               <h4>Data-as-a-Service</h4>
-              <p>Bobble understanding of users with its first party data across mobile footprint.</p>
+              <p>Exclusive and powerful first-party consumer intelligence on smartphones to fuel your business</p>
             </li>
           </ul>
         </div>
       </section>
       <!--===== For Consumers =====-->
-      <section class="businesses-consumers section">
+      <section class="businesses-consumers section section-auto" >
         <div class="container">
           <h2>For Consumers</h2>
           <ul class="businesses-consumers-list">
@@ -327,7 +440,7 @@
         </div>
       </section>
       <!--===== Innovation & Culture =====-->
-      <section class="background innovation-culture section">
+      <section class="background innovation-culture section hide-in-mob section-auto" >
         <div class="background-wrapper">
           <div class="container">
             <h2>Innovation & Culture</h2>
@@ -386,16 +499,48 @@
           </div>
         </div>
       </section>
+
+      <!--===== Innovation & Culture for mobile only =====-->
+      <section class="innovation-culture-mobile hide-in-web  section-auto" >
+        <div class="contant">
+            <h2>Innovation & Culture</h2>
+            <div class="grid-container">
+                <div class="grid-item rowspan">
+                    <img src="./assets/images/img-mob-only-1.webp" alt="Image 1">
+                </div>
+                <div class="grid-item">
+                    <img src="./assets/images/img-mob-only-2.webp" alt="Image 2">
+                </div>
+                <div class="grid-item">
+                    <img src="./assets/images/img-mob-only-3.webp" alt="Image 3">
+                </div>
+                <div class="grid-item">
+                    <img src="./assets/images/img-mob-only-4.webp" alt="Image 4">
+                </div>
+                <div class="grid-item">
+                    <img src="./assets/images/img-mob-only-5.webp" alt="Image 5">
+                </div>
+            </div>
+        </div>
+    </section>
       <!--===== Patents & Research =====-->
-      <section class="patents-research section">
+      <section class="patents-research section-auto  " >
         <div class="container">
           <ul class="patent-research-list" style="list-style-type:disc">
             <div class="card-left">
-              <div class="Patents">
-                <h4>
-                  <img src="./assets/images/patents_img.png" width="150px">
-                </h4>
-                <li>BigMoji</li>
+              <div class="card-heding">
+                <div>
+                  <h4>
+                    <img src="./assets/images/patents_img.png" width="150px">
+                  </h4>
+                </div>
+                <div>
+                  <h3>15<sup>+</sup></h3>
+                </div>
+              </div>
+              <div class="Patents" id="leftUp">
+                <div>
+                  <li>BigMoji</li>
                 <li>IME Test Suite</li>
                 <li>Head Cartoonification</li>
                 <li>BigMoji</li>
@@ -412,49 +557,68 @@
                 <li>BigMoji</li>
                 <li>BigMoji</li>
                 <li>BigMoji</li>
+                </div>
+                <div>
+                  <div class="Patent-count">
+                    <img src="./assets/images/up_down_arrow.png" id="leftDown" width="10px">
+                  </div>
+                </div>
               </div>
-              <div class="Patent-count">
-                <h3>15+</h3>
-                <img src="./assets/images/up_down_arrow.png" width="10px">
-              </div>
+
             </div>
             <div class="card-right">
-              <div class="reserch">
-                <h4>
-                  <img src="./assets/images/reserch_img.png" width="200px">
-                </h4>
-                <li>Image-to-Image Translation</li>
+              <div class="card-heding">
+                <div>
+                  <h4>
+                    <img src="./assets/images/reserch_img.png" width="200px">
+                  </h4>
+                </div>
+                <div>
+              <h3>15<sup>+</sup></h3>
+                </div>
+              </div>
+              <div class="reserch" id="rightUp">
+                <div>
+                  <li>Image-to-Image Translation</li>
                 <li>Quality Improvement of Low-Light Images</li>
                 <li>IR to Visible Conversion</li>
                 <li>BigMoji</li>
                 <li>BigMoji</li>
-              </div>
-              <div class="reserch-count">
-                <h3>5+</h3>
-                <img src="./assets/images/up_down_arrow.png" width="10px">
+                </div>
+                <div>
+                  <div class="reserch-count">
+                    <img src="./assets/images/up_down_arrow.png" id="rightDown" width="10px">
+                  </div>
+                </div>
+                
               </div>
             </div>
           </ul>
         </div>
       </section>
       <!--===== Make Change Happen =====-->
-      <section class="section">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6"></div>
-            <div class="col-sm-6"></div>
-            <div class="col-sm-12 mission">
-              <h3>Make Change Happen</h3>
-              <a href="" class="joinBtn" title="Join our Mission">Join Our Mission</a>
-              <div class="missionGif">
-                <img src="./assets/./images/join-our-mission.gif" alt="Join Our Mission" />
-              </div>
+  
+     <section class=" section section-auto">
+      <div class="container">
+        <div class="row">
+   <div class="col-sm-12 mt-5 mission">
+            
+            <a href="" class="joinBtn" title="Join our Mission">Join Our Mission</a>
+            </div></div>
+            <div class="row">
+              <div class="col-sm-12 mt-5">
+            <p class="Display-5 text-center">Contribute to making smartphones more expressive and productive!</p>
+            </div></div>
+            <div class="missionGif text-center">
+              <img src="./assets/./images/join-our-mission.gif" alt="Join Our Mission" />
             </div>
+            
           </div>
-        </div>
-      </section>
+      
+    </section>
+
       <!--===== Footer =====-->
-      <footer class="">
+      <footer class="section section-auto">
         <div class="container">
           <div class="row">
             <div class="col-sm-12">
@@ -564,7 +728,6 @@
       </footer>
       <script src="./assets/js/bootstrap.bundle.min.js"></script>
       <script src="./assets/js/custom.js"></script>
-  
     </div>
   </body>
 </html>

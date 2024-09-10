@@ -1,258 +1,337 @@
-// for nav bar scroll effect
 
 let lastScrollTop = 0;
 const header = document.querySelector("header");
+const setSection = document.querySelector("section");
 
-window.addEventListener("scroll", function () {
+const allSections = [...document.querySelectorAll(".section")];
+const headerScrollTop = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
-    // Scrolling down
-    header.style.top = "-100px"; // Adjust this value to hide the header smoothly
-  } else {
-    // Scrolling up
-    header.style.top = "0";
-  }
+  // if (scrollTop > lastScrollTop) {
+  //   // Scrolling down
+  //   header.style.top = "-100px"; // Adjust this value to hide the header smoothly
+  //   setSection.style.top = "0"
+
+  // } else {
+  //   // Scrolling up
+  //   header.style.top = "0";
+  //   setSection.style.top = "100"
+  // }
 
   lastScrollTop = scrollTop;
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const isMobileDevice = () => window.innerWidth <= 768;
+  const sections = [...document.querySelectorAll(".section")].slice(0, 3);
+  const points = [...document.querySelectorAll(".points li")];
+  const mainVideo = document.getElementById("main-video");
+
+
+
+  if (!isMobileDevice()) {
+
+    const sectionElements = {
+      section0: document.getElementById("section0"),
+      section1: document.getElementById("section1"),
+      section2: document.getElementById("section2"),
+      section3: document.getElementById("section3"),
+    };
+
+    let currentIndex = 0;
+    let isScrolling = false;
+    let sectionScrollStatus = { section0: false, section1: false, section2: false, };
+    let section1ScrollAllowed = true;
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      root: null,
+      threshold: 0.3,
+    });
+    console.log({ sections })
+    sections.forEach((section) => observer.observe(section));
+    points.forEach((point) => point.addEventListener("click", () => setActive(parseInt(point.dataset.index))));
+
+    setActive(0);
+
+    // Add event listener for arrow key presses
+    document.addEventListener("keydown", handleKeyNavigation);
+
+    function handleIntersection(entries) {
+      entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
+        const sectionId = target.id;
+        console.log({ sectionId, isIntersecting, intersectionRatio })
+        if (isIntersecting && intersectionRatio >= 0.2 && ["section0", "section1", "section2"].includes(sectionId)) {
+          if (!sectionScrollStatus[sectionId]) {
+            sectionScrollStatus[sectionId] = true;
+            // target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+            // Immediately correct the scroll position to the exact top 
+            window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+            setActiveSection(sectionId);
+          }
+        } else {
+          sectionScrollStatus[sectionId] = false;
+          removeActiveSection(sectionId);
+        }
+      });
+    }
+
+    function setActive(index) {
+      points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+      const videoSrc = points[index].dataset.video;
+      mainVideo.querySelector("source").src = videoSrc;
+      mainVideo.load();
+      // Reset and trigger the animation
+      mainVideo.style.animation = 'none'; // Reset animation
+      mainVideo.offsetHeight; // Trigger reflow to restart the animation
+      // mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+      if (currentIndex < index) {
+        mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+      } else {
+        mainVideo.style.animation = 'slideDown 1s ease-out'; // Re-apply the animation
+      }
+
+      currentIndex = index;
+    }
+
+    function setActiveSection(sectionId) {
+      sections.forEach((section) => section.classList.toggle("active", section.id === sectionId));
+    }
+
+    function removeActiveSection(sectionId) {
+      document.getElementById(sectionId)?.classList?.remove("active");
+    }
+    const container = document.querySelector('.main-container');
+    // sectionElements.section0.addEventListener("wheel", handleScroll.bind(null, "section0", "section1", "section0", 0, 0));
+    sectionElements.section1.addEventListener("wheel", handleScroll.bind(null, "section1", "section2", "section0", 1, currentIndex));
+
+    var scrollCount = false;
+    function handleScroll(currentSection, nextSection, pvrSection, sectionIndex, cIndex, event) {
+      event.preventDefault();
+      const deltaY = event.deltaY;
+      if (deltaY < 0) { headerScrollTop(); }
+
+      if (sectionScrollStatus[currentSection]) {
+        if (currentSection === "section1" && section1ScrollAllowed) {
+          section1ScrollAllowed = false;
+          setTimeout(() => (section1ScrollAllowed = true), 800);
+          return;
+        }
+
+        if (isScrolling) return;
+        isScrolling = true;
+        setTimeout(() => (isScrolling = false), 800);
+        console.log({ currentIndex, currentSection, nextSection, length: points.length, deltaY })
+        if (deltaY > 0 && currentIndex < points.length - 1 && currentSection === "section1") {
+          setActive(currentIndex + 1);
+        } else if (deltaY < 0 && currentIndex > 0 && currentSection === "section1") {
+          setActive(currentIndex - 1);
+        } else if (currentIndex === 0 && deltaY < 0 && nextSection !== "section1") {
+          setActive(cIndex);
+          sectionElements.section0.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else if (currentIndex >= points.length - 1 && deltaY > 0) {
+          setActive(points.length - 1);
+          sectionElements[nextSection].scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          if (scrollCount) {
+            setActive(cIndex);
+            if (deltaY > 0) {
+              sectionElements[nextSection].scrollIntoView({ block: "start" });
+            } else {
+              sectionElements[pvrSection].scrollIntoView({ block: "start" });
+            }
+            scrollCount = false
+          } else {
+            setTimeout(() => (scrollCount = true), 500);
+          }
+        }
+      }
+    }
+
+    // Function to handle arrow key navigation
+    function handleKeyNavigation(event) {
+      if (!sectionScrollStatus["section1"]) {
+        return;
+      }
+      switch (event.key) {
+        case "ArrowUp":
+          handleScrollKey(-1); // Scroll up
+          break;
+        case "ArrowDown":
+          handleScrollKey(1); // Scroll down
+          break;
+        default:
+          break;
+      }
+    }
+
+    function handleScrollKey(direction) {
+      if (isScrolling) return;
+      isScrolling = true;
+      setTimeout(() => (isScrolling = false), 800);
+      console.log({ currentIndex, length: points.length, direction })
+      if (direction > 0 && currentIndex < points.length - 1) {
+        setActive(currentIndex + 1);
+      } else if (direction < 0 && currentIndex > 0) {
+        setActive(currentIndex - 1);
+      } else if (currentIndex === 0 && direction < 0) {
+        sectionElements.section0.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else if (currentIndex >= points.length - 1 && direction > 0) {
+        sectionElements[`section2`]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  } else {
+    // const points = [...document.querySelectorAll(".points li")];
+    // const mainVideo = document.getElementById("main-video");
+    let currentIndex = 0;
+    let autoRunInterval;
+
+    // Function to set the active video and point
+    function setActive(index) {
+      points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+      const videoSrc = points[index].dataset.video;
+      mainVideo.querySelector("source").src = videoSrc;
+      mainVideo.load();
+      // Reset and trigger the animation
+      mainVideo.style.animation = 'none'; // Reset animation
+      mainVideo.offsetHeight; // Trigger reflow to restart the animation
+      if (currentIndex < index) {
+        mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+      } else {
+        mainVideo.style.animation = 'slideDown 1s ease-out'; // Re-apply the animation
+      }
+      currentIndex = index;
+    }
+
+    // Function to start the auto-run slider
+    function startAutoRun() {
+      autoRunInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % points.length; // Cycle through points
+        setActive(currentIndex);
+      }, 5000); // Change video every 5 seconds
+    }
+
+    // Function to stop the auto-run slider
+    function stopAutoRun() {
+      clearInterval(autoRunInterval);
+    }
+
+    // Event listeners for mouse events to stop/start auto-run
+    points.forEach((point) => {
+      point.addEventListener("click", () => {
+        setActive(parseInt(point.dataset.index));
+        stopAutoRun(); // Stop auto-run on manual selection
+      });
+    });
+
+    // Start the auto-run slider
+    setActive(0);
+    startAutoRun();
+
+    // Optional: Stop auto-run on hover or touch (mobile-friendly)
+    const container = document.querySelector(".category");
+    container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
+    container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
+    container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
+    container.addEventListener("touchend", startAutoRun);  // Restart after touch ends
+
+  }
+
+});
+
+document.addEventListener('scroll', () => {
+  const container = document.querySelector('.main-container');
+  const sections = document.querySelectorAll('.section');
+  // Get the position of the fourth section
+  const fourthSection = sections[3]; // index 3 for the 4th section
+  const rect = fourthSection.getBoundingClientRect();
+
+  console.log({ bottom: rect.bottom })
+  // Check if the fourth section is in the viewport
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    container.classList.add('no-snap');
+  } else {
+    container.classList.remove('no-snap');
+  }
+});
+
+
+// Gateway Mobile View Slider
+document.addEventListener('DOMContentLoaded', function () {
+  const points = [...document.querySelectorAll(".gateway-list li")];
+  let currentIndex = 0;
+  let autoRunInterval;
+
+  // Function to set the active video and point
+  function setActive(index) {
+    points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+
+    currentIndex = index;
+  }
+
+  // Function to start the auto-run slider
+  function startAutoRun() {
+    autoRunInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % points.length; // Cycle through points
+      setActive(currentIndex);
+    }, 5000); // Change video every 5 seconds
+  }
+
+  // Function to stop the auto-run slider
+  function stopAutoRun() {
+    clearInterval(autoRunInterval);
+  }
+
+  // Event listeners for mouse events to stop/start auto-run
+  points.forEach((point) => {
+    point.addEventListener("click", () => {
+      setActive(parseInt(point.dataset.index));
+      stopAutoRun(); // Stop auto-run on manual selection
+    });
+  });
+
+  // Start the auto-run slider
+  setActive(0);
+  startAutoRun();
+
+
+  // Optional: Stop auto-run on hover or touch (mobile-friendly)
+  const container = document.querySelector(".gateway-list");
+  container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
+  container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
+  container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
+  container.addEventListener("touchend", startAutoRun);  // Restart after touch ends 
 });
 
 // Scroll transition for Keyboard as-a-platform
 
-const scrollSection = document.getElementById("scroll-section");
+document.addEventListener('DOMContentLoaded', () => {
 
-window.addEventListener("scroll", () => {
-  const scrollPosition = window.scrollY;
-  const sectionOffset = scrollSection.offsetTop;
+  const scrollSection = document.getElementById('section3');
 
-  // Adjust the threshold value to control when the section disappears
-  if (scrollPosition > sectionOffset + 150) {
-    scrollSection.style.transform = "translateY(50%) scale(0.5)"; // Squeeze and move down
-    scrollSection.style.opacity = "0"; // Fade out section
-  } else {
-    scrollSection.style.transform = "translateY(0) scale(1)"; // Reset position and size
-    scrollSection.style.opacity = "1"; // Reset opacity
-  }
-});
-
-//   catogory
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize status variables for each section
-  let sectionStatus = {
-    gatewayUpperSide: false,
-    category: false,
-    gateway: false,
-    "scroll-section": false,
-    section4: false,
-  };
-  // Select all sections
-  const sections = document.querySelectorAll(".section");
-  const section0ToScroll = document.getElementById("gatewayUpperSide");
-  const section1ToScroll = document.getElementById("category");
-  const section2ToScroll = document.getElementById("gateway");
-  const section3ToScroll = document.getElementById("scroll-section");
-  // Function to handle intersection changes
-  const handleIntersection = (entries) => {
+  // Function to handle the intersection
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      const sectionId = entry.target.id;
-      // Check if at least 20% of the section is visible
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.2) {
-        if (!sectionStatus[sectionId]) {
-          // Update the status to true and scroll to the section
-          sectionStatus[sectionId] = true;
-          entry.target.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-          setActiveSection(sectionId); // Set active section
-        }
-      } else {
-        // Reset status when not intersecting
-        sectionStatus[sectionId] = false;
-        removeActiveSection(sectionId); // Remove active state
-      }
-    });
-  };
-  // Create an IntersectionObserver with a threshold of 0.2
-  const observer = new IntersectionObserver(handleIntersection, {
-    root: null, // Use the viewport as the root
-    threshold: 0.5, // Trigger when 20% of the section is visible
-  });
-  // Observe each section
-  sections.forEach((section) => observer.observe(section));
-  // Function to set the active section
-  const setActiveSection = (sectionId) => {
-    sections.forEach((section) => {
-      if (section.id === sectionId) {
-        section.classList.add("active"); // Add 'active' class to the current section
-      } else {
-        section.classList.remove("active"); // Remove 'active' class from other sections
-      }
-    });
-  };
-  // Function to remove the active state
-  const removeActiveSection = (sectionId) => {
-    document.getElementById(sectionId).classList.remove("active");
-  };
-  const container = document.querySelector(".container");
-  const points = document.querySelectorAll(".points li");
-  const mainVideo = document.getElementById("main-video");
-  let currentIndex = 0;
-  let isScrolling = false;
-  // Set active point and image
-  function setActive(index) {
-    points.forEach((point, i) => {
-      point.classList.toggle("active-disc", i === index);
-    });
-    // Change video source smoothly
-    const videoSrc = points[index].dataset.video;
-    mainVideo.querySelector("source").src = videoSrc;
-    mainVideo.load(); // Reload the video with the new source
-    currentIndex = index;
-  }
-  var section1ScrollStatus = true;
-  section0ToScroll.addEventListener("wheel", (event) => {
-    console.log(
-      { sectionStatus: sectionStatus["category"], deltaY: event.deltaY },
-      "section0ToScroll"
-    );
 
-    if (event.deltaY > 0 && sectionStatus["category"]) {
-      section1ToScroll.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
-  });
-  section1ToScroll.addEventListener("wheel", (event) => {
-    event.preventDefault();
-    if (sectionStatus["category"]) {
-      if (section1ScrollStatus) {
-        section1ToScroll.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        // section1ScrollStatus=false
-        setTimeout(() => {
-          section1ScrollStatus = false;
-        }, 800);
+      if (entry.isIntersecting) {
+        scrollSection.classList.remove('scale-up-view'); // Remove the fade-out state
+        scrollSection.classList.add('scale-down-view'); // Add the scaling down state
       } else {
-        if (isScrolling) return;
-        isScrolling = true;
-        setTimeout(() => {
-          isScrolling = false;
-        }, 800);
-        if (currentIndex >= points.length - 1 && event.deltaY > 0) {
-          section2ToScroll.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-        if (currentIndex == 0 && event.deltaY < 0) {
-          section0ToScroll.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-        if (event.deltaY > 0 && currentIndex < points.length - 1) {
-          setActive(currentIndex + 1);
-        } else if (event.deltaY < 0 && currentIndex > 0) {
-          setActive(currentIndex - 1);
-        }
-        if (currentIndex >= points.length - 1 && event.deltaY < 0) {
-          currentIndex = points.length - 2;
-          section1ToScroll.scrollTo({
-            behavior: "smooth",
-          });
-        }
+        scrollSection.classList.remove('scale-down-view'); // Remove the scaling down state
+        scrollSection.classList.add('scale-up-view'); // Add the fade-out state
       }
-    }
-  });
-  section2ToScroll.addEventListener("wheel", (event) => {
-    if (sectionStatus["gateway"]) {
-      section1ScrollStatus = true;
-    }
-  });
-  // Handle point click
-  points.forEach((point) => {
-    point.addEventListener("click", () => {
-      const index = parseInt(point.dataset.index);
-      setActive(index);
     });
+  }, {
+    root: null, // Use the viewport as the root
+    // rootMargin: '-50% 0px -50% 0px', // Trigger when the element is at the center
+    threshold: 0.05 // Adjust the threshold to fine-tune
   });
-  // Initialize the first point and image as active
-  setActive(0);
+
+  observer.observe(scrollSection);
 });
 
-// function setActive(index) {
-//     videoSections.forEach((section, i) => {
-//         const videoLink = section.querySelector('.video-link');
-//         if (i === index) {
-//             section.classList.add('active-disc');
-//             videoLink.classList.add('active-link');
-//         } else {
-//             section.classList.remove('active-disc');
-//             videoLink.classList.remove('active-link');
-//         }
-//     });
-
-//     // Change video source smoothly
-//     const videoSrc = videoSections[index].dataset.video;
-//     mainVideo.querySelector('source').src = videoSrc;
-//     mainVideo.load(); // Reload the video with the new source
-// }
-
-// function handleScroll(event) {
-//     // Ensure scrolling only works when the current section is 100% visible
-//     if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
-
-//     isScrolling = true;
-//     setTimeout(() => { isScrolling = false; }, 300); // Throttle scroll events
-
-//     if (event.deltaY > 0) { // Scrolling down
-//         if (currentIndex < videoSections.length - 1) {
-//             currentIndex++;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     } else if (event.deltaY < 0) { // Scrolling up
-//         if (currentIndex > 0) {
-//             currentIndex--;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     }
-
-//     // Prevent default scrolling behavior
-//     event.preventDefault();
-// }
-
-// function handleKeyNavigation(event) {
-//     // Ensure scrolling only works when the current section is 100% visible
-//     if (isScrolling || !isElementFullyVisible(videoSections[currentIndex])) return;
-
-//     if (event.key === 'ArrowDown') {
-//         if (currentIndex < videoSections.length - 1) {
-//             currentIndex++;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     } else if (event.key === 'ArrowUp') {
-//         if (currentIndex > 0) {
-//             currentIndex--;
-//             setActive(currentIndex);
-//             videoSections[currentIndex].scrollIntoView({ behavior: 'smooth' });
-//         }
-//     }
-// }
-
-// // Initialize the first item as active
-// setActive(0);
-
-// // Event listeners for mouse scrolling and keyboard navigation
-// document.addEventListener('wheel', handleScroll);
-// document.addEventListener('keydown', handleKeyNavigation);
 
 // keyboard platform
 
@@ -288,62 +367,62 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// paatent & reserch
+// paatent & reserch 
 
-// Function to toggle the display of items and adjust the height of .patents-research for card-left only
-function toggleListDisplay(listClass, countClass, cardClass, isLeftCard) {
-  let list = document.querySelector(listClass);
-  let hiddenItems = list.querySelectorAll("li:nth-child(n+5)");
-  let card = document.querySelector(cardClass);
-  let patentsResearch = document.querySelector(".patents-research");
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleListDisplay = (listClass, countClass, cardClass, isLeftCard) => {
+    const list = document.querySelector(listClass);
+    const hiddenItems = list ? list.querySelectorAll("li:nth-child(n+5)") : [];
+    const card = document.querySelector(cardClass);
+    const patentsResearch = document.querySelector(".patents-research");
 
-  if (hiddenItems[0].style.display === "list-item") {
-    hiddenItems.forEach((item) => (item.style.display = "none"));
-    card.style.height = ""; // Reset height to original
-    if (isLeftCard) {
-      patentsResearch.style.height = "50vh"; // Reset height to 50vh only for card-left
+    if (hiddenItems.length === 0) return;
+
+    const isHidden = hiddenItems[0].style.display === "list-item";
+    if (isHidden) {
+      hiddenItems.forEach(item => item.style.display = "none");
+      card.style.height = "230px"; // Reset height to original
+      card.style.overflowY = "hidden"; // Hide overflow
+      if (isLeftCard && patentsResearch) {
+        //patentsResearch.style.height = "50vh"; // Reset height to 50vh only for card-left
+      }
+    } else {
+      hiddenItems.forEach(item => item.style.display = "list-item");
+      card.style.height = "300px"; // Set a fixed height when expanded
+      card.style.overflowY = "auto"; // Enable scrolling within the fixed height
+      if (isLeftCard && patentsResearch) {
+        //patentsResearch.style.height = "50vh"; // Keep height to 50vh for the section
+      }
     }
-  } else {
-    hiddenItems.forEach((item) => (item.style.display = "list-item"));
-    card.style.height = "auto"; // Adjust height based on content
-    if (isLeftCard) {
-      patentsResearch.style.height = "110vh"; // Expand height to 100vh only for card-left
+  };
+
+  const setupToggleButtons = (buttonId, containerId, listClass, countClass, cardClass, isLeftCard) => {
+    const button = document.getElementById(buttonId);
+    const container = document.getElementById(containerId);
+
+    if (button) {
+      button.addEventListener('click', () => {
+        button.style.display = 'none';
+        toggleListDisplay(listClass, countClass, cardClass, isLeftCard);
+      });
     }
-  }
-}
 
-// Event listener for Patents (card-left section)
-document.querySelector(".Patent-count img").addEventListener("click", function () {
-  toggleListDisplay(".Patents", ".Patent-count", ".card-left", true);
-});
-
-// Event listener for Research Papers (card-right section)
-document.querySelector(".reserch-count img").addEventListener("click", function () {
-  toggleListDisplay(".reserch", ".reserch-count", ".card-right", false);
-});
-
-// Gateway
-
-document.addEventListener("DOMContentLoaded", () => {
-  const section = document.querySelector("#gateway");
-
-  // Add 'no-animation' class initially to prevent animations
-  section.classList.add("no-animation");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // When section is visible, remove 'no-animation' class
-          entry.target.classList.remove("no-animation");
-          // Stop observing the section if you only want to trigger the animations once
-          observer.unobserve(entry.target);
+    if (container) {
+      container.addEventListener('click', (event) => {
+        if (event.target !== button) {
+          // button.style.display = 'block';
+          if (button.style.display === 'none') {
+            button.style.display = 'block'; // Show button
+            toggleListDisplay(listClass, countClass, cardClass, isLeftCard);
+          }
         }
       });
-    },
-    { threshold: 0.5 }
-  ); // Adjust threshold as needed
+    }
+  };
 
-  // Start observing the section
-  observer.observe(section);
+  // Setup toggle for left side
+  setupToggleButtons('leftDown', 'leftUp', '.Patents', '.Patent-count', '.card-left', true);
+
+  // Setup toggle for right side
+  setupToggleButtons('rightDown', 'rightUp', '.reserch', '.reserch-count', '.card-right', false);
 });

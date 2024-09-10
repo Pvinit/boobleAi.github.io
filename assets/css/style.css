@@ -500,7 +500,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 	h4 { font-size: 18px; line-height: 30px; }
 	h5 { font-size: 16px; line-height: 20px; }
 	h6 { font-size: 13px; line-height: 20px; }
-	p { font-size: 22px; line-height: 27px;color:var(--black); }
+	.category p, p  { font-size: 18px; line-height: 27px;color:var(--black); }
 	header { padding: 10px 0; }
 	footer p { text-align: center; font-size: 14px; }
 
@@ -876,10 +876,14 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
   /*======== Footer ========*/
 
+  .footer{
+    padding:20px;
+  }
  .social-links{
-  justify-content: center;
+  justify-content: start;
 
   }
+
 
   .mission{margin-top: 120px;}
 
@@ -897,7 +901,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 	h4 { font-size: 18px; line-height: 30px; }
 	h5 { font-size: 14px; line-height: 20px; }
 	h6 { font-size: 13px; line-height: 20px; }
-	p { font-size: 18px; line-height: 27px;color:var(--black); }
+	.category p, p  { font-size: 18px; line-height: 27px;color:var(--black); }
 	header { padding: 10px 0; }
 	footer p { text-align: center; font-size: 14px; }
 
@@ -1265,10 +1269,10 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
   /*======== Footer ========*/
 
- .social-links{
-  justify-content: center;
-
-  }
+  .social-links{
+    justify-content: start;
+  
+    }
   .footer{
     padding:20px;
   }

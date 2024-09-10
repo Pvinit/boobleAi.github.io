@@ -123,7 +123,7 @@ video.home_video {
 
 
 /* ===== Gateway =====*/
-.gateway { text-align: center; padding: 90px 0; }
+.gateway { text-align: center; padding: 10px 0; }
 .gateway h2 { margin-bottom: 10px;font-size: 56px; font-weight: 700; line-height: 76.66px;text-align: center;}
 .gateway .sub-heading{font-size: 28px; line-height: 37.21px; font-weight: 500;}
 .gateway h2 span { color: var(--green); }

@@ -1,25 +1,35 @@
 
 let lastScrollTop = 0;
+
 const header = document.querySelector("header");
 const setSection = document.querySelector("section");
 
 const allSections = [...document.querySelectorAll(".section")];
-const headerScrollTop = () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+// const headerScrollTop = () => {
+//   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  if (scrollTop > lastScrollTop) {
+//   if (scrollTop > lastScrollTop) {
+//     // Scrolling down
+//     header.style.top = "-100px"; // Adjust this value to hide the header smoothly
+//     setSection.style.top = "0"
+
+//   } else {
+//     // Scrolling up
+//     header.style.top = "0";
+//     setSection.style.top = "100"
+//   }
+
+//   lastScrollTop = scrollTop;
+// }
+const headerScrollTopNav = (status) => {
+  if (!status) {
     // Scrolling down
-    header.style.top = "-100px"; // Adjust this value to hide the header smoothly
-    setSection.style.top = "0"
-
+    header.style.top = "-100px"; // Adjust this value to hide the header smoothly  
   } else {
     // Scrolling up
     header.style.top = "0";
-    setSection.style.top = "100"
   }
-
-  lastScrollTop = scrollTop;
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -37,6 +47,8 @@ document.addEventListener("DOMContentLoaded", () => {
       section1: document.getElementById("section1"),
       section2: document.getElementById("section2"),
       section3: document.getElementById("section3"),
+      section4: document.getElementById("section4"),
+      section5: document.getElementById("section5"),
     };
 
     let currentIndex = 0;
@@ -66,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
           if (!sectionScrollStatus[sectionId]) {
             sectionScrollStatus[sectionId] = true;
             target.scrollIntoView({ behavior: "smooth", block: "start" });
-
+            const scrollTop = target.offsetTop;
             // Immediately correct the scroll position to the exact top 
             // window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
 
@@ -117,7 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleScroll(currentSection, nextSection, pvrSection, sectionIndex, cIndex, event) {
       event.preventDefault();
       const deltaY = event.deltaY;
-      if (deltaY < 0) { headerScrollTop(); }
+      if (deltaY < 0) { headerScrollTopNav(true); }
+      else { headerScrollTopNav(false); }
 
       if (sectionScrollStatus[currentSection]) {
         if (currentSection === "section1" && section1ScrollAllowed) {
@@ -461,27 +474,79 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //mobile section
+// document.addEventListener('DOMContentLoaded', () => {
+//   const setupReadMoreToggle = (listClass, cardClass, isLeftCard) => {
+//     const list = document.querySelector(listClass);
+//     const readMoreButton = list ? list.querySelector('.read-more') : null;
+
+//     if (list && readMoreButton) {
+//       readMoreButton.addEventListener('click', () => {
+//         list.classList.toggle('expanded'); // Toggle the expanded class
+//         if (list.classList.contains('expanded')) {
+//           readMoreButton.textContent = "Show Less"; // Change button text
+//         } else {
+//           readMoreButton.textContent = "Read all..."; // Reset button text
+//         }
+//       });
+//     }
+//   };
+
+//   // Setup for left side (patents)
+//   setupReadMoreToggle('.Patents', '.card-left', true);
+
+//   // Setup for right side (research)
+//   setupReadMoreToggle('.reserch', '.card-right', false);
+// });
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  const setupReadMoreToggle = (listClass, cardClass, isLeftCard) => {
-    const list = document.querySelector(listClass);
-    const readMoreButton = list ? list.querySelector('.read-more') : null;
+  const isMobileDevice = () => window.innerWidth <= 768;
+  const container = document.querySelector('.main-container');
+  const sectionSqus = document.querySelectorAll('.section-squ');
+  const windowHeight = window.innerHeight;
+  let lastScrollTop = 0; // To keep track of the last scroll position
 
-    if (list && readMoreButton) {
-      readMoreButton.addEventListener('click', () => {
-        list.classList.toggle('expanded'); // Toggle the expanded class
-        if (list.classList.contains('expanded')) {
-          readMoreButton.textContent = "Show Less"; // Change button text
-        } else {
-          readMoreButton.textContent = "Read all..."; // Reset button text
-        }
-      });
+  function handleScroll(event) {
+    const scrollPosition = container.scrollTop;
+
+    // Determine if user is scrolling up or down
+    const isScrollingDown = scrollPosition > lastScrollTop;
+
+    // sectionSqus.forEach((section, index) => {
+    //   const sectionOffset = section.offsetTop;
+    //   const nextSection = sectionSqus[index + 1];
+
+    //   if (nextSection && scrollPosition > sectionOffset - windowHeight / 6) {
+    //     section.classList.add('squeezed');
+    //     nextSection.classList.add('overlapping');
+    //   } else {
+    //     section.classList.remove('squeezed');
+    //     if (nextSection) {
+    //       nextSection.classList.remove('overlapping');
+    //     }
+    //   }
+    // });
+
+    // Handle different actions based on scroll direction
+    if (!isMobileDevice()) {
+      if (isScrollingDown) {
+        // Logic for scrolling down
+        headerScrollTopNav(false)
+      } else {
+        // Logic for scrolling up
+        headerScrollTopNav(true)
+      }
     }
-  };
+    console.log({ scrollPosition })
+    // Update the last scroll position
+    lastScrollTop = scrollPosition <= 564 ? 564 : scrollPosition;
+  }
 
-  // Setup for left side (patents)
-  setupReadMoreToggle('.Patents', '.card-left', true);
-
-  // Setup for right side (research)
-  setupReadMoreToggle('.reserch', '.card-right', false);
+  // Attach the scroll event to the main container
+  container.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', () => {
+    headerScrollTopNav(true)
+    // Code that needs all resources to be fully loaded
+  });
 });
-

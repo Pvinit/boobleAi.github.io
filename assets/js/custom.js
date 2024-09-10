@@ -1,31 +1,42 @@
 
-let lastScrollTop = 0;
+var lastScrollTop = 0; // Initialize the last scroll position
+
 const header = document.querySelector("header");
 const setSection = document.querySelector("section");
 
 const allSections = [...document.querySelectorAll(".section")];
-const headerScrollTop = () => {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  // if (scrollTop > lastScrollTop) {
-  //   // Scrolling down
-  //   header.style.top = "-100px"; // Adjust this value to hide the header smoothly
-  //   setSection.style.top = "0"
-
-  // } else {
-  //   // Scrolling up
-  //   header.style.top = "0";
-  //   setSection.style.top = "100"
-  // }
-
-  lastScrollTop = scrollTop;
-}
+const navbar = document.getElementById('navbar');
+const headerScrollTop = (scrollPosition) => {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 
+
+  if (scrollPosition > lastScrollTop) {
+    // Scrolling down
+    navbar.classList.add('hidden');
+    header.style.top = "-100px";
+  } else {
+    // Scrolling up
+    navbar.classList.remove('hidden');
+    header.style.top = "0";
+  }
+
+  lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
+};
+const headerScrollTopNav = (status) => {
+  if (!status) {
+    // Scrolling down
+    header.style.top = "-100px"; // Adjust this value to hide the header smoothly  
+  } else {
+    // Scrolling up
+    header.style.top = "0";
+  }
+};
 document.addEventListener("DOMContentLoaded", () => {
 
   const isMobileDevice = () => window.innerWidth <= 768;
-  const sections = [...document.querySelectorAll(".section")].slice(0, 3);
+  const sections = [...document.querySelectorAll(".section")].slice(0, 5);
   const points = [...document.querySelectorAll(".points li")];
   const mainVideo = document.getElementById("main-video");
 
@@ -38,18 +49,20 @@ document.addEventListener("DOMContentLoaded", () => {
       section1: document.getElementById("section1"),
       section2: document.getElementById("section2"),
       section3: document.getElementById("section3"),
+      section4: document.getElementById("section4"),
+      section5: document.getElementById("section5"),
     };
 
     let currentIndex = 0;
     let isScrolling = false;
-    let sectionScrollStatus = { section0: false, section1: false, section2: false, };
+    let sectionScrollStatus = { section0: false, section1: false, section2: false, section3: false, section4: false, section5: false, };
     let section1ScrollAllowed = true;
 
     const observer = new IntersectionObserver(handleIntersection, {
       root: null,
       threshold: 0.3,
     });
-    console.log({ sections })
+    // console.log({ sections })
     sections.forEach((section) => observer.observe(section));
     points.forEach((point) => point.addEventListener("click", () => setActive(parseInt(point.dataset.index))));
 
@@ -62,14 +75,24 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach(({ target, isIntersecting, intersectionRatio }) => {
         const sectionId = target.id;
         console.log({ sectionId, isIntersecting, intersectionRatio })
-        if (isIntersecting && intersectionRatio >= 0.2 && ["section0", "section1", "section2"].includes(sectionId)) {
+        if (isIntersecting && intersectionRatio >= 0.2 && ["section0", "section1", "section2", "section3", "section4", "section5"].includes(sectionId)) {
+          console.log({ sectionOffset: target.offsetTop, status: sectionScrollStatus[sectionId], id: sectionId });
           if (!sectionScrollStatus[sectionId]) {
             sectionScrollStatus[sectionId] = true;
-            // target.scrollIntoView({ behavior: "smooth", block: "start" });
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
 
-            // Immediately correct the scroll position to the exact top 
-            window.scrollTo({ top: target.offsetTop, behavior: "smooth" });
+            // Determine the scroll direction
+            const scrollTop = target.offsetTop;//window.scrollY || document.documentElement.scrollTop;
+            // const isScrollingDown = scrollTop > lastScrollTop;
+
+            // Call the headerScrollTop function with the correct scroll direction
+            // headerScrollTop(!isScrollingDown);
+
+            // Update the active section
             setActiveSection(sectionId);
+
+            // Update the last scroll position
+            // lastScrollTop = scrollTop;
           }
         } else {
           sectionScrollStatus[sectionId] = false;
@@ -88,9 +111,14 @@ document.addEventListener("DOMContentLoaded", () => {
       mainVideo.offsetHeight; // Trigger reflow to restart the animation
       // mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
       if (currentIndex < index) {
+
+        // if (currentIndex < points.length) {
         mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+        // }
       } else {
+        // if (currentIndex !== index) { 
         mainVideo.style.animation = 'slideDown 1s ease-out'; // Re-apply the animation
+        // }
       }
 
       currentIndex = index;
@@ -111,7 +139,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleScroll(currentSection, nextSection, pvrSection, sectionIndex, cIndex, event) {
       event.preventDefault();
       const deltaY = event.deltaY;
-      if (deltaY < 0) { headerScrollTop(); }
+      if (deltaY < 0) { headerScrollTopNav(true); }
+      else { headerScrollTopNav(false); }
 
       if (sectionScrollStatus[currentSection]) {
         if (currentSection === "section1" && section1ScrollAllowed) {
@@ -240,12 +269,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.main-container');
+  const sections = container.querySelectorAll('section');
+  const isMobileDevice = () => window.innerWidth <= 768;
+
+  // Function to check if the fifth section is in view
+  function handleScroll() {
+    const fifthSection = isMobileDevice() ? sections[4] : sections[6]; // 0-based index, so 3 is the fifth section
+    const fifthSectionRect = fifthSection.getBoundingClientRect();
+    console.log({ fifthSection })
+    // Check if the bottom of the fifth section is in view
+    if (fifthSectionRect.bottom <= window.innerHeight) {
+      // If fifth section is fully visible, none scrollSnapType
+      // container.style.overflowY = 'hidden';
+      container.style.scrollSnapType = "none";
+    } else {
+      // Otherwise, keep the scrollSnapType 
+      container.style.scrollSnapType = "y mandatory";
+    }
+
+  }
+
+  // Attach the scroll event to the main container
+  container.addEventListener('scroll', handleScroll);
+});
 
 document.addEventListener('scroll', () => {
+  // headerScrollTop()
   const container = document.querySelector('.main-container');
   const sections = document.querySelectorAll('.section');
   // Get the position of the fourth section
-  const fourthSection = sections[3]; // index 3 for the 4th section
+  const fourthSection = sections[5]; // index 3 for the 4th section
   const rect = fourthSection.getBoundingClientRect();
 
   console.log({ bottom: rect.bottom })
@@ -307,30 +362,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Scroll transition for Keyboard as-a-platform
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
 
-  const scrollSection = document.getElementById('section3');
+//   const scrollSection = document.getElementById('section3');
 
-  // Function to handle the intersection
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
+//   // Function to handle the intersection
+//   const observer = new IntersectionObserver((entries) => {
+//     entries.forEach((entry) => {
 
-      if (entry.isIntersecting) {
-        scrollSection.classList.remove('scale-up-view'); // Remove the fade-out state
-        scrollSection.classList.add('scale-down-view'); // Add the scaling down state
-      } else {
-        scrollSection.classList.remove('scale-down-view'); // Remove the scaling down state
-        scrollSection.classList.add('scale-up-view'); // Add the fade-out state
-      }
-    });
-  }, {
-    root: null, // Use the viewport as the root
-    // rootMargin: '-50% 0px -50% 0px', // Trigger when the element is at the center
-    threshold: 0.05 // Adjust the threshold to fine-tune
-  });
+//       if (entry.isIntersecting) {
+//         scrollSection.classList.remove('scale-up-view'); // Remove the fade-out state
+//         scrollSection.classList.add('scale-down-view'); // Add the scaling down state
+//       } else {
+//         scrollSection.classList.remove('scale-down-view'); // Remove the scaling down state
+//         scrollSection.classList.add('scale-up-view'); // Add the fade-out state
+//       }
+//     });
+//   }, {
+//     root: null, // Use the viewport as the root
+//     // rootMargin: '-50% 0px -50% 0px', // Trigger when the element is at the center
+//     threshold: 0.05 // Adjust the threshold to fine-tune
+//   });
 
-  observer.observe(scrollSection);
-});
+//   observer.observe(scrollSection);
+// });
+// document.addEventListener("DOMContentLoaded", function () {
 
 
 // keyboard platform
@@ -425,4 +481,89 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Setup toggle for right side
   setupToggleButtons('rightDown', 'rightUp', '.reserch', '.reserch-count', '.card-right', false);
+});
+
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const container = document.querySelector('.main-container');
+//   const sectionSqus = document.querySelectorAll(".section-squ");
+//   const windowHeight = window.innerHeight;
+
+//   // Function to check if the fifth section is in view
+//   function handleScroll(event) {
+//     console.log({ event })
+//     event.preventDefault();
+//     const deltaY = event.deltaY;
+//     if (deltaY < 0) { headerScrollTopNav(true); }
+//     else { headerScrollTopNav(false); }
+//     const scrollPosition = container.scrollTop;
+
+//     sectionSqus.forEach((section, index) => {
+//       const sectionOffset = section.offsetTop;
+//       const nextSection = sectionSqus[index + 1];
+//       // // Determine if we're scrolling enough for the next section to slide up
+//       // if (nextSection && scrollPosition > sectionOffset - windowHeight / 6) {
+//       //   section.classList.add("squeezed");
+//       //   nextSection.classList.add("overlapping");
+//       // } else {
+//       //   section.classList.remove("squeezed");
+//       //   if (nextSection) {
+//       //     nextSection.classList.remove("overlapping");
+//       //   }
+//       // }
+//       // const isScrollingDown = scrollPosition > lastScrollTop;
+
+//       // Call the headerScrollTop function with the correct scroll direction
+
+//       // headerScrollTop(scrollPosition);
+
+//     });
+//   }
+//   // Attach the scroll event to the main container
+//   container.addEventListener('scroll', handleScroll);
+// });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.main-container');
+  const sectionSqus = document.querySelectorAll('.section-squ');
+  const windowHeight = window.innerHeight;
+  let lastScrollTop = 0; // To keep track of the last scroll position
+
+  function handleScroll(event) {
+    const scrollPosition = container.scrollTop;
+
+    // Determine if user is scrolling up or down
+    const isScrollingDown = scrollPosition > lastScrollTop;
+
+    // sectionSqus.forEach((section, index) => {
+    //   const sectionOffset = section.offsetTop;
+    //   const nextSection = sectionSqus[index + 1];
+
+    //   if (nextSection && scrollPosition > sectionOffset - windowHeight / 6) {
+    //     section.classList.add('squeezed');
+    //     nextSection.classList.add('overlapping');
+    //   } else {
+    //     section.classList.remove('squeezed');
+    //     if (nextSection) {
+    //       nextSection.classList.remove('overlapping');
+    //     }
+    //   }
+    // });
+
+    // Handle different actions based on scroll direction
+    if (isScrollingDown) {
+      // Logic for scrolling down
+      headerScrollTopNav(false)
+    } else {
+      // Logic for scrolling up
+      headerScrollTopNav(true)
+    }
+
+    // Update the last scroll position
+    lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
+  }
+
+  // Attach the scroll event to the main container
+  container.addEventListener('scroll', handleScroll);
 });

@@ -619,6 +619,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     width: 100%;
     text-align: start;
     color:var(--green);
+    font-size: 22px;
     font-weight: 700 !important;
     }
 
@@ -1014,7 +1015,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     width: 100%;
     text-align: start;
     color:var(--green);
-    font-size: 20px;
+    font-size: 20px !important;
     font-weight: 700 !important;
     }
 

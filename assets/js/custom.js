@@ -6,24 +6,6 @@ const setSection = document.querySelector("section");
 
 const allSections = [...document.querySelectorAll(".section")];
 
-const navbar = document.getElementById('navbar');
-const headerScrollTop = (scrollPosition) => {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-
-
-  if (scrollPosition > lastScrollTop) {
-    // Scrolling down
-    navbar.classList.add('hidden');
-    header.style.top = "-100px";
-  } else {
-    // Scrolling up
-    navbar.classList.remove('hidden');
-    header.style.top = "0";
-  }
-
-  lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
-};
 const headerScrollTopNav = (status) => {
   if (!status) {
     // Scrolling down
@@ -484,47 +466,9 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const container = document.querySelector('.main-container');
-//   const sectionSqus = document.querySelectorAll(".section-squ");
-//   const windowHeight = window.innerHeight;
-
-//   // Function to check if the fifth section is in view
-//   function handleScroll(event) {
-//     console.log({ event })
-//     event.preventDefault();
-//     const deltaY = event.deltaY;
-//     if (deltaY < 0) { headerScrollTopNav(true); }
-//     else { headerScrollTopNav(false); }
-//     const scrollPosition = container.scrollTop;
-
-//     sectionSqus.forEach((section, index) => {
-//       const sectionOffset = section.offsetTop;
-//       const nextSection = sectionSqus[index + 1];
-//       // // Determine if we're scrolling enough for the next section to slide up
-//       // if (nextSection && scrollPosition > sectionOffset - windowHeight / 6) {
-//       //   section.classList.add("squeezed");
-//       //   nextSection.classList.add("overlapping");
-//       // } else {
-//       //   section.classList.remove("squeezed");
-//       //   if (nextSection) {
-//       //     nextSection.classList.remove("overlapping");
-//       //   }
-//       // }
-//       // const isScrollingDown = scrollPosition > lastScrollTop;
-
-//       // Call the headerScrollTop function with the correct scroll direction
-
-//       // headerScrollTop(scrollPosition);
-
-//     });
-//   }
-//   // Attach the scroll event to the main container
-//   container.addEventListener('scroll', handleScroll);
-// });
-
 
 document.addEventListener('DOMContentLoaded', () => {
+  const isMobileDevice = () => window.innerWidth <= 768;
   const container = document.querySelector('.main-container');
   const sectionSqus = document.querySelectorAll('.section-squ');
   const windowHeight = window.innerHeight;
@@ -552,18 +496,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
     // Handle different actions based on scroll direction
-    if (isScrollingDown) {
-      // Logic for scrolling down
-      headerScrollTopNav(false)
-    } else {
-      // Logic for scrolling up
-      headerScrollTopNav(true)
+    if (!isMobileDevice()) {
+      if (isScrollingDown) {
+        // Logic for scrolling down
+        headerScrollTopNav(false)
+      } else {
+        // Logic for scrolling up
+        headerScrollTopNav(true)
+      }
     }
-
+    console.log({ scrollPosition })
     // Update the last scroll position
-    lastScrollTop = scrollPosition <= 0 ? 0 : scrollPosition;
+    lastScrollTop = scrollPosition <= 564 ? 564 : scrollPosition;
   }
 
   // Attach the scroll event to the main container
   container.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', () => {
+    headerScrollTopNav(true)
+    // Code that needs all resources to be fully loaded
+  });
 });

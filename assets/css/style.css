@@ -298,7 +298,10 @@ video.home_video {
   display: flex;
   justify-content: space-around;
   align-items: center; 
-  animation: scaleDown .6s ease-in-out forwards;
+  /* animation: scaleDown .6s ease-in-out forwards; */
+  
+  transform: translateY(50%)  scale(0.3) ; /* Start slightly below (center-bottom) and scaled down */ 
+  opacity: 0;
 }
 
 /* Active class with animation */

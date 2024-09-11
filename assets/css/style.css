@@ -355,17 +355,15 @@ video.hidden {
   z-index: 10;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  opacity: 0; /* Initially invisible */
-  transform: translateY(50%) scale(0.3); /* Start slightly below and scaled down */
+  align-items: center; 
+  animation: scaleDown 1s ease-in-out forwards; /* Apply scaling animation */ 
   height: 100vh;
 }
 
 /* Active class with animation */
 .active .scroll-section {
   
-  animation: scaleUp 1s ease-in-out forwards; /* Apply scaling animation */
-  scroll-snap-type: y mandatory;
+  animation: scaleUp 1s ease-in-out forwards; /* Apply scaling animation */ 
   /* If you need to add more properties for transition, you can include them here */
 }
 
@@ -1409,7 +1407,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 /* extra */
 /* Slide Up Animation */
-@keyframes videoSlideUp {
+/* @keyframes videoSlideUp {
   0% {
     transform: translateY(100%);
     opacity: 0;
@@ -1419,8 +1417,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     opacity: 1;
   }
 }
-
-/* Slide Down Animation */
+ 
 @keyframes videoSlideDown {
   0% {
     transform: translateY(-100%);
@@ -1431,7 +1428,26 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     opacity: 1;
   }
 }
- 
+  */
+
+/* Slide Up Animation */
+@keyframes videoSlideUp {
+  0% { opacity: 0; transform: translateY(50%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes videoSlideDown {
+  0% { opacity: 0; transform: translateY(-50%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.videoSlideUp {
+  animation: videoSlideUp 1s ease-out;
+}
+
+.videoSlideDown {
+  animation: videoSlideDown 1s ease-out;
+}
 /* Slide Up Animation */
 @keyframes videoSlideLeft {
   0% {

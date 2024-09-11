@@ -91,28 +91,58 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    // function setActive(index) {
+    //   points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+    //   const videoSrc = points[index].dataset.video;
+    //   mainVideo.querySelector("source").src = videoSrc;
+    //   mainVideo.load();
+    //   // Reset and trigger the animation
+    //   mainVideo.style.animation = 'none'; // Reset animation
+    //   mainVideo.offsetHeight; // Trigger reflow to restart the animation
+    //   // mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+    //   if (currentIndex !== index) {
+    //     // mainVideo.style.opacity = 0; // Re-apply the animation
+    //     if (currentIndex < index) {
+    //       if (currentIndex < points.length) {
+    //         mainVideo.style.animation = 'videoSlideUp 1s ease-out'; // Re-apply the animation
+    //       }
+    //     } else {
+    //       if (currentIndex !== index) {
+    //         mainVideo.style.animation = 'videoSlideDown 1s ease-out'; // Re-apply the animation
+    //       }
+    //     }
+    //   } else {
+    //     mainVideo.style.opacity = 1; // Re-apply the animation
+    //   }
+    //   currentIndex = index;
+    // }
     function setActive(index) {
+      // Toggle active-disc class for the selected point
       points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+
+      // Update video source and reload the video
       const videoSrc = points[index].dataset.video;
       mainVideo.querySelector("source").src = videoSrc;
       mainVideo.load();
-      // Reset and trigger the animation
-      mainVideo.style.animation = 'none'; // Reset animation
-      mainVideo.offsetHeight; // Trigger reflow to restart the animation
-      // mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
-      if (currentIndex < index) {
 
-        // if (currentIndex < points.length) {
-        mainVideo.style.animation = 'videoSlideUp 1s ease-out'; // Re-apply the animation
-        // }
-      } else {
-        // if (currentIndex !== index) { 
-        mainVideo.style.animation = 'videoSlideDown 1s ease-out'; // Re-apply the animation
-        // }
+      // Remove any previous animation classes
+      mainVideo.classList.remove('videoSlideUp', 'videoSlideDown');
+
+      // Determine which animation to apply
+      if (currentIndex !== index) {
+        if (currentIndex < index) {
+          // Scrolling down
+          mainVideo.classList.add('videoSlideUp');
+        } else {
+          // Scrolling up
+          mainVideo.classList.add('videoSlideDown');
+        }
       }
 
+      // Update the current index
       currentIndex = index;
     }
+
 
     function setActiveSection(sectionId) {
       sections.forEach((section) => section.classList.toggle("active", section.id === sectionId));
@@ -264,21 +294,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = container.querySelectorAll('section');
   const isMobileDevice = () => window.innerWidth <= 768;
 
+  // const targetSections = isMobileDevice() ? [sections[0], sections[1]] : [sections[0], sections[1], sections[4]]; // Sections 1, 2, and 5 (0-based)
+  const targetSections = isMobileDevice() ? sections[2] : sections[2]; // Sections 1, 2, and 5 (0-based)
 
 
   // Function to check if the fifth section is in view
   function handleScroll() {
-    const fifthSection = isMobileDevice() ? sections[2] : sections[4]; // 0-based index, so 3 is the fifth section
-    const fifthSectionRect = fifthSection.getBoundingClientRect();
-    console.log({ fifthSection })
+    // const fifthSection = isMobileDevice() ? targetSections[2] : targetSections[3]; // 0-based index, so 3 is the fifth section
+    console.log({ targetSections, check: sections[4] })
+    const fifthSectionRect = targetSections.getBoundingClientRect();
+    console.log({ targetSections, fifthSectionRect })
     // Check if the bottom of the fifth section is in view
     if (fifthSectionRect.bottom <= window.innerHeight) {
       // If fifth section is fully visible, none scrollSnapType
       // container.style.overflowY = 'hidden';
       container.style.scrollSnapType = "none";
+      container.classList.add('no-snap');
     } else {
       // Otherwise, keep the scrollSnapType 
       container.style.scrollSnapType = "y mandatory";
+      container.classList.remove('no-snap');
     }
   }
 
@@ -286,24 +321,24 @@ document.addEventListener('DOMContentLoaded', () => {
   container.addEventListener('scroll', handleScroll);
 });
 
-document.addEventListener('scroll', () => {
-  const container = document.querySelector('.main-container');
-  const sections = document.querySelectorAll('.section');
-  // Get the position of the fourth section
-  const isMobileDevice = () => window.innerWidth <= 768;
+// document.addEventListener('scroll', () => {
+//   const container = document.querySelector('.main-container');
+//   const sections = document.querySelectorAll('.section');
+//   // Get the position of the fourth section
+//   const isMobileDevice = () => window.innerWidth <= 768;
 
+//   const targetSections = isMobileDevice() ? [sections[0], sections[1]] : [sections[0], sections[1], sections[3]]; // Sections 1, 2, and 5 (0-based)
 
-  const fourthSection = isMobileDevice() ? sections[2] : sections[4]; // index 3 for the 4th section
-  const rect = fourthSection.getBoundingClientRect();
-
-  console.log({ bottom: rect.bottom })
-  // Check if the fourth section is in the viewport
-  if (rect.top < window.innerHeight && rect.bottom > 0) {
-    container.classList.add('no-snap');
-  } else {
-    container.classList.remove('no-snap');
-  }
-});
+//   // const fifthSection = isMobileDevice() ? targetSections[2] : targetSections[3]; // index 3 for the 4th section
+//   console.log({ targetSections })
+//   const rect = targetSections.getBoundingClientRect();
+//   // Check if the fourth section is in the viewport
+//   if (rect.top < window.innerHeight && rect.bottom > 0) {
+//     container.classList.add('no-snap');
+//   } else {
+//     container.classList.remove('no-snap');
+//   }
+// });
 
 
 // Gateway Mobile View Slider

@@ -150,6 +150,26 @@
 
     <div class="desktop-only vertical-slider">
       <div class="left-side">
+        <section class="content-wrapper" data-index="0">
+          <div class="content">
+            <h2>here are some</h2>
+            <h3>perks for joining</h3>
+          </div>
+        </section>
+        <section class="content-wrapper" data-index="1">
+          <div class="content">
+            <h2>here's some</h2>
+            <h3>✨ content ✨</h3>
+          </div>
+        </section>
+        <section class="content-wrapper" data-index="2">
+          <div class="content">
+            <h2>and then some</h2>
+            <h3>❤️</h3>
+          </div>
+        </section>
+      </div>
+      <div class="right-side">
         <div class="sticky">
           <div class="image-wrapper absolute-full show" data-index="0">
             <div class="mask-outer absolute-full">
@@ -180,27 +200,6 @@
           </div>
         </div>
       </div>
-
-      <div class="right-side">
-        <section class="content-wrapper" data-index="0">
-          <div class="content">
-            <h2>here are some</h2>
-            <h3>perks for joining</h3>
-          </div>
-        </section>
-        <section class="content-wrapper" data-index="1">
-          <div class="content">
-            <h2>here's some</h2>
-            <h3>✨ content ✨</h3>
-          </div>
-        </section>
-        <section class="content-wrapper" data-index="2">
-          <div class="content">
-            <h2>and then some</h2>
-            <h3>❤️</h3>
-          </div>
-        </section>
-      </div>
     </div>
 
     <script>
@@ -212,7 +211,7 @@
 
       // Select all image wrappers
       const imageWrappers = document.querySelectorAll(
-        ".vertical-slider.desktop-only .left-side .image-wrapper"
+        ".vertical-slider.desktop-only .right-side .image-wrapper"
       );
 
       function callback(entries, observer) {
@@ -238,7 +237,7 @@
       // Interaction Observer for each content section (right side)
       const observer = new IntersectionObserver(callback, options);
       const contentWrappers = document.querySelectorAll(
-        ".vertical-slider.desktop-only .right-side .content-wrapper"
+        ".vertical-slider.desktop-only .left-side .content-wrapper"
       );
 
       contentWrappers.forEach((wrapper) => {

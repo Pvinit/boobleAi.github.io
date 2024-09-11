@@ -1116,7 +1116,7 @@ video.hidden {
   align-items: center;
 }
 .grid-item img {
-  max-width: 100%;
+  width: 94%;
   height: auto;
   display: block;
 }
@@ -1307,10 +1307,38 @@ footer h6 {
     --font-base: 14px;
     --max-font-size: 17px;
   }
+  .nav-links {display: none;}
+
+  
+.card-right{
+  height:270px ;
+}
+}
+
+
+
+/* Media query for mobile (show only the first 5 list items on screens smaller than 768px) */
+@media (max-width: 768px) {
+  .patents-research .patent-research-list .patents li:nth-child(n+6),
+  .patent-research-list .reserch li:nth-child(n+6) {
+    display: none; /* Hide the list items starting from the 6th item */
+  }
+
+  /* Show the 5th list item (for mobile screens) */
+  .patents-research .patent-research-list .patents li:nth-child(5),
+  .patent-research-list .reserch li:nth-child(5) {
+    display: list-item;
+  }
 }
 
 /* Small Mobile Devices (up to 575px) */
 @media (max-width: 575px) {
+  .card-right{
+    height:270px;
+  }
+  .nav-links {display: none;}
+
+
   body {
     font-size: 13px;
   }
@@ -1363,6 +1391,8 @@ footer h6 {
   .section.active {
     margin-top: 100px;
   }
+
+  
 
   /* Start Changes for Amit */
   /*========Category======== */
@@ -1695,7 +1725,7 @@ footer h6 {
 
   .patents-research .patent-research-list .card-left,
   .card-right {
-    height: 200px;
+    height: 220px;
     border-radius: 8px;
   }
   .patents-research .patent-research-list .card-heding {
@@ -1802,7 +1832,7 @@ footer h6 {
   .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px 0;
+    gap: 10px 0;
   }
   .grid-item {
     display: flex;
@@ -1810,7 +1840,7 @@ footer h6 {
     align-items: center;
   }
   .grid-item img {
-    max-width: 100%;
+    width: 94%;
     height: auto;
     display: block;
   }
@@ -1839,6 +1869,7 @@ footer h6 {
   .mission {
     margin-top: 120px;
   }
+
 }
 
 /* Extra Small Mobile Devices (up to 400px) */
@@ -2335,7 +2366,7 @@ footer h6 {
     align-items: center;
   }
   .grid-item img {
-    max-width: 100%;
+    width: 94%;
     height: auto;
     display: block;
   }
@@ -2371,6 +2402,10 @@ footer h6 {
     font-size: 20px;
     font-weight: 700;
     transform: unset;
+  }
+
+  .grid-item img{
+    width: 100%;
   }
 }
 @media (max-width: 767px) {

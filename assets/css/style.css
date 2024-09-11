@@ -7,7 +7,8 @@
   font-size: 14px;
   scroll-behavior: smooth;
   --white: #fff;
-  --black: #000;
+  /* --black: #000; */
+  --black: rgba(0, 0, 0, 0.87);
   --grayL: #00000061;
   --gray: rgba(0, 0, 0, 0.61);
   --green: #00bc84;
@@ -167,7 +168,7 @@ header {
 
 html,
 body {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -321,7 +322,7 @@ video.home_video {
   line-height: 37.21px;
 }
 .responsive-only {
-  display: none;
+  display: none !important;
 }
 
 /* ===== Gateway =====*/
@@ -377,6 +378,7 @@ video.home_video {
   font-weight: 400;
   font-size: 28.57px;
   line-height: 37.97px;
+  display: none;
 }
 .gateway-list li figure {
   margin: 30px 0 0 0;
@@ -396,7 +398,7 @@ video.home_video {
   justify-content: flex-start;
   border: 1px solid #00000038;
   border-radius: 16px;
-  padding: 5px 20px;
+  padding: 10px 50px;
 }
 .gateway-plateform li a .icon-text {
   text-align: left;
@@ -423,6 +425,7 @@ video.home_video {
 .inner-card-img {
   max-width: 320px;
   max-height: 400px;
+  margin-top: -70px;
 }
 .card-heading {
   padding: 15px;
@@ -878,7 +881,7 @@ video.hidden {
 /* ===== Keyboard Platform =====*/
 .keyboard-platform {
   text-align: center;
-  padding: 30rem 0 0 0;
+  padding: 20rem 0 0 0;
 }
 .keyboard-platform.hidden {
   transform: translateY(15%);
@@ -1140,7 +1143,7 @@ video.hidden {
   background-color: #e1fcfa;
 }
 .patent-research-list li {
-  line-height: 50px;
+  line-height: 46px;
   font-size: 24px;
   font-weight: 400;
   color: #707070;
@@ -1157,6 +1160,7 @@ video.hidden {
   padding: 8px 12px;
   border-radius: 50%;
   cursor: pointer;
+  margin-top: 90px;
 }
 /* .patents .list li:nth-child(n + 5) .patents .list {
 } */
@@ -1171,10 +1175,10 @@ video.hidden {
   font-weight: 500;
   padding-bottom: 20px;
 }
-.patents-research .patent-research-list .patents li,
+/* .patents-research .patent-research-list .patents li,
 .patent-research-list .reserch li {
   display: none;
-}
+} */
 .Patent-count {
   position: relative;
   top: -51px;
@@ -1207,7 +1211,12 @@ video.hidden {
 }
 
 /* ===== Make Change Happen =====*/
-
+.section-p {
+  text-align: center;
+  color: #000;
+  margin-bottom: -50px;
+  padding-top: 50px;
+}
 .mission {
   text-align: center;
 }
@@ -1269,7 +1278,10 @@ footer h6 {
 .social-links li a img {
   width: 30px;
 }
-
+.nav-links img {
+  width: 60px;
+  height: 60px;
+}
 /* ================= Responsive ================ */
 
 /* Large Mobile Devices (576px to 767px) */
@@ -1363,10 +1375,10 @@ footer h6 {
     border: solid 0.3px;
     margin: 10px 14px 15px 0;
     padding: 8px 12px;
-}
-.category-box{
-  margin-bottom: 25px;
-}
+  }
+  .category-box {
+    margin-bottom: 25px;
+  }
   .custom-list li.active-disc::before {
     display: none; /* Remove the before pseudo-element in mobile view */
   }
@@ -1531,7 +1543,7 @@ footer h6 {
   .gateway-list li.pinkBg,
   .gateway-list li.purpleBg,
   .gateway-list li.greenBg {
-    background-color: transparent !important; 
+    background-color: transparent !important;
   }
 
   /* ===== Keyboard Platform =====*/
@@ -1636,7 +1648,7 @@ footer h6 {
   .inner-card-img {
     max-width: 320px;
     max-height: 400px;
-}
+  }
   /* Hides scrollbar in Firefox */
   .businesses-consumers-list {
     display: flex;
@@ -1864,10 +1876,10 @@ footer h6 {
     border: solid 0.3px;
     margin: 10px 14px 15px 0;
     padding: 8px 12px;
-}
-.category-box{
-  margin-bottom: 25px;
-}
+  }
+  .category-box {
+    margin-bottom: 25px;
+  }
   .section.active {
     margin-top: 100px;
   }
@@ -2166,7 +2178,7 @@ footer h6 {
     border-radius: 10px;
     object-fit: cover;
   }
-  
+
   /* Hides scrollbar in Firefox */
   .businesses-consumers-list {
     display: flex;
@@ -2401,7 +2413,7 @@ footer h6 {
   }
   .keyboard-platform {
     margin-top: 80px;
-}
+  }
   .keyboard-platform h2 {
     margin-top: -15px;
   }
@@ -2422,9 +2434,8 @@ footer h6 {
 }
 @media only screen and (min-width: 360px) and (max-width: 360px) {
   .category-box-inner ul li {
-    
     margin: 10px 8px 15px 0;
-}
+  }
 }
 
 /* Your styles for laptops and larger screens */

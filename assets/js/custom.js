@@ -90,6 +90,40 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
     }
+    // let currentIndex = null; // Keep track of the current index
+
+    function setActive(index) {
+      console.log({ index }, "--setActive")
+      // Get references to elements
+      const points = document.querySelectorAll('.custom-list .video-section');
+      const mainVideo = document.getElementById('main-video');
+
+      // Remove 'active-disc' class from all points and add it to the current point
+      points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
+
+      // Update the video source and reload it
+      const videoSrc = points[index].dataset.video;
+      const sourceElement = mainVideo.querySelector("source");
+      sourceElement.src = videoSrc;
+      mainVideo.load();
+
+      if (currentIndex !== index) {
+        // Reset video animation and trigger reflow to restart it
+        mainVideo.style.animation = 'none'; // Reset animation
+        mainVideo.offsetHeight; // Trigger reflow to restart the animation
+
+        // Apply the appropriate animation based on the index change
+        if (currentIndex === null || currentIndex < index) {
+          mainVideo.style.animation = 'videoSlideUp 1s ease-out'; // Animation for sliding up
+        } else {
+          mainVideo.style.animation = 'videoSlideDown 1s ease-out'; // Animation for sliding down
+        }
+        currentIndex = index; // Update current index
+      } else {
+        // No change in index; just set the opacity
+        mainVideo.style.opacity = 1;
+      }
+    }
 
     // function setActive(index) {
     //   points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
@@ -116,33 +150,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //   }
     //   currentIndex = index;
     // }
-    function setActive(index) {
-      // Toggle active-disc class for the selected point
-      points.forEach((point, i) => point.classList.toggle("active-disc", i === index));
-
-      // Update video source and reload the video
-      const videoSrc = points[index].dataset.video;
-      mainVideo.querySelector("source").src = videoSrc;
-      mainVideo.load();
-
-      // Remove any previous animation classes
-      mainVideo.classList.remove('videoSlideUp', 'videoSlideDown');
-
-      // Determine which animation to apply
-      if (currentIndex !== index) {
-        if (currentIndex < index) {
-          // Scrolling down
-          mainVideo.classList.add('videoSlideUp');
-        } else {
-          // Scrolling up
-          mainVideo.classList.add('videoSlideDown');
-        }
-      }
-
-      // Update the current index
-      currentIndex = index;
-    }
-
 
     function setActiveSection(sectionId) {
       sections.forEach((section) => section.classList.toggle("active", section.id === sectionId));
@@ -462,18 +469,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (hiddenItems.length === 0) return;
 
+    // video1.classList.add('hidden');
+    // video3.classList.remove('hidden');
     const isHidden = hiddenItems[0].style.display === "list-item";
     if (isHidden) {
       hiddenItems.forEach(item => item.style.display = "none");
-      card.style.height = "230px"; // Reset height to original
-      card.style.overflowY = "hidden"; // Hide overflow
+      // card.style.height = "300px"; // Reset height to original
+      // card.style.overflowY = "hidden"; // Hide overflow
+      card.classList.remove('more');
       if (isLeftCard && patentsResearch) {
         //patentsResearch.style.height = "50vh"; // Reset height to 50vh only for card-left
       }
     } else {
       hiddenItems.forEach(item => item.style.display = "list-item");
-      card.style.height = "300px"; // Set a fixed height when expanded
-      card.style.overflowY = "auto"; // Enable scrolling within the fixed height
+      // card.style.height = "400px"; // Set a fixed height when expanded
+      // card.style.overflowY = "auto"; // Enable scrolling within the fixed height
+      card.classList.add('more');
       if (isLeftCard && patentsResearch) {
         //patentsResearch.style.height = "50vh"; // Keep height to 50vh for the section
       }
@@ -483,10 +494,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const setupToggleButtons = (buttonId, containerId, listClass, countClass, cardClass, isLeftCard) => {
     const button = document.getElementById(buttonId);
     const container = document.getElementById(containerId);
+    const list = document.querySelector(listClass + "  .list");
 
     if (button) {
       button.addEventListener('click', () => {
         button.style.display = 'none';
+        list.style.cursor = "pointer";
         toggleListDisplay(listClass, countClass, cardClass, isLeftCard);
       });
     }
@@ -497,6 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // button.style.display = 'block';
           if (button.style.display === 'none') {
             button.style.display = 'block'; // Show button
+            list.style.cursor = "unset";
             toggleListDisplay(listClass, countClass, cardClass, isLeftCard);
           }
         }
@@ -505,10 +519,12 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Setup toggle for left side
-  setupToggleButtons('leftDown', 'leftUp', '.Patents', '.Patent-count', '.card-left', true);
+  setupToggleButtons('leftDown', 'leftUp', '.patents', '.view-more', '.card-left', true);
+  setupToggleButtons('readMoreLeft', 'leftUp', '.patents', '.view-more', '.card-left', true);
 
   // Setup toggle for right side
-  setupToggleButtons('rightDown', 'rightUp', '.reserch', '.reserch-count', '.card-right', false);
+  setupToggleButtons('rightDown', 'rightUp', '.reserch', '.view-more', '.card-right', false);
+  setupToggleButtons('readMoreRight', 'rightUp', '.reserch', '.view-more', '.card-right', false);
 });
 
 //mobile section
@@ -530,7 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //   };
 
 //   // Setup for left side (patents)
-//   setupReadMoreToggle('.Patents', '.card-left', true);
+//   setupReadMoreToggle('.patents', '.card-left', true);
 
 //   // Setup for right side (research)
 //   setupReadMoreToggle('.reserch', '.card-right', false);

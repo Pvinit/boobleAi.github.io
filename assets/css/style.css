@@ -268,14 +268,14 @@ video.hidden {
 .card3-slide1 img { width: 100px; padding: 15px; }
 .card3-slide2 { position: absolute; top: -20px; left: 50%; transform: translate(-50%); display: flex; flex-direction: column; align-items: center; }
 .card3-slide2 img { width: 180px; position: absolute; top: 0; left: 50%; transform: translate(-50%); opacity: 0; }
-.card3-slide2 img:first-child { animation: slideUp 2.5s forwards; animation-delay: 2.5s; }
-.card3-slide2 img:nth-child(2) { animation: slideUp 1.8s forwards; animation-delay: calc(2.5s + 1.8s); }
-.card3-slide2 img:last-child { animation: slideUp 2.5s forwards; animation-delay: calc(2.5s + 3.6s); }
-@keyframes slideUp { 0% { top: 200px; opacity: 0; } 50% { top: 130px; opacity: 1; } 100% { top: 130px; opacity: 0; } }
-.card3-slide3 { position: absolute; top: 200px; left: 50%; transform: translate(-50%); display: flex; justify-content: space-between; width: 180px; opacity: 0; animation: slideUp 2.5s forwards; animation-delay: calc(2.5s + 5.4s); }
+.card3-slide2 img:first-child { animation: cardSlideUp 2.5s forwards; animation-delay: 2.5s; }
+.card3-slide2 img:nth-child(2) { animation: cardSlideUp 1.8s forwards; animation-delay: calc(2.5s + 1.8s); }
+.card3-slide2 img:last-child { animation: cardSlideUp 2.5s forwards; animation-delay: calc(2.5s + 3.6s); }
+@keyframes cardSlideUp { 0% { top: 200px; opacity: 0; } 50% { top: 130px; opacity: 1; } 100% { top: 130px; opacity: 0; } }
+.card3-slide3 { position: absolute; top: 200px; left: 50%; transform: translate(-50%); display: flex; justify-content: space-between; width: 180px; opacity: 0; animation: cardSlideUp 2.5s forwards; animation-delay: calc(2.5s + 5.4s); }
 .card3-slide3 .left-img { width: 50%; }
 .card3-slide3 .right-img { width: 70%; }
-.card3-slide4 { position: absolute; top: 200px; left: 80%; transform: translate(-50%); display: flex; justify-content: space-between; width: 260px; opacity: 0; animation: slideUp 2.5s forwards; animation-delay: calc(2.5s + 7.1s); }
+.card3-slide4 { position: absolute; top: 200px; left: 80%; transform: translate(-50%); display: flex; justify-content: space-between; width: 260px; opacity: 0; animation: cardSlideUp 2.5s forwards; animation-delay: calc(2.5s + 7.1s); }
 .card3-slide4 img { width: 50%; }
 .card3-slide5 { position: absolute; top: 200px; left: 60%; transform: translate(-60%); display: flex; flex-direction: column; justify-content: space-between; width: 260px; opacity: 0; animation: slideUpStay 2.5s forwards; animation-delay: calc(2.5s + 9.1s); }
 .card3-slide5 img { width: 90%; padding-bottom: 10px; }
@@ -355,17 +355,15 @@ video.hidden {
   z-index: 10;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  opacity: 0; /* Initially invisible */
-  transform: translateY(50%) scale(0.3); /* Start slightly below and scaled down */
+  align-items: center; 
+  animation: scaleDown 1s ease-in-out forwards; /* Apply scaling animation */ 
   height: 100vh;
 }
 
 /* Active class with animation */
-.scroll-section.active {
+.active .scroll-section {
   
-  animation: scaleUp 1s ease-in-out forwards; /* Apply scaling animation */
-  scroll-snap-type: y mandatory;
+  animation: scaleUp 1s ease-in-out forwards; /* Apply scaling animation */ 
   /* If you need to add more properties for transition, you can include them here */
 }
 
@@ -1365,40 +1363,51 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
   .hide-in-web{display:none}
   
 }
+  
 
-/* Slide Up Animation */
-@keyframes slideUp {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.vertical-slider > * {
+  width: 50%;
+  height: 100vh;
 }
-
-/* Slide Down Animation */
-@keyframes slideDown {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  max-height: 100vh;
 }
-
-#main-video {
-  animation: slideUp 1s ease-out; /* Initial animation */
+.absolute-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
+/* #main-video {
+  animation: videoSlideUp 1s ease-out;  
+} */
 
 
+/* .video-wrapper .mask-outer {
+  transform: translateY(100%);
+  overflow: hidden;
+  transition: transform 0.5s ease-out 0.5s;
+}
+.video-wrapper .mask-inner {
+  transform: translateY(-100%);
+  transition: transform 0.5s ease-out 0.5s;
+}
+.video-wrapper.show .mask-outer {
+  transform: translateY(0);
+  transition: transform 0.5s ease-out 0.5s;
+}
+.video-wrapper.show .mask-inner {
+  transform: translateY(0);
+  transition: transform 0.5s ease-out 0.5s;
+} */
 
 /* extra */
 /* Slide Up Animation */
-@keyframes slideUp {
+/* @keyframes videoSlideUp {
   0% {
     transform: translateY(100%);
     opacity: 0;
@@ -1408,9 +1417,8 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     opacity: 1;
   }
 }
-
-/* Slide Down Animation */
-@keyframes slideDown {
+ 
+@keyframes videoSlideDown {
   0% {
     transform: translateY(-100%);
     opacity: 0;
@@ -1420,11 +1428,49 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     opacity: 1;
   }
 }
+  */
 
-#main-video {
-  animation: slideUp 1s ease-out; /* Initial animation */
+/* Slide Up Animation */
+@keyframes videoSlideUp {
+  0% { opacity: 0; transform: translateY(50%); }
+  100% { opacity: 1; transform: translateY(0); }
 }
-  
+
+@keyframes videoSlideDown {
+  0% { opacity: 0; transform: translateY(-50%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.videoSlideUp {
+  animation: videoSlideUp 1s ease-out;
+}
+
+.videoSlideDown {
+  animation: videoSlideDown 1s ease-out;
+}
+/* Slide Up Animation */
+@keyframes videoSlideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Slide Down Animation */
+@keyframes videoSlideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 /* Ensure transitions are applied */
 /* #section3 {
   transition: transform 1s ease, opacity 0.3s ease;

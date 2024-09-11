@@ -89,8 +89,8 @@ header { padding: 15px 0;position: fixed;
 html, body {margin: 0; padding: 0;  height: 100%; overflow: hidden;}
  
 .main-container{ overflow-y: scroll; scroll-snap-type: y mandatory;} 
-.section { scroll-snap-align: start;  }
-.no-snap { scroll-snap-type: unset;} 
+/* .section { scroll-snap-align: start;  }
+.no-snap { scroll-snap-type: unset;}  */
 .w-100{ width: 100vw;}
 .h-100{  height: 100vh;}
 .h-auto{ height: auto;}

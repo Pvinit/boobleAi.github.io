@@ -241,7 +241,7 @@ video.hidden {
 }
 
 @keyframes scaleAndMove { from { transform: scale(1) translateX(0); } to { transform: scale(1.2) translateX(20px); } }
-.key-logs-card { width: 70%; position: absolute; left: 50%; top: 90%; transform: translate(-50%, -50%); }
+.key-logs-card { width: 60%; position: absolute; left: 50%; top: 90%; transform: translate(-50%, -50%); }
 .white-bg-slider { width: 65%; display: flex; justify-content: space-between; background-color: #fff; border-radius: 0px 10px 10px 0px; position: absolute; left: 0; top: 130px; opacity: 0; animation: slideInSlider 0.5s forwards 2s; }
 @keyframes slideInSlider { from { left: -50%; opacity: 0; } to { left: 50%; transform: translateX(-60%); opacity: 1; } }
 .white-bg-slider img { padding: 10px 0; width: 75px; left: 95px; }

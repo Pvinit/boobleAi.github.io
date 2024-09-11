@@ -324,6 +324,18 @@ video.home_video {
 .responsive-only {
   display: none !important;
 }
+.section1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Optional, adjust as needed */
+}
+
+.statics-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
 
 /* ===== Gateway =====*/
 .gateway {
@@ -914,7 +926,12 @@ video.hidden {
 .video {
   width: 100%;
   height: auto;
-  background-color: #000;
+  padding-top: 60px;
+}
+.video3 {
+  width: 100%;
+  height: auto;
+  padding-top: 3px;
 }
 
 /* .scroll-section {
@@ -1732,7 +1749,6 @@ footer h6 {
     height: 180px;
     background-color: #000;
     object-fit: cover;
-    border-radius: 9.42px;
   }
 
   .keyboard-platform-list h5 {
@@ -2541,6 +2557,8 @@ footer h6 {
 
 /* Large Desktops (1600px and above) */
 @media (min-width: 1600px) {
+  /* business model */
+
   .container {
     max-width: 1600px;
   }
@@ -2572,13 +2590,18 @@ footer h6 {
   }
 
   .inner-card-img {
-    width: 372.49px;
-    height: 575px;
+    max-width: 500px;
+    max-height: 680px;
+  }
+
+  /* app static */
+  .statics-container {
+    margin-bottom: -1600px;
   }
 
   /*======== keyboard-platform ========*/
   .keyboard-platform {
-    margin-top: 200px;
+    margin-top: -200px;
   }
   .keyboard-platform-list li {
     height: 400px;

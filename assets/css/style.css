@@ -420,8 +420,8 @@ video.home_video {
   overflow: hidden;
 } */
 .inner-card-img {
-  width: 400px;
-  height: 580px;
+  max-width: 320px;
+  max-height: 400px;
 }
 .card-heading {
   padding: 15px;
@@ -1355,6 +1355,17 @@ footer h6 {
     border-radius: 0;
     transform: unset;
   }
+  .category-box-inner ul li {
+    font-size: 14px;
+    line-height: 16.1px;
+    border-radius: 40px;
+    border: solid 0.3px;
+    margin: 10px 14px 15px 0;
+    padding: 8px 12px;
+}
+.category-box{
+  margin-bottom: 25px;
+}
   .custom-list li.active-disc::before {
     display: none; /* Remove the before pseudo-element in mobile view */
   }
@@ -1372,7 +1383,7 @@ footer h6 {
     transition: font-size 0.3s ease, color 0.3s ease;
   }
   .app-statics {
-    margin-top: 110px;
+    margin-top: 25px;
   }
   .app-statics h6 {
     font-size: 22px;
@@ -1414,7 +1425,7 @@ footer h6 {
     text-align: center;
     background-color: #f5f5f5;
     padding: 55px 25px 48px;
-    margin-top: 100px;
+    margin-top: 20px;
   }
   .bobble_btn h4 {
     font-size: 20px;
@@ -1516,6 +1527,11 @@ footer h6 {
   .gateway-plateform li a .icon-text small {
     font-size: 12px;
   }
+  .gateway-list li.pinkBg,
+  .gateway-list li.purpleBg,
+  .gateway-list li.greenBg {
+    background-color: transparent !important; 
+  }
 
   /* ===== Keyboard Platform =====*/
 
@@ -1559,7 +1575,7 @@ footer h6 {
   .businesses-consumers h2 {
     margin-bottom: 10px;
     padding-left: 15px;
-    margin-top: 0;
+    margin-top: 35px;
     text-align: start;
   }
   .businesses-consumers-list li figure img {
@@ -1617,8 +1633,9 @@ footer h6 {
     object-fit: cover;
   }
   .inner-card-img {
-    height: unset;
-  }
+    max-width: 320px;
+    max-height: 400px;
+}
   /* Hides scrollbar in Firefox */
   .businesses-consumers-list {
     display: flex;
@@ -1678,7 +1695,7 @@ footer h6 {
   /*======== keyboard-platform ========*/
   .keyboard-platform {
     padding: 0 20px;
-    margin-top: 40px;
+    margin-top: 115px;
   }
 
   .keyboard-platform-list li {
@@ -1839,6 +1856,17 @@ footer h6 {
     padding: 3rem 18px;
     margin: auto;
   }
+  .category-box-inner ul li {
+    font-size: 14px;
+    line-height: 16.1px;
+    border-radius: 40px;
+    border: solid 0.3px;
+    margin: 10px 14px 15px 0;
+    padding: 8px 12px;
+}
+.category-box{
+  margin-bottom: 25px;
+}
   .section.active {
     margin-top: 100px;
   }
@@ -1886,7 +1914,7 @@ footer h6 {
     transition: font-size 0.3s ease, color 0.3s ease;
   }
   .app-statics {
-    margin-top: 190px;
+    margin-top: 180px;
     height: auto;
   }
   .app-statics h6 {
@@ -1929,7 +1957,7 @@ footer h6 {
     text-align: center;
     background-color: #f5f5f5;
     padding: 55px 25px 48px;
-    margin-top: 260px;
+    margin-top: 180px;
   }
   .bobble_btn h4 {
     font-size: 16px;
@@ -1953,6 +1981,12 @@ footer h6 {
   .gateway-list li.active-disc {
     display: block;
     background-color: #f7f7f7 !important;
+  }
+
+  .gateway-list li.pinkBg,
+  .gateway-list li.purpleBg,
+  .gateway-list li.greenBg {
+    background-color: transparent !important; /* Remove background color */
   }
   #main-video {
     height: 400px;
@@ -2046,7 +2080,7 @@ footer h6 {
     margin-bottom: 15px;
     text-align: start;
     line-height: 34.5px;
-    margin-top: 140px;
+    margin-top: 76px;
   }
 
   .keyboard-platform p {
@@ -2074,7 +2108,7 @@ footer h6 {
   .businesses-consumers h2 {
     margin-bottom: 10px;
     padding-left: 15px;
-    margin-top: 195px;
+    margin-top: 60px;
     text-align: start;
   }
 
@@ -2131,9 +2165,7 @@ footer h6 {
     border-radius: 10px;
     object-fit: cover;
   }
-  .inner-card-img {
-    height: unset;
-  }
+  
   /* Hides scrollbar in Firefox */
   .businesses-consumers-list {
     display: flex;
@@ -2358,14 +2390,17 @@ footer h6 {
     padding: 0 18px;
   }
   .app-statics {
-    margin-top: 12px;
+    margin-top: -45px;
   }
   .gateway {
     padding: 60px 18px;
   }
   .bobble_btn {
-    margin-top: 120px;
+    margin-top: 0;
   }
+  .keyboard-platform {
+    margin-top: 80px;
+}
   .keyboard-platform h2 {
     margin-top: -15px;
   }
@@ -2381,8 +2416,14 @@ footer h6 {
     margin-top: 12px;
   }
   .bobble_btn {
-    margin-top: 70px;
+    margin-top: -15px;
   }
+}
+@media only screen and (min-width: 360px) and (max-width: 360px) {
+  .category-box-inner ul li {
+    
+    margin: 10px 8px 15px 0;
+}
 }
 
 /* Your styles for laptops and larger screens */

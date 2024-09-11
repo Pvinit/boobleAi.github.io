@@ -328,7 +328,8 @@ video.home_video {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Optional, adjust as needed */
+  /* Optional, adjust as needed */
+  height: 40vh;
 }
 
 .statics-container {
@@ -2428,8 +2429,8 @@ footer h6 {
   .web_part {
     display: none; /* Hide .web_part on small screens */
   }
-  .nav-links{
-    display:none;
+  .nav-links {
+    display: none;
   }
   .extra_p {
     display: block; /* Ensure .extra_p is visible */
@@ -2444,9 +2445,9 @@ footer h6 {
   #rightDown {
     display: none; /* Hide the image on mobile */
   }
-  .dark{
+  .dark {
     font-size: 18px;
-    font-weight:700;
+    font-weight: 700;
   }
   .businesses-consumers h4{
     font-weight:400 !important;
@@ -2618,9 +2619,9 @@ footer h6 {
 @media (min-width: 1600px) {
   /* business model */
 
-  .container {
+  /* .container {
     max-width: 1600px;
-  }
+  } */
 
   .category {
     padding: 15rem 0;
@@ -2656,6 +2657,12 @@ footer h6 {
   /* app static */
   .statics-container {
     margin-bottom: -1600px;
+  }
+  .section1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -550px;
   }
 
   /*======== keyboard-platform ========*/

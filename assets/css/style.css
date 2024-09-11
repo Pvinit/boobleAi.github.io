@@ -1779,10 +1779,17 @@ footer h6 {
 
   .video {
     width: 100%;
-    height: 180px;
-    background-color: #000;
-    object-fit: cover;
-  }
+    height: auto;
+    padding: 0;
+    border-radius: 9.42px;
+}
+
+.video3 {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border-radius: 9.42px;
+}
 
   .keyboard-platform-list h5 {
     color: #0000009c;
@@ -2304,11 +2311,16 @@ footer h6 {
 
   .video {
     width: 100%;
-    height: 180px;
-    background-color: #000;
-    object-fit: cover;
+    height: auto;
+    padding: 0;
     border-radius: 9.42px;
-  }
+}
+.video3 {
+  width: 100%;
+  height: auto;
+  padding: 0;
+  border-radius: 9.42px;
+}
 
   .keyboard-platform-list h5 {
     color: #0000009c;

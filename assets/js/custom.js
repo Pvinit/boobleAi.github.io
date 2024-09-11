@@ -310,3 +310,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // Code that needs all resources to be fully loaded
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollLink = document.querySelector("a[href='#section0']");
+    const section0 = document.getElementById("section0");
+  
+    scrollLink.addEventListener("click", function (e) {
+      e.preventDefault();
+      section0.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    });
+  });
+  

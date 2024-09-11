@@ -1300,6 +1300,7 @@ footer h6 {
   .category h1 {
     font-size: 32px;
     line-height: 41.7px;
+    
   }
   .gateway h2 span,
   .keyboard-platform h2,
@@ -1340,8 +1341,8 @@ footer h6 {
 
   .category {
     padding: 1rem 18px;
-    margin: auto;
-  }
+    margin: -85px 0px;
+}
   .section.active {
     margin-top: 100px;
   }
@@ -1438,7 +1439,7 @@ footer h6 {
     text-align: center;
     background-color: #f5f5f5;
     padding: 55px 25px 48px;
-    margin-top: -142px;
+    margin-top: -100px;
   }
   .bobble_btn h4 {
     font-size: 20px;
@@ -1653,6 +1654,7 @@ footer h6 {
   .inner-card-img {
     max-width: 320px;
     max-height: 400px;
+    margin-top: -20px;
   }
   /* Hides scrollbar in Firefox */
   .businesses-consumers-list {
@@ -1975,7 +1977,7 @@ footer h6 {
     text-align: center;
     background-color: #f5f5f5;
     padding: 55px 25px 48px;
-    margin-top: 180px;
+    margin-top: 122px;
   }
   .bobble_btn h4 {
     font-size: 16px;
@@ -2368,6 +2370,9 @@ footer h6 {
     font-weight: 400;
     color: #00949e; /* Show "Read More" on mobile */
   }
+  .gateway-list li h4{
+    display:block;
+  }
 
   .web_part {
     display: none; /* Hide .web_part on small screens */
@@ -2391,6 +2396,12 @@ footer h6 {
   .dark{
     font-size: 18px;
     font-weight:700;
+  }
+  .businesses-consumers h4{
+    font-weight:400 !important;
+  }
+  .businesses-consumers p {
+    font-weight: 300 !important;
   }
 }
 .responsive-only {
@@ -2418,7 +2429,7 @@ footer h6 {
 /* Styles for screens exactly 390px */
 @media only screen and (min-width: 390px) and (max-width: 390px) {
   .category {
-    margin: auto;
+    margin: -40px 0;
     padding: 0 18px;
   }
   .app-statics {
@@ -2428,7 +2439,7 @@ footer h6 {
     padding: 60px 18px;
   }
   .bobble_btn {
-    margin-top: 0;
+    margin-top: -32px;
   }
   .keyboard-platform {
     margin-top: 80px;
@@ -2442,6 +2453,19 @@ footer h6 {
   .businesses-consumers-list li {
     margin-bottom: 1px;
   }
+}
+@media only screen and (min-width: 360px) and (max-width: 360px) {
+  .bobble_btn {
+    margin-top: 48px;
+  }
+  .app-statics {
+    margin-top: 118px;
+}
+
+.category {
+  margin: -50px 0;
+}
+
 }
 @media only screen and (min-width: 430px) and (max-width: 430px) {
   .app-statics {

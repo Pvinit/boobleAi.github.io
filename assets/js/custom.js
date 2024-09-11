@@ -1,4 +1,5 @@
 
+
 let lastScrollTop = 0;
 
 const header = document.querySelector("header");
@@ -14,6 +15,7 @@ const headerScrollTopNav = (status) => {
     header.style.top = "0";
   }
 };
+
 
 document.addEventListener("DOMContentLoaded", () => {
 

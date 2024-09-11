@@ -125,8 +125,8 @@ video.home_video {
 
 /*--=====  app statics =====--*/
 
-.app-statics {background-color: #F5F5F5;width: 100%; padding: 30px; margin-top: 50px;}
-.app-statics h6{font-size: 48px; line-height: 65.71px; font-weight: 700;}
+.app-statics {background-color: #F5F5F5;width: 100%; height: 307px; display: flex;justify-content: center;align-items: center;margin-top: 50px;}
+.app-statics h6{font-size: 48px; line-height: 65.71px; font-weight: 700;color: #00BC84;}
 .app-statics p{font-size: 28px;font-weight: 500;line-height: 37.21px;}
 
 
@@ -1246,7 +1246,6 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     text-align: left;
     font-weight: 700;}
 
-   
 
 
   .keyboard-platform-list li{padding: 0px;}
@@ -1530,6 +1529,10 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 .inner-card-img{width: 372.49px;height: 575px;}
 
+ /*======== keyboard-platform ========*/
+ .keyboard-platform{margin-top: 200px;}
+ .keyboard-platform-list li{height: 400px;}
+
 }
 
 
@@ -1541,7 +1544,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 .container h3 { font-size: 27px; line-height: 30px ; }
 .container h4 { font-size: 23px; line-height: 30px ; }
 .container h5 { font-size: 20px; line-height: 20px ; }
-.container h6 { font-size: 18px; line-height: 20px ; }
+.container h6 { font-size: 35px; line-height: 37px ; }
 
 
 .gateway p:nth-child(1) {
@@ -1558,6 +1561,12 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 /* === Navbar == */
 .menu li a{font-size: 16px;}
 
+/*--=====  app statics =====--*/
+
+.app-statics {height: 200px;}
+.app-statics p{line-height: 60px; font-size: 20px;}
+
+
 /* ===== Category =====*/
 .video-link{font-size: 28px;}
 
@@ -1571,8 +1580,8 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 
  /*======== keyboard-platform ========*/
-
-.keyboard-platform-list li{height: 400px;}
+ .keyboard-platform{margin-top: 400px;}
+.section.active .container {margin-top: 0px;}
 
 /* ===== For Businesses For Consumers =====*/
 .businesses-consumers-list p{font-size: 23px;}
@@ -1592,42 +1601,13 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 /* Tablets (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991px) {
-:root {
-    --font-base: 15px;
-    --max-font-size: 18px;
-}
+
 }
 
 
 
 
-/* Large Mobile Devices (576px to 767px) */
-@media (min-width: 576px) and (max-width: 767px) {
-:root {
-    --font-base: 14px;
-    --max-font-size: 17px;
-}
-}
 
-/* Small Mobile Devices (up to 575px) */
-@media (max-width: 575px) {
-:root {
-    --font-base: 13px;
-    --max-font-size: 16px;
-}
-
-.gateway p:nth-child(3) {
-  display: none;
-}
-}
-
-/* Extra Small Mobile Devices (up to 400px) */
-@media (max-width: 400px) {
-:root {
-    --font-base: 12px;
-    --max-font-size: 15px;
-}
-}
 
 
 

@@ -110,11 +110,22 @@
       </section> -->
 
       <section id="section0" class="grid-videos section w-100 h-100">
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
           <ul class="grid-video-list">
             <li>
               <figure>
-                <video
+
+                <div class="video-container d-none d-lg-block d-xl-block d-sm-block"> 
+                  <video id="video1" autoplay muted playsinline></video>
+
+                  <!-- Second video (hover video) -->
+                  <video id="video2" muted playsinline class="hidden"></video>
+              
+                  <!-- Third video (looping video) -->
+                  <video id="video3" loop muted playsinline class="hidden"></video>
+
+                </div>
+                <!-- <video
                   class="home_video d-none d-lg-block d-xl-block d-sm-block pt-5"
                   src="./assets/images/bobble_web.mp4"
                   autoplay
@@ -122,7 +133,7 @@
                   muted
                   playsinline
                   width="100%"
-                ></video>
+                ></video> -->
                 <video
                   class="home_video_mobile d-block d-sm-none"
                   src="./assets/images/bobble_Mobile.mov"
@@ -229,7 +240,8 @@
         <div class="container">
           <h2><span>Bobble AI </span><span>is the gateway </span></h2>
           <p>is the gateway to your end-to-end smartphone usage</p>
-          <p>enhancing your creative expression and helping you accomplish things.</p>
+          <p class="extra_p ">enhancing your creative expression and helping you accomplish things.</p>
+          <p>to your end-to-end smartphone usage enhancing your creative expression and helping you accomplish things.</p>
           <ul class="gateway-list">
             <li class="pinkBg">
               <h4>Creative Expression</h4>

@@ -103,11 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (currentIndex < index) {
 
         // if (currentIndex < points.length) {
-        mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+        mainVideo.style.animation = 'videoSlideUp 1s ease-out'; // Re-apply the animation
         // }
       } else {
         // if (currentIndex !== index) { 
-        mainVideo.style.animation = 'slideDown 1s ease-out'; // Re-apply the animation
+        mainVideo.style.animation = 'videoSlideDown 1s ease-out'; // Re-apply the animation
         // }
       }
 
@@ -217,9 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
       mainVideo.style.animation = 'none'; // Reset animation
       mainVideo.offsetHeight; // Trigger reflow to restart the animation
       if (currentIndex < index) {
-        mainVideo.style.animation = 'slideUp 1s ease-out'; // Re-apply the animation
+        mainVideo.style.animation = 'videoSlideLeft 1s ease-out'; // Re-apply the animation
       } else {
-        mainVideo.style.animation = 'slideDown 1s ease-out'; // Re-apply the animation
+        mainVideo.style.animation = 'videoSlideRight 1s ease-out'; // Re-apply the animation
       }
       currentIndex = index;
     }
@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to check if the fifth section is in view
   function handleScroll() {
-    const fifthSection = isMobileDevice() ? sections[4] : sections[4]; // 0-based index, so 3 is the fifth section
+    const fifthSection = isMobileDevice() ? sections[2] : sections[4]; // 0-based index, so 3 is the fifth section
     const fifthSectionRect = fifthSection.getBoundingClientRect();
     console.log({ fifthSection })
     // Check if the bottom of the fifth section is in view
@@ -290,7 +290,10 @@ document.addEventListener('scroll', () => {
   const container = document.querySelector('.main-container');
   const sections = document.querySelectorAll('.section');
   // Get the position of the fourth section
-  const fourthSection = sections[3]; // index 3 for the 4th section
+  const isMobileDevice = () => window.innerWidth <= 768;
+
+
+  const fourthSection = isMobileDevice() ? sections[2] : sections[4]; // index 3 for the 4th section
   const rect = fourthSection.getBoundingClientRect();
 
   console.log({ bottom: rect.bottom })
@@ -499,44 +502,44 @@ document.addEventListener('DOMContentLoaded', () => {
 // });
 
 //video mp4
-    // Get references to the video elements
-    const video1 = document.getElementById('video1');
-    const video2 = document.getElementById('video2');
-    const video3 = document.getElementById('video3');
+// Get references to the video elements
+const video1 = document.getElementById('video1');
+const video2 = document.getElementById('video2');
+const video3 = document.getElementById('video3');
 
-    // Set video sources
-    video1.src = './assets/./images/homepage_video_1.mp4';  // Set the path to your first video
-    video2.src = './assets/./images/homepage_video_2.mp4'; // Set the path to your second video
-    video3.src = './assets/./images/homepage_video_3.mp4';  // Set the path to your third video
+// Set video sources
+video1.src = './assets/./images/homepage_video_1.mp4';  // Set the path to your first video
+video2.src = './assets/./images/homepage_video_2.mp4'; // Set the path to your second video
+video3.src = './assets/./images/homepage_video_3.mp4';  // Set the path to your third video
 
-    // Play the first video once
-    video1.onended = function() {
-        video1.classList.add('hidden');
-        video3.classList.remove('hidden');
-        video3.play(); // Start playing the third video in a loop
-    };
+// Play the first video once
+video1.onended = function () {
+  video1.classList.add('hidden');
+  video3.classList.remove('hidden');
+  video3.play(); // Start playing the third video in a loop
+};
 
-    // Hover to play the second video
-    video1.addEventListener('mouseover', function() {
-        video1.classList.add('hidden');
-        video2.classList.remove('hidden');
-        video2.play();
-    });
+// Hover to play the second video
+video1.addEventListener('mouseover', function () {
+  video1.classList.add('hidden');
+  video2.classList.remove('hidden');
+  video2.play();
+});
 
-    video2.addEventListener('mouseout', function() {
-        video2.classList.add('hidden');
-        video1.classList.remove('hidden');
-        video1.play(); // Play the first video again (can be muted or looped)
-    });
+video2.addEventListener('mouseout', function () {
+  video2.classList.add('hidden');
+  video1.classList.remove('hidden');
+  video1.play(); // Play the first video again (can be muted or looped)
+});
 
-    // Scroll down to stop the third video
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) { // If the user scrolls down more than 50px
-            video3.pause();
-        } else {
-            video3.play(); // Continue playing the third video if scrolled back up
-        }
-    });
+// Scroll down to stop the third video
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 50) { // If the user scrolls down more than 50px
+    video3.pause();
+  } else {
+    video3.play(); // Continue playing the third video if scrolled back up
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   const isMobileDevice = () => window.innerWidth <= 768;
@@ -567,15 +570,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // });
 
     // Handle different actions based on scroll direction
-    if (!isMobileDevice()) {
-      if (isScrollingDown) {
-        // Logic for scrolling down
-        headerScrollTopNav(false)
-      } else {
-        // Logic for scrolling up
-        headerScrollTopNav(true)
-      }
+    // if (!isMobileDevice()) {
+    if (isScrollingDown) {
+      // Logic for scrolling down
+      headerScrollTopNav(false)
+    } else {
+      // Logic for scrolling up
+      headerScrollTopNav(true)
     }
+    // }
     console.log({ scrollPosition })
     // Update the last scroll position
     lastScrollTop = scrollPosition <= 564 ? 564 : scrollPosition;

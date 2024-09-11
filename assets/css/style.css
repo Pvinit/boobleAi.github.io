@@ -1126,6 +1126,12 @@ video.hidden {
 }
 
 /* ===== patents & Research  =====*/
+.heading-mob{
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 21.9px;
+  display: none;
+}
 .patents-research .patent-research-list {
   display: flex;
   justify-content: space-between;
@@ -1314,12 +1320,17 @@ footer h6 {
 .card-right{
   height:270px ;
 }
+.patents-research img{display: none;}
+.heading-mob{display: block;}
+
 }
 
 
 
 /* Media query for mobile (show only the first 5 list items on screens smaller than 768px) */
 @media (max-width: 768px) {
+  .patents-research img{display: none;}
+.heading-mob{display: block;}
   .patents-research .patent-research-list .patents li:nth-child(n+6),
   .patent-research-list .reserch li:nth-child(n+6) {
     display: none; /* Hide the list items starting from the 6th item */
@@ -1816,6 +1827,12 @@ footer h6 {
     font-weight: 700;
   }
 
+  .card-right h4,
+.card-left h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+
   /* ===== innovation-culture-mobile=====*/
   .hide-mobile {
     display: none;
@@ -1871,6 +1888,11 @@ footer h6 {
     margin-top: 120px;
   }
 
+  .heading-mob{
+    font-size: 16px;
+    font-weight: 700;
+  }
+
 }
 
 /* Extra Small Mobile Devices (up to 400px) */
@@ -1878,6 +1900,12 @@ footer h6 {
   body {
     font-size: 13px;
   }
+
+  .heading-mob{
+    font-size: 16px;
+  font-weight: 700;
+  }
+    
   .category h1 {
     font-size: 30px;
     line-height: 41.7px;
@@ -2285,6 +2313,10 @@ footer h6 {
     margin: 0 10px;
   }
 
+  .card-right h4, .card-left h4{
+    padding-bottom: 5px;
+  }
+
   /*======== keyboard-platform ========*/
   .keyboard-platform {
     padding: 0 20px;
@@ -2327,6 +2359,12 @@ footer h6 {
   }
 
   /*--===== patents & Research =====- */
+
+  .card-right h4,
+  .card-left h4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
 
   .patents-research .card-heding span {
     font-size: 47px !important;
@@ -2454,6 +2492,10 @@ footer h6 {
   }
   .businesses-consumers p {
     font-weight: 300 !important;
+  }
+
+  .card-right h4, .card-left h4{
+    padding-bottom: 5px;
   }
 }
 .responsive-only {

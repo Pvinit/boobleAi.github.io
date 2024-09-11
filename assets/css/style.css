@@ -143,7 +143,7 @@ video.home_video {
 .gateway h2 span { color: var(--green); }
 .gateway span:nth-child(2) { color: #000;}
 .gateway h5 { font-weight: normal; }
-.gateway p { max-width: 90%; margin: 0 auto; }
+.gateway p {  margin: 0 auto; }
 .gateway-list { display: flex; margin: 50px 0 50px; }
 .gateway-list li { width: 31%; margin: 0 15px; border-radius: 20px; padding: 40px 0 0; }
 .gateway-list li.pinkBg { background-color: #FFCBEA; }
@@ -531,13 +531,13 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 	h4 { font-size: 18px; line-height: 30px; }
 	h5 { font-size: 16px; line-height: 20px; }
 	h6 { font-size: 13px; line-height: 20px; }
-	.category p,.app-statics p, p  { font-size: 18px; line-height: 27px;color:var(--black); }
+	.category p,.app-statics p, p  { font-size: 20px; line-height: 27px;color:var(--black); }
 	header { padding: 10px 0; }
 	footer p { text-align: center; font-size: 14px; }
 
   .category {
-    padding: 5rem 18px;
-    margin: 1rem auto;
+    padding: 1rem 18px;
+    margin: auto;
 }
   .section.active{
     margin-top: 100px;
@@ -571,17 +571,33 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
   .custom-list li.active-disc,.custom-list li.active-disc .video-link {color: #00BC84;font-size: 24px; font-weight: 700; transform:unset}
   .video-link { text-decoration: none; color: var(--grayL);font-size: 22px;transition: font-size 0.3s ease, color 0.3s ease;} 
   .app-statics {
-    margin-top: 165px;
+    margin-top: 110px;
 }
 .app-statics h6 {
-  font-size: 20px;
+  font-size: 22px;
   line-height: 23px;
 }
 .app-statics-para{
-  font-size: 14px!important;
+  font-size: 16px!important;
   font-weight: 400!important;
   line-height: 16.1px !important;
+  padding: 10px 0;
 }
+
+
+.statics-container {
+  padding: 40px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.statics-container .col {
+  flex: 0 0 50%;
+  max-width: 50%;
+  text-align: start;
+  padding: 20px 10px;
+}
+
  /*========Gateway======== */ 
     .gateway-list li h4 { 
     position: absolute;
@@ -598,6 +614,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     text-align: center;
     background-color: #F5F5F5;
     padding: 55px 25px 48px;
+    margin-top:100px
    
 }
 .bobble_btn h4{
@@ -631,7 +648,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
    /*========Gateway======== */
    .gateway {
-     padding: 83px 18px;
+     padding: 45px 18px;
    }
    .gateway h2 span{color:inherit;}
     .gateway h2{text-align: start;}
@@ -954,8 +971,8 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 	footer p { text-align: center; font-size: 14px; }
 
   .category {
-    padding: 5rem 18px;
-    margin: 5rem auto;
+    padding: 3rem 18px;
+    margin: auto;
 }
   .section.active{
     margin-top: 100px;
@@ -995,6 +1012,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
   .video-link { text-decoration: none; color: var(--grayL);font-size: 16px;transition: font-size 0.3s ease, color 0.3s ease;} 
   .app-statics {
     margin-top: 190px;
+    height:auto;
 }
 .app-statics h6 {
   font-size: 20px;
@@ -1005,10 +1023,21 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
   font-size: 14px!important;
   font-weight: 400!important;
   line-height: 16.1px !important;
+  padding: 10px 0;
 }
 
-.statics{
-  width:50%;
+
+.statics-container {
+  padding: 40px 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.statics-container .col {
+  flex: 0 0 50%;
+  max-width: 50%;
+  text-align: start;
+  padding: 20px 10px;
 }
  /*========Gateway======== */ 
     .gateway-list li h4 { 
@@ -1026,7 +1055,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     text-align: center;
     background-color: #F5F5F5;
     padding: 55px 25px 48px;
-    margin-top: 345px;
+    margin-top: 260px;
 }
 .bobble_btn h4{
   font-size: 16px;
@@ -1059,7 +1088,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
    /*========Gateway======== */
    .gateway {
-     padding: 175px 18px;
+     padding: 50px 18px;
    }
    .gateway h2 span{color:inherit;}
     .gateway h2{text-align: start;}
@@ -1226,10 +1255,7 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 .make-change-happen{margin-top: 8rem;}
 
- .card-left, .card-right{
-  height: 200px;
-  border-radius: 8px;
-}
+
 .patents-research .patent-research-list .card-heding{
   padding: 15px 15px 0;
 }
@@ -1374,14 +1400,22 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
     font-weight: 400;
     color: #00949E; /* Show "Read More" on mobile */
   }
-  .card-left, .card-right{
+  /* .card-left, .card-right{
     height: 180px;
   }
   .card-left.more, .card-right.more{
     height: 300px;
-  }
+  } */
   #rightDown {
     display: none; /* Hide the image on mobile */
+}
+.responsive-only{
+  display: block;
+}
+.card-left, .card-right{
+  height: 200px !important;
+  border-radius: 8px;
+  padding-bottom: 4px;
 }
 
 }
@@ -1399,8 +1433,15 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
 
 /* Styles for screens exactly 390px */
 @media only screen and (min-width: 390px) and (max-width: 390px) {
-  .gateway {
-    padding: 104px 18px;
+  .category {
+    margin: auto;
+    padding: 0 18px;
+}
+.app-statics {
+  margin-top: 12px;
+}
+.gateway {
+  padding: 60px 18px;
 }
 .bobble_btn {
   margin-top: 120px;
@@ -1416,7 +1457,13 @@ footer h6 { font-size: 24px; margin-bottom: 20px; }
   margin-bottom: 1px;
 }
 }
-
+@media only screen and (min-width: 430px) and (max-width: 430px) {
+  .app-statics {
+    margin-top: 12px;
+}
+.bobble_btn {
+  margin-top: 70px;
+}}
 
 
   /* Your styles for laptops and larger screens */

@@ -167,6 +167,7 @@ header {
 
 html,
 body {
+    scroll-behavior: smooth;
   margin: 0;
   padding: 0;
   height: 100%;

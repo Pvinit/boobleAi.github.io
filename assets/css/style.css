@@ -125,8 +125,8 @@ video.home_video {
 
 /*--=====  app statics =====--*/
 
-.app-statics {background-color: #F5F5F5;width: 100%; padding: 30px; margin-top: 50px;}
-.app-statics h6{font-size: 48px; line-height: 65.71px; font-weight: 700;}
+.app-statics {background-color: #F5F5F5;width: 100%; padding: 30px; margin-top: 50px;height: 307px;}
+.app-statics h6{font-size: 48px; line-height: 65.71px; font-weight: 700;color: #00BC84;}
 .app-statics p{font-size: 28px;font-weight: 500;line-height: 37.21px;}
 
 

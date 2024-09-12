@@ -1698,11 +1698,11 @@ footer h6 {
     padding: 10px 30px;
   }
   .gateway-plateform li a .icon-text span {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--black);
   }
   .gateway-plateform li a .icon-text small {
-    font-size: 12px;
+    font-size: 8px;
   }
   .gateway-list li.pinkBg,
   .gateway-list li.purpleBg,
@@ -2281,7 +2281,7 @@ footer h6 {
     justify-content: center;
   }
   .gateway-plateform li a .icon-text span {
-    font-size: 16px;
+    font-size: 12px;
     color: var(--black);
   }
   .gateway-plateform li a .icon-text small {

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Play and Scroll</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Agbalumo&display=swap");
+
+      body {
+        margin: 0;
+        font-family: "Agbalumo", sans-serif;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      h2,
+      h3 {
+        text-transform: uppercase;
+        margin: 1rem 0;
+      }
+      h2 {
+        font-size: 30px;
+      }
+      h3 {
+        font-size: 40px;
+      }
+
+      .desktop-only {
+        display: none !important;
+      }
+      .content {
+        text-align: center;
+        padding: 4rem 2rem;
+      }
+
+      @media (max-width: 1023px) {
+        .image-wrapper {
+          height: 100vw;
+          overflow: hidden;
+          max-height: 500px;
+        }
+      }
+      @media (min-width: 1024px) {
+        h2 {
+          font-size: 50px;
+        }
+        h3 {
+          font-size: 60px;
+        }
+        .mobile-only {
+          display: none !important;
+        }
+        .desktop-only {
+          display: flex !important;
+        }
+
+        .vertical-slider > * {
+          width: 50%;
+        }
+        .sticky {
+          position: sticky;
+          top: 0;
+          height: 100%;
+          max-height: 100vh;
+        }
+        .absolute-full {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+        .content-wrapper {
+          min-height: 100vh;
+          opacity: 0.2;
+          transition: opacity 0.5s ease-out;
+        }
+        .content-wrapper.in-view {
+          opacity: 1;
+          transition: opacity 0.5s ease-out;
+        }
+        .content {
+          padding: 5rem 2rem;
+        }
+        .image-wrapper .mask-outer {
+          transform: translateY(100%);
+          overflow: hidden;
+          transition: transform 0.5s ease-out 0.5s;
+        }
+        .image-wrapper .mask-inner {
+          transform: translateY(-100%);
+          transition: transform 0.5s ease-out 0.5s;
+        }
+        .image-wrapper.show .mask-outer {
+          transform: translateY(0);
+          transition: transform 0.5s ease-out 0.5s;
+        }
+        .image-wrapper.show .mask-inner {
+          transform: translateY(0);
+          transition: transform 0.5s ease-out 0.5s;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mobile-only">
+      <section>
+        <div class="image-wrapper">
+          <img
+            src="https://fastly.picsum.photos/id/152/3888/2592.jpg?hmac=M1xv1MzO9xjf5-tz1hGR9bQpNt973ANkqfEVDW0-WYU"
+          />
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>here are some</h2>
+            <h3>perks for joining</h3>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="image-wrapper">
+          <img
+            src="https://fastly.picsum.photos/id/129/4910/3252.jpg?hmac=g1KzJMIp75lG_scR48R1baC6TjhVmkEyygSyngKYRsg"
+          />
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>here's some</h2>
+            <h3>✨ content ✨</h3>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div class="image-wrapper">
+          <img
+            src="https://fastly.picsum.photos/id/214/2729/2047.jpg?hmac=sbADnAldkjZ_C8bOEoXFBSHedcFRZYO_GPg3eHwQ5m0"
+          />
+        </div>
+        <div class="content-wrapper">
+          <div class="content">
+            <h2>and then some</h2>
+            <h3>❤️</h3>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="desktop-only vertical-slider">
+      <div class="left-side">
+        <section class="content-wrapper" data-index="0">
+          <div class="content">
+            <h2>here are some</h2>
+            <h3>perks for joining</h3>
+          </div>
+        </section>
+        <section class="content-wrapper" data-index="1">
+          <div class="content">
+            <h2>here's some</h2>
+            <h3>✨ content ✨</h3>
+          </div>
+        </section>
+        <section class="content-wrapper" data-index="2">
+          <div class="content">
+            <h2>and then some</h2>
+            <h3>❤️</h3>
+          </div>
+        </section>
+      </div>
+      <div class="right-side">
+        <div class="sticky">
+          <div class="image-wrapper absolute-full show" data-index="0">
+            <div class="mask-outer absolute-full">
+              <div class="mask-inner absolute-full">
+                <img
+                  src="https://fastly.picsum.photos/id/152/3888/2592.jpg?hmac=M1xv1MzO9xjf5-tz1hGR9bQpNt973ANkqfEVDW0-WYU"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="image-wrapper absolute-full" data-index="1">
+            <div class="mask-outer absolute-full">
+              <div class="mask-inner absolute-full">
+                <img
+                  src="https://fastly.picsum.photos/id/129/4910/3252.jpg?hmac=g1KzJMIp75lG_scR48R1baC6TjhVmkEyygSyngKYRsg"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="image-wrapper absolute-full" data-index="2">
+            <div class="mask-outer absolute-full">
+              <div class="mask-inner absolute-full">
+                <img
+                  src="https://fastly.picsum.photos/id/214/2729/2047.jpg?hmac=sbADnAldkjZ_C8bOEoXFBSHedcFRZYO_GPg3eHwQ5m0"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const options = {
+        root: null, // use the viewport as the root
+        rootMargin: "0px", // no margin
+        threshold: 0.5, // 50% of the target element must be visible
+      };
+
+      // Select all image wrappers
+      const imageWrappers = document.querySelectorAll(
+        ".vertical-slider.desktop-only .right-side .image-wrapper"
+      );
+
+      function callback(entries, observer) {
+        entries.forEach((entry) => {
+          const currentContentWrapper = entry.target;
+          const index = parseInt(currentContentWrapper.dataset.index);
+
+          if (entry.isIntersecting) {
+            currentContentWrapper.classList.add("in-view");
+
+            if (imageWrappers[index]) {
+              imageWrappers[index].classList.add("show");
+              for (let i = index + 1; i < imageWrappers.length; i++) {
+                imageWrappers[i].classList.remove("show");
+              }
+            }
+          } else {
+            currentContentWrapper.classList.remove("in-view");
+          }
+        });
+      }
+
+      // Interaction Observer for each content section (right side)
+      const observer = new IntersectionObserver(callback, options);
+      const contentWrappers = document.querySelectorAll(
+        ".vertical-slider.desktop-only .left-side .content-wrapper"
+      );
+
+      contentWrappers.forEach((wrapper) => {
+        observer.observe(wrapper);
+      });
+    </script>
+  </body>
+</html>

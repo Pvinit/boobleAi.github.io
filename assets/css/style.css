@@ -221,7 +221,7 @@ video.home_video {
 }
 
 .right-col {
-  margin-top: 25%;
+  margin-top: 22%;
   margin-bottom: 20%;
   position: relative; /* To properly position the foreground image */
   display: flex;
@@ -264,22 +264,22 @@ video.home_video {
 
 /* Specific background colors */
 .purple-bg {
-  background-color: #dbc4ff;
+  /* background-color: #dbc4ff; */
   animation: slideShow 8s infinite;
 }
 
 .green-bg {
-  background-color: #c4ffd5;
+  /* background-color: #c4ffd5; */
   animation: slideShow 8s infinite 2s;
 }
 
 .pink-bg {
-  background-color: #ffc1c0;
+  /* background-color: #ffc1c0; */
   animation: slideShow 8s infinite 4s;
 }
 
 .yellow-bg {
-  background-color: #feffc4;
+  /* background-color: #feffc4; */
   animation: slideShow 8s infinite 6s;
 }
 
@@ -1841,7 +1841,7 @@ footer h6 {
   .patents-research .patent-research-list .card-left,
   .card-right {
     height: 220px;
-    border-radius: 8px;
+    border-radius: 32px;
   }
   .patents-research .patent-research-list .card-heding {
     padding: 15px 15px 0;
@@ -2977,4 +2977,12 @@ footer h6 {
   list-style-type: disc;
   margin-left: 10%;
   margin-top: 10%;
+}
+@media (min-width: 1600px)  {
+  .video{
+    padding-top: 0px !important;
+  }
+  .keyboard-platform-list li {
+    height: 480px;
+  }
 }

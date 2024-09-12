@@ -2614,7 +2614,7 @@ footer h6 {
 .card-left,
 .card-right {
   /* height: 200px !important; */
-  border-radius: 20px;
+  border-radius: 32px;
   padding-bottom: 4px;
 }
 

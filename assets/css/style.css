@@ -479,13 +479,13 @@ video.home_video {
   padding: 40px 0 0;
 }
 .gateway-list li.pinkBg {
-  background-color: #ffcbea;
+  /* background-color: #ffcbea; */
 }
 .gateway-list li.purpleBg {
-  background-color: #cbd7ff;
+  /* background-color: #cbd7ff; */
 }
 .gateway-list li.greenBg {
-  background-color: #a0e3cf;
+  /* background-color: #a0e3cf; */
 }
 .gateway-list li h4 {
   font-weight: 400;
@@ -2644,6 +2644,9 @@ footer h6 {
   #rightDown {
     display: inline; /* Show the image on desktop */
   }
+  .specific-left-spacing{
+    margin-left: 10%;
+  }
 }
 
 /* Styles for screens exactly 390px */
@@ -2984,5 +2987,8 @@ footer h6 {
   }
   .keyboard-platform-list li {
     height: 480px;
+  }
+  .specific-left-spacing{
+    margin-left: 10%;
   }
 }

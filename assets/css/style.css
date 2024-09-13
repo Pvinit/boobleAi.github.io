@@ -305,6 +305,7 @@ video.home_video {
     opacity: 0;
   }
 }
+
 .category h2 {
   font-size: 50px;
   font-weight: 700;
@@ -441,7 +442,7 @@ video.home_video {
 /* ===== Gateway =====*/
 .gateway {
   text-align: center;
-  padding: 60px 0;
+  padding: 90px 0;
 }
 
 .gateway h2 {
@@ -491,7 +492,7 @@ video.home_video {
   font-weight: 400;
   font-size: 28.57px;
   line-height: 37.97px;
-  display: none;
+  display: block;
 }
 .gateway-list li figure {
   margin: 30px 0 0 0;
@@ -2647,6 +2648,12 @@ footer h6 {
   .specific-left-spacing{
     margin-left: 10%;
   }
+  .category-specific{
+    margin-left: 100px !important;
+  }
+  .heading-1{
+    font-size: 45px;
+  }
 }
 
 /* Styles for screens exactly 390px */
@@ -2892,7 +2899,7 @@ footer h6 {
   /*--=====  app statics =====--*/
 
   .app-statics {
-    height: 200px;
+    height: 170px;
   }
   .app-statics p {
     line-height: 60px;
@@ -2919,7 +2926,10 @@ footer h6 {
   /* ===== Gateway =====*/
   .gateway .sub-heading,
   .gateway-list li h4 {
-    font-size: 23px;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 35%;
+    font-weight: bold;
   }
 
   /*======== keyboard-platform ========*/

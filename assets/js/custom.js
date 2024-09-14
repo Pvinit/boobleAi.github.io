@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
     points.forEach((point, i) =>
       point.classList.toggle("active-disc", i === index)
     );
-    const videoSrc = points[index].dataset.video;
-    mainVideo.querySelector("source").src = videoSrc;
-    mainVideo.load();
+    // const videoSrc = points[index].dataset.video;
+    // mainVideo.querySelector("source").src = videoSrc;
+    // mainVideo.load();
     // Reset and trigger the animation
-    mainVideo.style.animation = "none"; // Reset animation
-    mainVideo.offsetHeight; // Trigger reflow to restart the animation
+    // mainVideo.style.animation = "none"; // Reset animation
+    // mainVideo.offsetHeight; // Trigger reflow to restart the animation
     if (currentIndex < index) {
       mainVideo.style.animation = "videoSlideLeft 1s ease-out"; // Re-apply the animation
     } else {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function startAutoRun() {
     autoRunInterval = setInterval(() => {
       currentIndex = (currentIndex + 1) % points.length; // Cycle through points
-      setActive(currentIndex);
+      //setActive(currentIndex);
     }, 5000); // Change video every 5 seconds
   }
 
@@ -58,23 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Event listeners for mouse events to stop/start auto-run
-  points.forEach((point) => {
-    point.addEventListener("click", () => {
-      setActive(parseInt(point.dataset.index));
-      stopAutoRun(); // Stop auto-run on manual selection
-    });
-  });
+  // points.forEach((point) => {
+  //   point.addEventListener("click", () => {
+  //     setActive(parseInt(point.dataset.index));
+  //     stopAutoRun(); // Stop auto-run on manual selection
+  //   });
+  // });
 
   // Start the auto-run slider
-  setActive(0);
-  startAutoRun();
+  // setActive(0);
+  //startAutoRun();
 
   // Optional: Stop auto-run on hover or touch (mobile-friendly)
-  const container = document.querySelector(".category");
-  container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
-  container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
-  container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
-  container.addEventListener("touchend", startAutoRun); // Restart after touch ends
+  // const container = document.querySelector(".category");
+  // container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
+  // container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
+  // container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
+  // container.addEventListener("touchend", startAutoRun); // Restart after touch ends
 });
 
 // Gateway Mobile View Slider
@@ -85,19 +85,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Function to set the active video and point
   function setActive(index) {
-    points.forEach((point, i) =>
-      point.classList.toggle("active-disc", i === index)
-    );
+  //   points.forEach((point, i) =>
+  //     point.classList.toggle("active-disc", i === index)
+  //   );
 
-    currentIndex = index;
-  }
+  //   currentIndex = index;
+  // }
 
-  // Function to start the auto-run slider
-  function startAutoRun() {
-    autoRunInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % points.length; // Cycle through points
-      setActive(currentIndex);
-    }, 5000); // Change video every 5 seconds
+  // // Function to start the auto-run slider
+  // function startAutoRun() {
+  //   autoRunInterval = setInterval(() => {
+  //     currentIndex = (currentIndex + 1) % points.length; // Cycle through points
+  //     setActive(currentIndex);
+  //   }, 5000); // Change video every 5 seconds
   }
 
   // Function to stop the auto-run slider
@@ -114,50 +114,50 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Start the auto-run slider
-  setActive(0);
-  startAutoRun();
+  // setActive(0);
+  // startAutoRun();
 
   // Optional: Stop auto-run on hover or touch (mobile-friendly)
-  const container = document.querySelector(".gateway-list");
-  container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
-  container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
-  container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
-  container.addEventListener("touchend", startAutoRun); // Restart after touch ends
+  // const container = document.querySelector(".gateway-list");
+  // container.addEventListener("mouseenter", stopAutoRun); // Stop on mouse hover
+  // container.addEventListener("mouseleave", startAutoRun); // Restart on mouse leave
+  // container.addEventListener("touchstart", stopAutoRun); // Stop on mobile touch
+  // container.addEventListener("touchend", startAutoRun); // Restart after touch ends
 });
 
 // keyboard platform
 
-document.addEventListener("DOMContentLoaded", function () {
-  const videos = document.querySelectorAll(".video");
-  const section = document.querySelector(".keyboard-platform");
-  let hasPlayed = false;
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !hasPlayed) {
-          videos.forEach((video) => {
-            video.currentTime = 0;
-            video.play();
-          });
-          hasPlayed = true;
-        }
-      });
-    },
-    {
-      threshold: 0.5,
-    }
-  );
-  observer.observe(section);
-  videos.forEach((video) => {
-    video.closest("li").addEventListener("mouseover", function () {
-      video.play();
-    });
+// document.addEventListener("DOMContentLoaded", function () {
+//   const videos = document.querySelectorAll(".video");
+//   const section = document.querySelector(".keyboard-platform");
+//   let hasPlayed = false;
+//   const observer = new IntersectionObserver(
+//     (entries) => {
+//       entries.forEach((entry) => {
+//         if (entry.isIntersecting && !hasPlayed) {
+//           videos.forEach((video) => {
+//             video.currentTime = 0;
+//             video.play();
+//           });
+//           hasPlayed = true;
+//         }
+//       });
+//     },
+//     {
+//       threshold: 0.5,
+//     }
+//   );
+//   observer.observe(section);
+//   videos.forEach((video) => {
+//     video.closest("li").addEventListener("mouseover", function () {
+//       video.play();
+//     });
 
-    video.closest("li").addEventListener("mouseleave", function () {
-      video.pause();
-    });
-  });
-});
+//     video.closest("li").addEventListener("mouseleave", function () {
+//       video.pause();
+//     });
+//   });
+// });
 
 // paatent & reserch
 
@@ -304,90 +304,89 @@ video1.onended = function () {
 //   }
 // });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const isMobileDevice = () => window.innerWidth <= 768;
-  const container = document.querySelector(".main-container");
-  // const sectionSqus = document.querySelectorAll('.section-squ');
-  // const windowHeight = window.innerHeight;
-  let lastScrollTop = 0; // To keep track of the last scroll position
+// document.addEventListener("DOMContentLoaded", () => {
+//   const isMobileDevice = () => window.innerWidth <= 768;
+//   const container = document.querySelector(".main-container");
+//   // const sectionSqus = document.querySelectorAll('.section-squ');
+//   // const windowHeight = window.innerHeight;
+//   let lastScrollTop = 0; // To keep track of the last scroll position
 
-  function handleScroll(event) {
-    const scrollPosition = container.scrollTop;
+//   function handleScroll(event) {
+//     const scrollPosition = container.scrollTop;
 
-    // Determine if user is scrolling up or down
-    const isScrollingDown = scrollPosition > lastScrollTop;
+//     // Determine if user is scrolling up or down
+//     const isScrollingDown = scrollPosition > lastScrollTop;
 
-    // Handle different actions based on scroll direction
-    // if (!isMobileDevice()) {
-    if (isScrollingDown) {
-      // Logic for scrolling down
-      headerScrollTopNav(false);
-    } else {
-      // Logic for scrolling up
-      headerScrollTopNav(true);
-    }
-    // }
-    console.log({ scrollPosition });
-    // Update the last scroll position
-    lastScrollTop = scrollPosition <= 564 ? 564 : scrollPosition;
-  }
+//     // Handle different actions based on scroll direction
+//     // if (!isMobileDevice()) {
+//     if (isScrollingDown) {
+//       // Logic for scrolling down
+//       headerScrollTopNav(false);
+//     } else {
+//       // Logic for scrolling up
+//       headerScrollTopNav(true);
+//     }
+//     // }
+//     // Update the last scroll position
+//     lastScrollTop = scrollPosition <= 564 ? 564 : scrollPosition;
+//   }
 
-  // Attach the scroll event to the main container
-  container.addEventListener("scroll", handleScroll);
-  window.addEventListener("load", () => {
-    headerScrollTopNav(true);
-    // Code that needs all resources to be fully loaded
-  });
-});
+//   // Attach the scroll event to the main container
+//   container.addEventListener("scroll", handleScroll);
+//   window.addEventListener("load", () => {
+//     headerScrollTopNav(true);
+//     // Code that needs all resources to be fully loaded
+//   });
+// });
 
-document.addEventListener("DOMContentLoaded", () => {
-  const scrollLink = document.querySelector("a[href='#section0']");
-  const section0 = document.getElementById("section0");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const scrollLink = document.querySelector("a[href='#section0']");
+//   const section0 = document.getElementById("section0");
 
-  scrollLink.addEventListener("click", function (e) {
-    e.preventDefault();
-    section0.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  });
-});
+//   scrollLink.addEventListener("click", function (e) {
+//     e.preventDefault();
+//     section0.scrollIntoView({
+//       behavior: "smooth",
+//       block: "start",
+//     });
+//   });
+// });
 
-const foregroundImages = [
-  document.getElementById("img1"),
-  document.getElementById("img2"),
-  document.getElementById("img3"),
-];
+// const foregroundImages = [
+//   document.getElementById("img1"),
+//   document.getElementById("img2"),
+//   document.getElementById("img3"),
+// ];
 
-let currentImageIndex = 0;
+// let currentImageIndex = 0;
 
-function showNextImage() {
-  // Hide all foreground images
-  foregroundImages.forEach((img) => img.classList.remove("active"));
+// function showNextImage() {
+//   // Hide all foreground images
+//   foregroundImages.forEach((img) => img.classList.remove("active"));
 
-  // Show the next foreground image
-  currentImageIndex = (currentImageIndex + 1) % foregroundImages.length;
-  foregroundImages[currentImageIndex].classList.add("active");
-}
+//   // Show the next foreground image
+//   currentImageIndex = (currentImageIndex + 1) % foregroundImages.length;
+//   foregroundImages[currentImageIndex].classList.add("active");
+// }
 
 // Change the foreground image every 3 seconds
-setInterval(showNextImage, 3000);
+// setInterval(showNextImage, 3000);
 
 // Initialize the first image as active
-foregroundImages[0].classList.add("active");
+// foregroundImages[0].classList.add("active");
 
-const images = document.querySelectorAll(".category2-img img");
+// const images = document.querySelectorAll(".category2-img img");
 
-let currentIndex = 0;
+// let currentIndex = 0;
 
-function changeImage() {
-  images[currentIndex].classList.remove("active");
-  images[currentIndex].classList.add("hidden");
-  currentIndex = (currentIndex + 1) % images.length;
-  images[currentIndex].classList.add("active");
-  images[currentIndex].classList.remove("hidden");
-}
+// function changeImage() {
+//   images[currentIndex].classList.remove("active");
+//   images[currentIndex].classList.add("hidden");
+//   currentIndex = (currentIndex + 1) % images.length;
+//   images[currentIndex].classList.add("active");
+//   images[currentIndex].classList.remove("hidden");
+// }
 
-images[currentIndex].classList.add("active");
+// images[currentIndex].classList.add("active");
 
-setInterval(changeImage, 2500);
+// setInterval(changeImage, 2500);

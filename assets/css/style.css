@@ -2,7 +2,9 @@
   padding: 0;
   margin: 0;
 }
-
+html{
+  scroll-behavior: smooth !important;
+}
 :root {
   font-size: 14px;
   scroll-behavior: smooth;
@@ -108,7 +110,7 @@ h6 {
 }
 
 p {
-  font-size: 28px;
+  font-size: 23px;
   line-height: 1.5;
   color: var(--gray);
   margin: 0;
@@ -251,29 +253,15 @@ video.home_video {
   position: relative;
   /* height: 904px; */
 }
-.slideshow-slide {
-  position: absolute;
-  width: 80%;
-  height: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: slideAnimation 15s infinite;
-}
 
-/* Hide all slides initially */
-.slideshow-slide img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out;
-}
 .category-img img {
+  position: absolute;
   /* top: 0;
   left: 0; */
+  opacity: 0;
+  width: 80%;
   border-radius: 12px;
-
+  transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out;
 }
 @keyframes slideAnimation {
   0% {
@@ -349,9 +337,8 @@ video.home_video {
   animation: slideShow 8s infinite 6s;
 }
 
-
 /* Animation Keyframes */
-@keyframes slideShowss {
+@keyframes slideShow {
   0% {
     opacity: 0;
   }
@@ -372,35 +359,7 @@ video.home_video {
     opacity: 0;
   }
 }
-@keyframes sliding {
-  0% {
-    transform: translateX(0%);
-  }
-  20% {
-    transform: translateX(0%);
-  }
-  25% {
-    transform: translateX(-100%);
-  }
-  45% {
-    transform: translateX(-100%);
-  }
-  50% {
-    transform: translateX(-200%);
-  }
-  70% {
-    transform: translateX(-200%);
-  }
-  75% {
-    transform: translateX(-300%);
-  }
-  95% {
-    transform: translateX(-300%);
-  }
-  100% {
-    transform: translateX(-400%);
-  }
-}
+
 
 .category h2 {
   font-size: 50px;
@@ -578,15 +537,7 @@ video.home_video {
   border-radius: 20px;
   padding: 40px 0 0;
 }
-.gateway-list li.pinkBg {
-  /* background-color: #ffcbea; */
-}
-.gateway-list li.purpleBg {
-  /* background-color: #cbd7ff; */
-}
-.gateway-list li.greenBg {
-  /* background-color: #a0e3cf; */
-}
+
 .gateway-list li h4 {
   font-size: 18px;
   line-height: 20px;
@@ -1241,8 +1192,8 @@ video.hidden {
   line-height: 54px;
 }
 .businesses-consumers-list p {
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 26px;
+  font-weight: 400;
   line-height: 42px;
 }
 
@@ -1251,7 +1202,7 @@ video.hidden {
   padding: 50px 0;
 }
 .innovation-culture h2 {
-  margin-bottom: 40px;
+  margin-bottom: 0px;
   text-align: center;
 }
 :root {
@@ -1269,6 +1220,7 @@ video.hidden {
   margin-top: 15px;
 }
 .marquee__group {
+  margin-bottom: -5%;
   gap: var(--gap);
   flex-shrink: 0;
   min-width: 100%;
@@ -1635,8 +1587,9 @@ footer h6 {
   .category-box-inner ul li {
     font-size: 11px;
     line-height: 16.1px;
-    border-radius: 40px;
-    border: solid 0.3px;
+    border-radius: 10px;
+    text-align: center;
+    /* border: solid 0.3px; */
     margin: 10px 14px 15px 0;
     padding: 8px 12px;
     width: 161px;
@@ -1863,6 +1816,7 @@ footer h6 {
     text-align: start;
   }
   .businesses-consumers-list li figure img {
+    background-color: #F2F6F8;
     width: 100%;
     height: 190px;
     border-bottom-left-radius: 0;
@@ -1968,7 +1922,7 @@ footer h6 {
 
   /* ===== innovation-culture for mobile only=====*/
   .hide-in-mob {
-    display: none;
+    /* display: none; */
   }
 
   /* ===== patents & Research  =====*/
@@ -2178,8 +2132,9 @@ footer h6 {
   .category-box-inner ul li {
     font-size: 11px;
     line-height: 16.1px;
-    border-radius: 40px;
-    border: solid 0.3px;
+    border-radius: 10px;
+    text-align: center;
+    /* border: solid 0.3px; */
     margin: 10px 14px 15px 0;
     padding: 8px 12px;
   }
@@ -2535,9 +2490,9 @@ footer h6 {
   }
 
   /* ===== innovation-culture for mobile only=====*/
-  .hide-in-mob {
+  /* .hide-in-mob {
     display: none;
-  }
+  } */
 
   /* ===== patents & Research  =====*/
   .patents-research .patent-research-list {
@@ -3112,6 +3067,7 @@ footer h6 {
   }
 
   .businesses-consumers-list li figure img {
+    background-color: #F2F6F8;
     height: 400px;
   }
 

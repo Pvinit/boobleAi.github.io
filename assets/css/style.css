@@ -420,14 +420,15 @@ video.home_video {
   width: auto;
 }
 .category-box-inner ul li {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 34.5px;
-  border-radius: 20px;
+  font-weight: 500 !important;
+  border-radius: 16px;
   color: #00bc84;
   border: solid #00bc84 1px;
   text-align: start;
   margin: 12px 16px 13px 0px;
-  padding: 5px 33px;
+  padding: 8px 16px;
 }
 
 /*--=====  app statics =====--*/
@@ -2701,12 +2702,19 @@ footer h6 {
   
  
 }
-
+@media only screen and (min-width: 360px) and (max-width: 390px) {
+  .category-specific{
+    margin-left: 10px !important;
+  }
+}
 /* Styles for screens exactly 390px */
 @media only screen and (min-width: 390px) and (max-width: 390px) {
   .category {
     margin: -40px 0;
     padding: 0 18px;
+  }
+  .category-specific{
+    margin-left: 20px !important;
   }
   .app-statics {
     /* margin-top: -45px; */
@@ -2850,7 +2858,9 @@ footer h6 {
     max-width: 1600px;
   } */
 
-
+  .experience-section{
+    margin-top: 15%;
+  }
   .inner-card-img {
     max-width: 430px;
     max-height: 540px;

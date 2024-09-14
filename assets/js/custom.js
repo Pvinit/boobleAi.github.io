@@ -270,9 +270,9 @@ const video2 = document.getElementById("video2");
 const video3 = document.getElementById("video3");
 
 // Set video sources
-video1.src = "./assets/./images/homepage_video_1.mp4"; // Set the path to your first video
-video2.src = "./assets/./images/homepage_video_2.mp4"; // Set the path to your second video
-video3.src = "./assets/./images/homepage_video_3.mp4"; // Set the path to your third video
+video1.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your first video
+video2.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your second video
+video3.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your third video
 
 // Play the first video once
 video1.onended = function () {
@@ -281,28 +281,28 @@ video1.onended = function () {
   video3.play(); // Start playing the third video in a loop
 };
 
-// Hover to play the second video
-video1.addEventListener("mouseover", function () {
-  video1.classList.add("hidden");
-  video2.classList.remove("hidden");
-  video2.play();
-});
+// // Hover to play the second video
+// video1.addEventListener("mouseover", function () {
+//   video1.classList.add("hidden");
+//   video2.classList.remove("hidden");
+//   video2.play();
+// });
 
-video2.addEventListener("mouseout", function () {
-  video2.classList.add("hidden");
-  video1.classList.remove("hidden");
-  video1.play(); // Play the first video again (can be muted or looped)
-});
+// video2.addEventListener("mouseout", function () {
+//   video2.classList.add("hidden");
+//   video1.classList.remove("hidden");
+//   video1.play(); // Play the first video again (can be muted or looped)
+// });
 
 // Scroll down to stop the third video
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 50) {
-    // If the user scrolls down more than 50px
-    video3.pause();
-  } else {
-    video3.play(); // Continue playing the third video if scrolled back up
-  }
-});
+// window.addEventListener("scroll", function () {
+//   if (window.scrollY > 50) {
+//     // If the user scrolls down more than 50px
+//     video3.pause();
+//   } else {
+//     video3.play(); // Continue playing the third video if scrolled back up
+//   }
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
   const isMobileDevice = () => window.innerWidth <= 768;

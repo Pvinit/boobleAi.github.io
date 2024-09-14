@@ -251,15 +251,81 @@ video.home_video {
   position: relative;
   /* height: 904px; */
 }
-
-.category-img img {
+.slideshow-slide {
   position: absolute;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideAnimation 15s infinite;
+}
+
+/* Hide all slides initially */
+.slideshow-slide img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out;
+}
+.category-img img {
   /* top: 0;
   left: 0; */
-  opacity: 0;
-  width: 80%;
   border-radius: 12px;
-  transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out;
+
+}
+@keyframes slideAnimation {
+  0% {
+      transform: translateY(100%);
+      opacity: 0;
+  }
+  20% {
+      transform: translateY(0%);
+      opacity: 1;
+  }
+  80% {
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(-100%);
+      opacity: 0;
+  }
+}
+
+/* Keyframes for looping the slides */
+@keyframes slideShow {
+  0% {
+      opacity: 1;
+  }
+  20% {
+      opacity: 1;
+  }
+  33% {
+      opacity: 0;
+  }
+  66% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+/* Adjust timing to make sure slides appear for equal duration */
+.slideshow-slide:nth-child(1) {
+  animation: slideAnimation 15s infinite, slideShow 15s infinite;
+  animation-delay: 0s;
+}
+
+.slideshow-slide:nth-child(2) {
+  animation: slideAnimation 15s infinite, slideShow 15s infinite;
+  animation-delay: 5s; /* Adjust delay to control slide timing */
+}
+
+.slideshow-slide:nth-child(3) {
+  animation: slideAnimation 15s infinite, slideShow 15s infinite;
+  animation-delay: 10s; /* Adjust delay to control slide timing */
 }
 
 /* Specific background colors */
@@ -285,7 +351,7 @@ video.home_video {
 
 
 /* Animation Keyframes */
-@keyframes slideShow {
+@keyframes slideShowss {
   0% {
     opacity: 0;
   }
@@ -617,7 +683,6 @@ video.home_video {
 }
 
 video {
-  padding-top: 10px;
   width: 100%;
   height: auto;
   max-height: 100vh;
@@ -2944,7 +3009,7 @@ footer h6 {
   .sub-heading{
     font-family: Arial, Helvetica, sans-serif !important;
     font-size: 56px !important;
-    line-height: 84px !important;
+    line-height: 95px !important;
     font-weight: 700;
   }
   .paragraph-content{
@@ -3105,6 +3170,23 @@ footer h6 {
   }
   .specific-left-spacing{
     margin-left: 10%;
+  }
+  .heading-1{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 56px !important;
+    font-weight: 700;
+  }
+  .sub-heading{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 56px !important;
+    line-height: 95px !important;
+    font-weight: 700;
+  }
+  .paragraph-content{
+    font-size: 30px ;
+    font-weight: 500;
+    opacity: 0.61;
+    line-height: 45px;
   }
 }
 

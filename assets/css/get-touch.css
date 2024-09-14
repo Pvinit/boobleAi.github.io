@@ -1,0 +1,191 @@
+ 
+.md-modal {
+    margin: auto;
+      position: fixed;
+      top: 100px;
+      left: 0;
+    right: 0;
+      width: 100%; 
+      height: auto;
+      z-index: 2000;
+      visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      backface-visibility: hidden;
+  }
+  .md-modal span{
+  font-size: 24px;
+  margin: 5px 10px;
+  padding: 10px 20px;
+  }
+  .md-modal h2{
+  margin: 32px 10px;
+  padding: 10px 20px;
+  }
+  .md-show {
+      visibility: visible;
+  }
+  
+  .md-overlay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      opacity: 0;
+      background: #fff;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+  }
+  
+  .md-show ~ .md-overlay {
+      opacity: 1;
+      visibility: visible;
+  }
+  .md-effect-12 ~ .md-overlay {
+      background-color: #fff;
+  } 
+    
+
+
+.md-close{font-size: 24px; width: 31px; float: right; margin: 0px 10px; padding: 5px; cursor: pointer;}
+
+.grid {padding: 10px 20px; display: grid; grid-gap: 10px;  grid-template-rows: auto; }
+.grid.col-1 { grid-template-columns: 1fr; }
+.grid.col-2 { grid-template-columns: 1fr 1fr; }
+.grid.col-3 {  grid-template-columns: 1fr 1fr 1fr; }
+.grid.col-4 {  grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+  
+  .floating-form {
+    width:320px;
+  }
+  
+  /****  floating-Lable style start ****/
+  .floating-label { 
+    position:relative; 
+    margin-bottom:20px; 
+    padding: 10px;
+  }
+  .floating-input , .floating-select {
+    font-size:24px;
+    padding:4px 4px;
+    display:block;
+    width:100%;
+    height:36px;
+    background-color: transparent;
+    border:none;
+    border-bottom:1px solid #CACACA;
+  }
+  
+  .floating-input:focus , .floating-select:focus {
+       outline:none;
+       border-bottom:2px solid #757575; 
+  }
+  
+  label {
+    color:#000; 
+    font-size:24px;
+    font-weight:normal;
+    position:absolute;
+    pointer-events:none;
+    /* left:5px; */
+    top:-10px;
+    transition:0.2s ease all; 
+    -moz-transition:0.2s ease all; 
+    -webkit-transition:0.2s ease all;
+  }
+  
+  .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label {
+    top:-18px;
+    font-size:24px;
+    color:#000;
+  }
+  
+  .floating-select:focus ~ label , .floating-select:not([value=""]):valid ~ label {
+    top:-18px;
+    font-size:14px;
+    color:#000;
+  }
+  
+  /* active state */
+  .floating-input:focus ~ .bar:before, .floating-input:focus ~ .bar:after, .floating-select:focus ~ .bar:before, .floating-select:focus ~ .bar:after {
+    width:50%;
+  }
+  
+  *, *:before, *:after {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+  }
+  
+  .floating-textarea {
+     min-height: 90px;
+     max-height: 260px; 
+     overflow:hidden;
+    overflow-x: hidden; 
+  }
+  
+  /* highlighter */
+  .highlight {
+    position:absolute;
+    height:50%; 
+    width:100%; 
+    top:15%; 
+    left:0;
+    pointer-events:none;
+    opacity:0.5;
+  }
+  
+  /* active state */
+  .floating-input:focus ~ .highlight , .floating-select:focus ~ .highlight {
+    -webkit-animation:inputHighlighter 0.3s ease;
+    -moz-animation:inputHighlighter 0.3s ease;
+    animation:inputHighlighter 0.3s ease;
+  }
+  
+  /* animation */
+  @-webkit-keyframes inputHighlighter {
+      from { background:#000; }
+    to 	{ width:0; background:transparent; }
+  }
+  @-moz-keyframes inputHighlighter {
+      from { background:#000; }
+    to 	{ width:0; background:transparent; }
+  }
+  @keyframes inputHighlighter {
+      from { background:#000; }
+    to 	{ width:0; background:transparent; }
+  }
+  
+  /****  floating-Lable style end ****/
+  
+  
+  
+   
+  
+  /***   daniel - Fork me friend - style   ***/
+  .floating-credit { position:fixed; bottom:10px;right:10px; color:#aaa; font-size:13px;font-family:arial,sans-serif; }
+  .floating-credit a { text-decoration:none; color:#000000; font-weight:bold; }
+  .floating-credit a:hover { border-bottom:1px dotted #f8f8f8; }
+  .floating-heading { position:fixed; color:#aaa; font-size:20px; font-family:arial,sans-serif; }
+  /***  daniel - Fork me friend - style  ***/
+
+  
+@media only screen and (max-width: 768px) {
+    
+.md-modal span{    display: none;   }
+    .md-modal h2{  font-size: 24px; font-weight: 700;   margin:0px 5px 20px;  }
+    .grid {padding: 5px 20px;}
+    .grid.col-1,.grid.col-2,.grid.col-3,.grid.col-4 { grid-template-columns: 1fr; }
+    .floating-textarea{
+        min-height: 70px;
+        max-height: 120px;
+    }
+    .floating-input , .floating-select { font-size: 16px; height: 30px;}
+    label, .floating-input:focus ~ label, .floating-input:not(:placeholder-shown) ~ label  { font-size: 16px;}
+
+}

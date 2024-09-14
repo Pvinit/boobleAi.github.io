@@ -1451,6 +1451,7 @@ video.hidden {
   border-radius: 25px;
   padding: 10px 40px;
   margin-top: 25px;
+  border: unset;
 }
 .joinBtn:hover {
   color: var(--white);

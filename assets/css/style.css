@@ -2749,6 +2749,11 @@ footer h6 {
   .category-specific{
     margin-left: 0px !important;
   }
+  .category-box-inner ul li {
+    /* border: solid 0.3px; */
+    margin: 10px 10px 15px 0;
+    padding: 8px 12px;
+  }
 }
 /* Styles for screens exactly 390px */
 @media only screen and (min-width: 390px) and (max-width: 390px) {

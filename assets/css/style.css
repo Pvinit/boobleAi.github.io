@@ -108,7 +108,7 @@ h6 {
 }
 
 p {
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1.5;
   color: var(--gray);
   margin: 0;
@@ -283,6 +283,7 @@ video.home_video {
   animation: slideShow 8s infinite 6s;
 }
 
+
 /* Animation Keyframes */
 @keyframes slideShow {
   0% {
@@ -303,6 +304,35 @@ video.home_video {
 
   100% {
     opacity: 0;
+  }
+}
+@keyframes sliding {
+  0% {
+    transform: translateX(0%);
+  }
+  20% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  45% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  70% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  95% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(-400%);
   }
 }
 
@@ -412,7 +442,7 @@ video.home_video {
   margin-top: 50px;
 }
 .app-statics h6 {
-  font-size: 30px;
+  font-size: 48px;
   line-height: 65.71px;
   font-weight: 700;
   color: #00bc84;
@@ -489,10 +519,10 @@ video.home_video {
   /* background-color: #a0e3cf; */
 }
 .gateway-list li h4 {
-  font-weight: 400;
-  font-size: 28.57px;
-  line-height: 37.97px;
-  display: block;
+  font-size: 18px;
+  line-height: 20px;
+  margin-bottom: 35%;
+  font-weight: bold;
 }
 .gateway-list li figure {
   margin: 30px 0 0 0;
@@ -539,7 +569,7 @@ video.home_video {
 .inner-card-img {
   max-width: 320px;
   max-height: 400px;
-  margin-top: -70px;
+  margin-top: -110px;
 }
 .card-heading {
   padding: 15px;
@@ -1014,7 +1044,7 @@ video.hidden {
 .keyboard-platform-list li {
   width: 31%;
   margin: 0 15px;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
   border-radius: 20px;
   padding: 50px;
   overflow: hidden;
@@ -1028,7 +1058,7 @@ video.hidden {
 .video {
   width: 100%;
   height: auto;
-  padding-top: 60px;
+  /* padding-top: 60px; */
 }
 .video3 {
   width: 100%;
@@ -1562,7 +1592,7 @@ footer h6 {
     margin-top: 55px;
   }
   .app-statics h6 {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 23px;
   }
   .app-statics-para {
@@ -2571,6 +2601,22 @@ footer h6 {
   }
 }
 @media (max-width: 767px) {
+
+  .heading-1{
+    font-size: 28px;
+    font-weight: bold ;
+  }
+  .sub-heading{
+    font-size: 28px ;
+    line-height:36px ;
+    font-weight: bold !important;
+  }
+  .paragraph-content{
+    font-size: 16px ;
+    font-weight: 500;
+    opacity: 0.61;
+    line-height: 24px;
+  }
   .left-col {
     margin-top: 5%;
     padding: 15px !important;
@@ -2651,9 +2697,9 @@ footer h6 {
   .category-specific{
     margin-left: 100px !important;
   }
-  .heading-1{
-    font-size: 45px;
-  }
+
+  
+ 
 }
 
 /* Styles for screens exactly 390px */
@@ -2855,12 +2901,29 @@ footer h6 {
 
 /* Desktops (1200px to 1599px) */
 @media (min-width: 1200px) and (max-width: 1599px) {
+  .heading-1{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 56px !important;
+    font-weight: 700;
+  }
+  .sub-heading{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 56px !important;
+    line-height: 84px !important;
+    font-weight: 700;
+  }
+  .paragraph-content{
+    font-size: 30px ;
+    font-weight: 500;
+    opacity: 0.61;
+    line-height: 45px;
+  }
   .container h1 {
     font-size: 38px;
     line-height: 40px;
   }
   .container h2 {
-    font-size: 35px;
+    font-size: 56px;
     line-height: 50px;
   }
   .container h3 {
@@ -2868,16 +2931,17 @@ footer h6 {
     line-height: 30px;
   }
   .container h4 {
-    font-size: 23px;
-    line-height: 30px;
+    font-size: 36px;
+    line-height: 54px;
   }
   .container h5 {
-    font-size: 20px;
-    line-height: 20px;
+    font-size: 28px;
+    line-height: 42px;
+    font-weight: 500;
   }
   .container h6 {
-    font-size: 35px;
-    line-height: 37px;
+    /* font-size: 35px;
+    line-height: 37px; */
   }
 
   .gateway p:nth-child(1) {
@@ -2899,7 +2963,7 @@ footer h6 {
   /*--=====  app statics =====--*/
 
   .app-statics {
-    height: 170px;
+    height: 307px;
   }
   .app-statics p {
     line-height: 60px;
@@ -2926,10 +2990,10 @@ footer h6 {
   /* ===== Gateway =====*/
   .gateway .sub-heading,
   .gateway-list li h4 {
-    font-size: 20px;
-    line-height: 20px;
-    margin-bottom: 35%;
-    font-weight: bold;
+    font-size: 28px;
+    line-height: 42px;
+
+    font-weight: 500;
   }
 
   /*======== keyboard-platform ========*/
@@ -2963,27 +3027,34 @@ footer h6 {
 }
 
 /* Tablets (768px to 991px) */
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .gateway-list li {
     width: 40% !important;
     margin-left: -5% !important;
   }
+  
+  .heading-1{
+    font-size: 28px;
+    font-weight: bold ;
+  }
+  .sub-heading{
+    font-size: 28px ;
+    line-height:36px ;
+    font-weight: bold !important;
+  }
+  .paragraph-content{
+    font-size: 16px ;
+    font-weight: 500;
+    opacity: 0.61;
+    line-height: 24px;
+  }
+  .app-statics h6 {
+    font-size: 25px;
+    line-height: 23px;
+  }
 }
 
 
-.heading-1{
-  font-size: 30px !important;
-  margin-bottom: 1%;
-  font-weight: bold !important;
-}
-.sub-heading{
-  font-size: 30px !important;
-  font-weight: bold !important;
-}
-.paragraph-content{
-  font-size: 20px !important;
-  margin-top: 3%;
-}
 .list-style{
   width: 100%;
   font-size: 25px;

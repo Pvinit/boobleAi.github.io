@@ -18,12 +18,12 @@
 
 @font-face {
   font-family: "Helvetica";
-  src: url("./assets/fonts/Helvetica.eot");
+  /* src: url("./assets/fonts/Helvetica.eot");
   src: url("./assets/fonts/Helvetica.eot?#iefix") format("embedded-opentype"),
     url("./assets/fonts/Helvetica.woff2") format("woff2"),
     url("./assets/fonts/Helvetica.woff") format("woff"),
     url("./assets/fonts/Helvetica.ttf") format("truetype"),
-    url("./assets/fonts/Helvetica.svg#Helvetica") format("svg");
+    url("./assets/fonts/Helvetica.svg#Helvetica") format("svg"); */
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -31,13 +31,13 @@
 
 @font-face {
   font-family: "Helvetica";
-  src: url("./assets/fonts/Helvetica-Bold.eot");
+  /* src: url("./assets/fonts/Helvetica-Bold.eot");
   src: url("./assets/fonts/Helvetica-Bold.eot?#iefix")
       format("embedded-opentype"),
     url("./assets/fonts/Helvetica-Bold.woff2") format("woff2"),
     url("./assets/fonts/Helvetica-Bold.woff") format("woff"),
     url("./assets/fonts/Helvetica-Bold.ttf") format("truetype"),
-    url("./assets/fonts/Helvetica-Bold.svg#Helvetica-Bold") format("svg");
+    url("./assets/fonts/Helvetica-Bold.svg#Helvetica-Bold") format("svg"); */
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -259,61 +259,11 @@ video.home_video {
   opacity: 0;
   width: 80%;
   border-radius: 12px;
-  transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out;
-}
-@keyframes slideAnimation {
-  0% {
-      transform: translateY(100%);
-      opacity: 0;
-  }
-  20% {
-      transform: translateY(0%);
-      opacity: 1;
-  }
-  80% {
-      opacity: 1;
-  }
-  100% {
-      transform: translateY(-100%);
-      opacity: 0;
-  }
+  /* transition: opacity 2.5s ease-in-out, visibility 0.5s ease-in-out; */
 }
 
-/* Keyframes for looping the slides */
-@keyframes slideShow {
-  0% {
-      opacity: 1;
-  }
-  20% {
-      opacity: 1;
-  }
-  33% {
-      opacity: 0;
-  }
-  66% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
-}
 
 /* Adjust timing to make sure slides appear for equal duration */
-.slideshow-slide:nth-child(1) {
-  animation: slideAnimation 15s infinite, slideShow 15s infinite;
-  animation-delay: 0s;
-}
-
-.slideshow-slide:nth-child(2) {
-  animation: slideAnimation 15s infinite, slideShow 15s infinite;
-  animation-delay: 5s; /* Adjust delay to control slide timing */
-}
-
-.slideshow-slide:nth-child(3) {
-  animation: slideAnimation 15s infinite, slideShow 15s infinite;
-  animation-delay: 10s; /* Adjust delay to control slide timing */
-}
-
 /* Specific background colors */
 .purple-bg {
   /* background-color: #dbc4ff; */
@@ -2743,7 +2693,7 @@ footer h6 {
   
  
 }
-@media only screen and (min-width: 360px) and (max-width: 391px) {
+@media only screen and (min-width: 350px) and (max-width: 391px) {
   .category-specific{
     margin-left: 0px !important;
   }

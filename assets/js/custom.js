@@ -270,9 +270,9 @@ const video2 = document.getElementById("video2");
 const video3 = document.getElementById("video3");
 
 // Set video sources
-video1.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your first video
-video2.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your second video
-video3.src = "./assets/images/homepage_video_1.mp4"; // Set the path to your third video
+video1.src = "./assets/images/homepage_video_1.webm"; // Set the path to your first video
+video2.src = "./assets/images/homepage_video_1.webm"; // Set the path to your second video
+video3.src = "./assets/images/homepage_video_1.webm"; // Set the path to your third video
 
 // Play the first video once
 video1.onended = function () {

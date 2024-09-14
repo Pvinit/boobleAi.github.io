@@ -525,7 +525,7 @@ video.home_video {
   font-size: 18px;
   line-height: 20px;
   margin-bottom: 35%;
-  font-weight: bold;
+  font-weight: 500 !important;
 }
 .gateway-list li figure {
   margin: 30px 0 0 0;
@@ -1161,6 +1161,7 @@ video.hidden {
 .businesses-consumers-list li figure img {
   width: 100%;
   height: 360px;
+  object-fit: contain;
 }
 .businesses-consumers-list li video {
   width: 100%;
@@ -1567,7 +1568,7 @@ footer h6 {
     transform: unset;
   }
   .category-box-inner ul li {
-    font-size: 14px;
+    font-size: 11px;
     line-height: 16.1px;
     border-radius: 40px;
     border: solid 0.3px;
@@ -1626,7 +1627,7 @@ footer h6 {
     position: absolute;
     top: -38px;
     color: #00bc84;
-    font-weight: 600;
+    font-weight: 500 !important;
   }
   .gateway-list {
     list-style-type: none;
@@ -2110,7 +2111,7 @@ footer h6 {
     margin: auto;
   }
   .category-box-inner ul li {
-    font-size: 14px;
+    font-size: 11px;
     line-height: 16.1px;
     border-radius: 40px;
     border: solid 0.3px;
@@ -2208,7 +2209,7 @@ footer h6 {
     position: absolute;
     top: -38px;
     color: #00bc84;
-    font-weight: 600;
+    font-weight: 500 ;
   }
   .gateway-list {
     list-style-type: none;
@@ -2710,17 +2711,23 @@ footer h6 {
     margin-left: 10%;
   }
   .category-specific{
-    margin-left: 100px !important;
+    margin-left: 30px !important;
   }
   .social-links li {
     margin-right: 50px;
   }
+  .extra_p {
+    display: none; /* Ensure .extra_p is visible */
+  }
+  .mobile-visible{
+    display: none !important;
+  }
   
  
 }
-@media only screen and (min-width: 360px) and (max-width: 390px) {
+@media only screen and (min-width: 360px) and (max-width: 391px) {
   .category-specific{
-    margin-left: 10px !important;
+    margin-left: 0px !important;
   }
 }
 /* Styles for screens exactly 390px */
@@ -2873,7 +2880,9 @@ footer h6 {
   /* .container {
     max-width: 1600px;
   } */
-
+  .patent-research-list li {
+    line-height: 44px;
+  }
   .experience-section{
     margin-top: 15%;
   }
@@ -3018,7 +3027,6 @@ footer h6 {
   .gateway-list li h4 {
     font-size: 28px;
     line-height: 42px;
-
     font-weight: 500;
   }
 
@@ -3097,5 +3105,28 @@ footer h6 {
   }
   .specific-left-spacing{
     margin-left: 10%;
+  }
+}
+
+
+/* For tabs only */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .category-box-inner ul li {
+    font-size: 18px;
+  }
+  .gateway-list li {
+    margin-left: 0% !important;
+  }
+  .gateway-list li h4 {
+    margin-bottom: 60%;
+    font-weight: 500 !important;
+  }
+
+  .gateway-plateform li a .icon-text span {
+      font-size: 19px;
+  }
+  .patent-research-list li {
+    line-height: 35px;
   }
 }

@@ -1,136 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Bobble AI</title>
-    <meta charset="UTF-8" />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="./assets/images/bobbleAI-favicon.svg"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta property="’og:title’" content="" />
-    <meta property="og:description" content="" />
-   
-    <meta property="og:url" content="https://bobbleai.com/" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:type" content="website" />
-    <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="./assets/css/style.css" rel="stylesheet" />
-    <link href="./assets/css/masonry-grid.css" rel="stylesheet" />
-    <link href="./assets/css/responsive.css" rel="stylesheet" />
-  </head>
-  <body>
-    <div class="main-container w-100 h-100">
-      <!--===== Header =====-->
-      <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container header">
-            <div class="logo">
-              <a href="./index.html" title="Bobble AI">
-                <img
-                  src="./assets/./images/bobbleAI-logo.svg"
-                  alt="Bobble AI"
-                />
-              </a>
-            </div>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >For Consumers</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >For Businesses</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >About Us</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
-                    >Contact Us</a
-                  >
-                </li>
-              </ul>
-            </div>
+
+<head>
+  <title>Bobble AI</title>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta property="’og:title’" content="" />
+  <meta property="og:description" content="" />
+
+  <meta property="og:url" content="https://bobbleai.com/" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:type" content="website" />
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/style.css" rel="stylesheet" />
+  <link href="./assets/css/masonry-grid.css" rel="stylesheet" />
+  <link href="./assets/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="main-container w-100 h-100">
+    <!--===== Header =====-->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container header">
+          <div class="logo">
+            <a href="./index.html" title="Bobble AI">
+              <img src="./assets/./images/bobbleAI-logo.svg" alt="Bobble AI" />
+            </a>
           </div>
-        </nav>
-      </header>
-
-      <section id="section0" class="grid-videos section w-100">
-        <div class="container-fluid p-0">
-          <ul class="grid-video-list">
-            <li>
-              <figure>
-                <div
-                  class="video-container d-none d-lg-block d-xl-block d-sm-block"
-                >
-                  <video id="video1" autoplay muted playsinline style="padding-top: 20px;"></video>
-
-                  <!-- Second video (hover video) -->
-                  <video id="video2" muted playsinline class="hidden"></video>
-
-                  <!-- Third video (looping video) -->
-                  <video
-                    id="video3"
-                    loop
-                    muted
-                    playsinline
-                    class="hidden"
-                  ></video>
-                </div>
-                <video
-                  class="home_video_mobile d-block d-sm-none"
-                  src="./assets/images/bobble_Mobile.mp4"
-                  autoplay
-                  loop
-                  muted
-                  playsinline
-                  width="100%"
-                  style="padding-top: 75px"
-                ></video>
-              </figure>
-            </li>
-          </ul>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 menu">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">For Consumers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">For Businesses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </section>
+      </nav>
+    </header>
 
-      <section>
-        <div class="container container-slide" style="margin-top: 13%;margin-bottom: 13%;">
-          <div class="row w-100">
-            <!-- Left Side (col-7) -->
-            <div class="col-sm-7 left-col">
-              <div class="content category-specific"  style="margin-left: 30px;">
-                <h1 class="heading-1">A category defining </h1>
-                <h1 class="sub-heading">business model</h1>
-                <p class="paragraph-content">
-                  Offering unique solutions for a <br />
-                  <span class="dark">Multi-billion-dollar</span> AI market
-                  leveraging
-                </p>
-                <!-- <div class="category-box">
+    <section id="section0" class="grid-videos section w-100">
+      <div class="container-fluid p-0">
+        <ul class="grid-video-list">
+          <li>
+            <figure>
+              <div class="video-container d-none d-lg-block d-xl-block d-sm-block">
+                <video id="video1" autoplay muted playsinline></video>
+
+                <!-- Second video (hover video) -->
+                <video id="video2" muted playsinline class="hidden"></video>
+
+                <!-- Third video (looping video) -->
+                <video id="video3" loop muted playsinline class="hidden"></video>
+              </div>
+              <video class="home_video_mobile d-block d-sm-none" src="./assets/images/bobble_Mobile.webm" autoplay loop
+                muted playsinline width="100%" style="padding-top: 65px"></video>
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container container-slide" style="margin-top: 13%;margin-bottom: 13%;">
+        <div class="row w-100">
+          <!-- Left Side (col-7) -->
+          <div class="col-sm-7 left-col">
+            <div class="content category-specific" style="margin-left: 30px;">
+              <h1 class="heading-1">A category defining </h1>
+              <h1 class="sub-heading">business model</h1>
+              <p class="paragraph-content">
+                Offering unique solutions for a <br />
+                <span class="dark">Multi-billion-dollar</span> AI market
+                leveraging
+              </p>
+              <!-- <div class="category-box">
                   <div class="">
                     <ul  class = "list-style">
                       <li>Keyboard real estate</li>
@@ -141,270 +104,234 @@
                   </div>
 
                 </div> -->
-                <div class="category-box">
-                  <div class="category-box-inner">
-                    <ul>
-                      <li>Keyboard real estate</li>
-                      <li class="ip">Creative IPs</li>
-                    </ul>
-                  </div>
-                  <div class="category-box-inner">
-                    <ul>
-                      <li>Smartphone footprint data</li>
-                      <li>Artificial Intelligence</li>
-                    </ul>
-                  </div>
+              <div class="category-box">
+                <div class="category-box-inner">
+                  <ul>
+                    <li>Keyboard real estate</li>
+                    <li class="ip">Creative IPs</li>
+                  </ul>
                 </div>
-
+                <div class="category-box-inner">
+                  <ul>
+                    <li>Smartphone footprint data</li>
+                    <li>Artificial Intelligence</li>
+                  </ul>
+                </div>
               </div>
-            </div>
 
-            <!-- Right Side (col-5) with Foreground Image -->
-            <div class="col-sm-5 right-col category-img" id="right-col">
-       
-              <img
-                src="./assets/images/cat_1.png"
-                alt="Image 1"
-                class="purple-bg"
-                id="dashboard-gil"
-              />
-              <img
-                src="./assets/images/cat_2.png"
-                alt="Image 2"
-                class="green-bg"
-                id="img2"
-              />
-              <img
-                src="./assets/images/cat_3.png"
-                alt="Image 3"
-                class="pink-bg"
-                id="img3"
-              />
-              <img
-                src="./assets/images/cat_4.png"
-                alt="Image 3"
-                class="yellow-bg"
-                id="img3"
-              />
             </div>
           </div>
-        </div>
-      </section>
 
-      <!--===== app statics =====-->
-
-      <section class="app-statics">
-        <div class="container">
-          <div class="row statics-container">
-            <div class="col-12">
-              <p class="responsive-only">We earn trust by providing the best</p>
-            </div>
-            <div class="col">
-              <h6 class="number-stats">80 million+</h6>
-              <p class="app-statics-para">Users</p>
-            </div>
-            <div class="col">
-              <h6 class="number-stats">100k+</h6>
-              <p class="app-statics-para">Stickers & GIFs</p>
-            </div>
-            <div class="col">
-              <h6 class="number-stats">100+</h6>
-              <p class="app-statics-para">Languages</p>
-            </div>
-            <div class="col">
-              <h6 class="number-stats">4.5 ⭐️</h6>
-              <p class="app-statics-para">on Playstore</p>
-            </div>
+          <!-- Right Side (col-5) with Foreground Image -->
+          <div class="col-sm-5 right-col category-img " id="right-col">
+              <div class="slideshow-slide">
+                <img src="./assets/images/cat_1.png" alt="Image 1"  />
+              </div>
+              <div class="slideshow-slide">
+                <img src="./assets/images/cat_2.png" alt="Image 2"  id="img2" />
+              </div>
+              <div class="slideshow-slide">
+                <img src="./assets/images/cat_3.png" alt="Image 3"  id="img3" />
+              </div>
+              <div class="slideshow-slide">
+                <img src="./assets/images/cat_4.png" alt="Image 3"  id="img3" />
+              </div>
+              <!-- Add more slides as needed -->
           </div>
         </div>
-      </section>
-      <!--===== Gateway =====-->
-      <section class="gateway section w-100 " id="section2">
-        <div class="container">
-          <h2><span>Bobble AI </span><span>is the gateway </span></h2>
-          <p>is the gateway to your end-to-end smartphone usage</p>
-          <p class="extra_p">
-            enhancing your creative expression and helping you accomplish
-            things.
-          </p>
-          <p class="web_part">
-            to your end-to-end smartphone usage enhancing your creative
-            expression and helping you accomplish things.
-          </p>
-          <ul class="gateway-list">
-            <li class="pinkBg">
-              <h4>Expression</h4>
-              <figure>
-                <div class="row">
-                  <div class="col card-one">
-                    <img
-                      class="inner-card-img video"
-                      src="./assets/images/gatewayImg1.webp"
-                    />
-                  </div>
-                </div>
-              </figure>
-            </li>
-            <li class="purpleBg">
-              <h4>Assistance</h4>
-              <figure>
-                <div class="row">
-                  <div class="col card-two">
-                    <img
-                      class="inner-card-img video"
-                      src="./assets/images/gatewayImg2.webp"
-                    />
-                  </div>
-                </div>
-              </figure>
-            </li>
-            <li class="greenBg">
-              <h4>Recommendations</h4>
-              <figure>
-                <div class="row">
-                  <div class="col card-three">
-                    <img
-                      class="inner-card-img video"
-                      src="./assets/images/gatewayImg3.webp"
-                    />
-                  </div>
-                </div>
-              </figure>
-            </li>
-          </ul>
-        </div>
-        <div class="d-none d-lg-block d-xl-block d-sm-block experience-section">
-          <h4 class="text-center">Experience the magic yourself!</h4>
-          <ul class="gateway-plateform">
-            <li>
-              <a href="" title="Play Store">
-                <img src="./assets/./images/play-store.webp" alt="Play Store" />
-                <div class="icon-text">
-                  <small>Get Android app on</small>
-                  <span>Play Store</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="App Store">
-                <img src="./assets/./images/app-store.webp" alt="App Store" />
-                <div class="icon-text">
-                  <small>Get iOS app on</small>
-                  <span>App Store</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="Android">
-                <img src="./assets/./images/android.webp" alt="Android" />
-                <div class="icon-text">
-                  <small>Android App</small>
-                  <span>Download</span>
-                </div>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="bobble_btn section w-100 d-block d-sm-none ">
-        <div>
-          <h4 class="text-center">Experience the magic yourself!</h4>
-          <ul class="gateway-plateform">
-            <li>
-              <a href="" title="Play Store">
-                <img src="./assets/./images/play-store.webp" alt="Play Store" />
-                <div class="icon-text">
-                  <small>Get Android app on</small>
-                  <span>Play Store</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="App Store">
-                <img src="./assets/./images/app-store.webp" alt="App Store" />
-                <div class="icon-text">
-                  <small>Get iOS app on</small>
-                  <span>App Store</span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <a href="" title="Android">
-                <img src="./assets/./images/android.webp" alt="Android" />
-                <div class="icon-text">
-                  <small>Android app</small>
-                  <span>Download</span>
-                </div>
-              </a>
-            </li>
-          </ul>
+    <!--===== app statics =====-->
+
+    <section class="app-statics">
+      <div class="container">
+        <div class="row statics-container">
+          <div class="col-12">
+            <p class="responsive-only">We earn trust by providing the best</p>
+          </div>
+          <div class="col">
+            <h6 class="number-stats">80 million+</h6>
+            <p class="app-statics-para">Users</p>
+          </div>
+          <div class="col">
+            <h6 class="number-stats">100k+</h6>
+            <p class="app-statics-para">Stickers & GIFs</p>
+          </div>
+          <div class="col">
+            <h6 class="number-stats">100+</h6>
+            <p class="app-statics-para">Languages</p>
+          </div>
+          <div class="col">
+            <h6 class="number-stats">4.5 ⭐️</h6>
+            <p class="app-statics-para">on Playstore</p>
+          </div>
         </div>
-      </section>
-      <!--===== Keyboard Platform =====-->
-      <section class="keyboard-platform">
-        <div class="container">
-          <h2>Keyboard as a platform</h2>
-          <p>A Unique Right To Play</p>
-          <ul class="keyboard-platform-list">
-            <li>
-              <h5>Always on Interface</h5>
-              <figure>
+      </div>
+    </section>
+    <!--===== Gateway =====-->
+    <section class="gateway section w-100 " id="section2">
+      <div class="container">
+        <h2><span>Bobble AI </span><span>is the gateway </span></h2>
+        <p class="mobile-visible">is the gateway to your end-to-end smartphone usage</p>
+        <p class="extra_p">
+          enhancing your creative expression and helping you accomplish
+          things.
+        </p>
+        <p class="web_part">
+          to your end-to-end smartphone usage enhancing your creative
+          expression and helping you accomplish things.
+        </p>
+        <ul class="gateway-list">
+          <li class="pinkBg">
+            <h4>Expression</h4>
+            <figure>
+              <div class="row">
+                <div class="col card-one">
+                  <img class="inner-card-img video" src="./assets/images/gatewayImg1.webp" />
+                </div>
+              </div>
+            </figure>
+          </li>
+          <li class="purpleBg">
+            <h4>Assistance</h4>
+            <figure>
+              <div class="row">
+                <div class="col card-two">
+                  <img class="inner-card-img video" src="./assets/images/gatewayImg2.webp" />
+                </div>
+              </div>
+            </figure>
+          </li>
+          <li class="greenBg">
+            <h4>Recommendations</h4>
+            <figure>
+              <div class="row">
+                <div class="col card-three">
+                  <img class="inner-card-img video" src="./assets/images/gatewayImg3.webp" />
+                </div>
+              </div>
+            </figure>
+          </li>
+        </ul>
+      </div>
+      <div class="d-none d-lg-block d-xl-block d-sm-block experience-section">
+        <h4 class="text-center">Experience the magic yourself!</h4>
+        <ul class="gateway-plateform">
+          <li>
+            <a href="" title="Play Store">
+              <img src="./assets/./images/play-store.webp" alt="Play Store" />
+              <div class="icon-text">
+                <small>Get Android app on</small>
+                <span>Play Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="App Store">
+              <img src="./assets/./images/app-store.webp" alt="App Store" />
+              <div class="icon-text">
+                <small>Get iOS app on</small>
+                <span>App Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="Android">
+              <img src="./assets/./images/android.webp" alt="Android" />
+              <div class="icon-text">
+                <small>Android App</small>
+                <span>Download</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
 
-                <img
-                  src="./assets/images/keyboard-sec-1.png"
-                  alt=""
-                  class="video"
-                />
-              </figure>
-            </li>
-            <li>
-              <h5>Horizontal Visibility</h5>
-              <figure>
+    <section class="bobble_btn section w-100 d-block d-sm-none ">
+      <div>
+        <h4 class="text-center">Experience the magic yourself!</h4>
+        <ul class="gateway-plateform">
+          <li>
+            <a href="" title="Play Store">
+              <img src="./assets/./images/play-store.webp" alt="Play Store" />
+              <div class="icon-text">
+                <small>Get Android app on</small>
+                <span>Play Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="App Store">
+              <img src="./assets/./images/app-store.webp" alt="App Store" />
+              <div class="icon-text">
+                <small>Get iOS app on</small>
+                <span>App Store</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="" title="Android">
+              <img src="./assets/./images/android.webp" alt="Android" />
+              <div class="icon-text">
+                <small>Android app</small>
+                <span>Download</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!--===== Keyboard Platform =====-->
+    <section class="keyboard-platform">
+      <div class="container">
+        <h2>Keyboard as a platform</h2>
+        <p>A Unique Right To Play</p>
+        <ul class="keyboard-platform-list">
+          <li>
+            <h5>Always on Interface</h5>
+            <figure>
 
-                <img
-                  src="./assets/images/keyboard-sec-2.png"
-                  alt=""
-                  class="video"
-                />
-              </figure>
-            </li>
-            <li>
-              <h5>Real time Intent</h5>
-              <figure>
+              <img src="./assets/images/keyboard-sec-1.png" alt="" class="video" />
+            </figure>
+          </li>
+          <li>
+            <h5>Horizontal Visibility</h5>
+            <figure>
 
-                <img
-                  src="./assets/images/keyboard-sec-3.png"
-                  alt=""
-                  class="video"
-                />
-              </figure>
-            </li>
-          </ul>
-        </div>
-      </section>
-      
-      <!--===== For Businesses =====-->
-      <section class="businesses-consumers section w-100 h-auto">
-        <div class="container">
-          <h2>For Companies</h2>
-          <ul class="businesses-consumers-list">
-            <li>
-              <figure>
-                <img
-                  src="./assets/./images/Sec5img1.png"
-                  alt="Advertisement & Marketing"
-                />
-              </figure>
-              <h4>Advertisement & Marketing</h4>
-              <p>
-                Branding solutions to make your brand go viral on social and
-                messaging apps,or to contextually target audience with intent
-                based recommendations.
-              </p>
-            </li>
-            <li>
-              <!-- <video
+              <img src="./assets/images/keyboard-sec-2.png" alt="" class="video" />
+            </figure>
+          </li>
+          <li>
+            <h5>Real time Intent</h5>
+            <figure>
+
+              <img src="./assets/images/keyboard-sec-3.png" alt="" class="video" />
+            </figure>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!--===== For Businesses =====-->
+    <section class="businesses-consumers section w-100 h-auto">
+      <div class="container">
+        <h2>For Companies</h2>
+        <ul class="businesses-consumers-list">
+          <li>
+            <figure>
+              <img src="./assets/./images/adver.png" alt="Advertisement & Marketing" />
+            </figure>
+            <h4>Advertisement & Marketing</h4>
+            <p>
+              Branding solutions to make your brand go viral on social and
+              messaging apps,or to contextually target audience with intent
+              based recommendations.
+            </p>
+          </li>
+          <li>
+            <!-- <video
                 id="mobVideo"
                 autoplay
                 loop
@@ -419,521 +346,350 @@
                 />
                 Your browser does not support the video tag.
               </video> -->
-              <figure>
-                <img
-                  src="./assets/./images/Sec5img2.png"
-                  alt="Advertisement & Marketing"
-                />
-              </figure>
-              <h4>Data-as-a-Service</h4>
-              <p>
-                Exclusive and powerful first-party consumer intelligence on
-                smartphones to fuel your business
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!--===== For Consumers =====-->
-      <section class="businesses-consumers second-section section w-100 h-auto">
+            <figure>
+              <img src="./assets/./images/data.png" alt="Advertisement & Marketing" />
+            </figure>
+            <h4>Data-as-a-Service</h4>
+            <p>
+              Exclusive and powerful first-party consumer intelligence on
+              smartphones to fuel your business
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!--===== For Consumers =====-->
+    <section class="businesses-consumers second-section section w-100 h-auto">
+      <div class="container">
+        <h2>For Consumers</h2>
+        <ul class="businesses-consumers-list">
+          <li>
+            <figure>
+              <img src="./assets/./images/subs.png" alt="Advertisement & Marketing" />
+            </figure>
+            <h4>Premium Subscription</h4>
+            <p>
+              Bobble premium subscription helps you build your brand, grow
+              social influence and accomplish more daily with unlimited AI
+              features
+            </p>
+          </li>
+          <li>
+            <figure>
+              <img src="./assets/images/fanstore.png" />
+            </figure>
+            <h4>Bobble Fanstore</h4>
+            <p>
+              One- stop solution for personalised & expressive merchandise -
+              Be Unique, Be You, Be Bobble!
+            </p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!--===== Innovation & Culture =====-->
+    <section class="background innovation-culture section hide-in-mob w-100 h-auto">
+      <div class="background-wrapper">
         <div class="container">
-          <h2>For Consumers</h2>
-          <ul class="businesses-consumers-list">
-            <li>
-              <!-- <video autoplay muted playsinline>
-                <source
-                  src="./assets/images/for-consumers-video-one.mp4"
-                  type="video/mp4"
-                />
-                Your browser does not support the video tag.
-              </video> -->
-              <figure>
-                <img
-                  src="./assets/./images/sec6img1.png"
-                  alt="Advertisement & Marketing"
-                />
-              </figure>
-              <h4>Premium Subscription</h4>
-              <p>
-                Bobble premium subscription helps you build your brand, grow
-                social influence and accomplish more daily with unlimited AI
-                features
-              </p>
-            </li>
-            <li>
-              <figure>
-                <img src="./assets/images/sec6img2.png" />
-              </figure>
-              <h4>Bobble Fanstore</h4>
-              <p>
-                One- stop solution for personalised & expressive merchandise -
-                Be Unique, Be You, Be Bobble!
-              </p>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!--===== Innovation & Culture =====-->
-      <section
-        class="background innovation-culture section hide-in-mob w-100 h-auto"
-      >
-        <div class="background-wrapper">
-          <div class="container">
-            <h2>Innovation & Culture</h2>
-            <div class="marquee">
-              <div class="marquee__group">
-                <img
-                  src="./assets/./images/innovation-culture-image1.webp"
-                  alt="Innovation & Culture Image 1"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image2.webp"
-                  alt="Innovation & Culture Image 2"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image3.webp"
-                  alt="Innovation & Culture Image 3"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image4.webp"
-                  alt="Innovation & Culture Image 4"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image5.webp"
-                  alt="Innovation & Culture Image 5"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image6.webp"
-                  alt="Innovation & Culture Image 6"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image7.webp"
-                  alt="Innovation & Culture Image 7"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image8.webp"
-                  alt="Innovation & Culture Image 8"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image9.webp"
-                  alt="Innovation & Culture Image 9"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image10.webp"
-                  alt="Innovation & Culture Image 10"
-                />
-              </div>
-              <div aria-hidden="true" class="marquee__group">
-                <img
-                  src="./assets/./images/innovation-culture-image1.webp"
-                  alt="Innovation & Culture Image 1"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image2.webp"
-                  alt="Innovation & Culture Image 2"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image3.webp"
-                  alt="Innovation & Culture Image 3"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image4.webp"
-                  alt="Innovation & Culture Image 4"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image5.webp"
-                  alt="Innovation & Culture Image 5"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image6.webp"
-                  alt="Innovation & Culture Image 6"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image7.webp"
-                  alt="Innovation & Culture Image 7"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image8.webp"
-                  alt="Innovation & Culture Image 8"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image9.webp"
-                  alt="Innovation & Culture Image 9"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image10.webp"
-                  alt="Innovation & Culture Image 10"
-                />
-              </div>
-            </div>
-            <div class="marquee marquee--reverse">
-              <div class="marquee__group">
-                <img
-                  src="./assets/./images/innovation-culture-image1.webp"
-                  alt="Innovation & Culture Image 1"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image2.webp"
-                  alt="Innovation & Culture Image 2"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image3.webp"
-                  alt="Innovation & Culture Image 3"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image4.webp"
-                  alt="Innovation & Culture Image 4"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image5.webp"
-                  alt="Innovation & Culture Image 5"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image6.webp"
-                  alt="Innovation & Culture Image 6"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image7.webp"
-                  alt="Innovation & Culture Image 7"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image8.webp"
-                  alt="Innovation & Culture Image 8"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image9.webp"
-                  alt="Innovation & Culture Image 9"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image10.webp"
-                  alt="Innovation & Culture Image 10"
-                />
-              </div>
-              <div aria-hidden="true" class="marquee__group">
-                <img
-                  src="./assets/./images/innovation-culture-image1.webp"
-                  alt="Innovation & Culture Image 1"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image2.webp"
-                  alt="Innovation & Culture Image 2"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image3.webp"
-                  alt="Innovation & Culture Image 3"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image4.webp"
-                  alt="Innovation & Culture Image 4"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image5.webp"
-                  alt="Innovation & Culture Image 5"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image6.webp"
-                  alt="Innovation & Culture Image 6"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image7.webp"
-                  alt="Innovation & Culture Image 7"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image8.webp"
-                  alt="Innovation & Culture Image 8"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image9.webp"
-                  alt="Innovation & Culture Image 9"
-                />
-                <img
-                  src="./assets/./images/innovation-culture-image10.webp"
-                  alt="Innovation & Culture Image 10"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!--===== Innovation & Culture for mobile only =====-->
-      <section class="innovation-culture-mobile hide-in-web w-100 h-auto">
-        <div class="contant">
           <h2>Innovation & Culture</h2>
-          <div class="grid-container">
-            <div class="grid-item rowspan">
-              <img src="./assets/images/img-mob-only-1.webp" alt="Image 1" />
+          <div class="marquee">
+            <div class="marquee__group">
+              <img src="./assets/./images/innovation-culture-image1.webp" alt="Innovation & Culture Image 1" />
+              <img src="./assets/./images/innovation-culture-image2.webp" alt="Innovation & Culture Image 2" />
+              <img src="./assets/./images/innovation-culture-image3.webp" alt="Innovation & Culture Image 3" />
+              <img src="./assets/./images/innovation-culture-image4.webp" alt="Innovation & Culture Image 4" />
+              <img src="./assets/./images/innovation-culture-image5.webp" alt="Innovation & Culture Image 5" />
+              <img src="./assets/./images/innovation-culture-image6.webp" alt="Innovation & Culture Image 6" />
+              <img src="./assets/./images/innovation-culture-image7.webp" alt="Innovation & Culture Image 7" />
+              <img src="./assets/./images/innovation-culture-image8.webp" alt="Innovation & Culture Image 8" />
+              <img src="./assets/./images/innovation-culture-image9.webp" alt="Innovation & Culture Image 9" />
+              <img src="./assets/./images/innovation-culture-image10.webp" alt="Innovation & Culture Image 10" />
             </div>
-            <div class="grid-item">
-              <img src="./assets/images/img-mob-only-2.webp" alt="Image 2" />
+            <div aria-hidden="true" class="marquee__group">
+              <img src="./assets/./images/innovation-culture-image1.webp" alt="Innovation & Culture Image 1" />
+              <img src="./assets/./images/innovation-culture-image2.webp" alt="Innovation & Culture Image 2" />
+              <img src="./assets/./images/innovation-culture-image3.webp" alt="Innovation & Culture Image 3" />
+              <img src="./assets/./images/innovation-culture-image4.webp" alt="Innovation & Culture Image 4" />
+              <img src="./assets/./images/innovation-culture-image5.webp" alt="Innovation & Culture Image 5" />
+              <img src="./assets/./images/innovation-culture-image6.webp" alt="Innovation & Culture Image 6" />
+              <img src="./assets/./images/innovation-culture-image7.webp" alt="Innovation & Culture Image 7" />
+              <img src="./assets/./images/innovation-culture-image8.webp" alt="Innovation & Culture Image 8" />
+              <img src="./assets/./images/innovation-culture-image9.webp" alt="Innovation & Culture Image 9" />
+              <img src="./assets/./images/innovation-culture-image10.webp" alt="Innovation & Culture Image 10" />
             </div>
-            <div class="grid-item">
-              <img src="./assets/images/img-mob-only-3.webp" alt="Image 3" />
+          </div>
+          <div class="marquee marquee--reverse">
+            <div class="marquee__group">
+              <img src="./assets/./images/innovation-culture-image1.webp" alt="Innovation & Culture Image 1" />
+              <img src="./assets/./images/innovation-culture-image2.webp" alt="Innovation & Culture Image 2" />
+              <img src="./assets/./images/innovation-culture-image3.webp" alt="Innovation & Culture Image 3" />
+              <img src="./assets/./images/innovation-culture-image4.webp" alt="Innovation & Culture Image 4" />
+              <img src="./assets/./images/innovation-culture-image5.webp" alt="Innovation & Culture Image 5" />
+              <img src="./assets/./images/innovation-culture-image6.webp" alt="Innovation & Culture Image 6" />
+              <img src="./assets/./images/innovation-culture-image7.webp" alt="Innovation & Culture Image 7" />
+              <img src="./assets/./images/innovation-culture-image8.webp" alt="Innovation & Culture Image 8" />
+              <img src="./assets/./images/innovation-culture-image9.webp" alt="Innovation & Culture Image 9" />
+              <img src="./assets/./images/innovation-culture-image10.webp" alt="Innovation & Culture Image 10" />
             </div>
-            <div class="grid-item">
-              <img src="./assets/images/img-mob-only-4.webp" alt="Image 4" />
-            </div>
-            <div class="grid-item">
-              <img src="./assets/images/img-mob-only-5.webp" alt="Image 5" />
+            <div aria-hidden="true" class="marquee__group">
+              <img src="./assets/./images/innovation-culture-image1.webp" alt="Innovation & Culture Image 1" />
+              <img src="./assets/./images/innovation-culture-image2.webp" alt="Innovation & Culture Image 2" />
+              <img src="./assets/./images/innovation-culture-image3.webp" alt="Innovation & Culture Image 3" />
+              <img src="./assets/./images/innovation-culture-image4.webp" alt="Innovation & Culture Image 4" />
+              <img src="./assets/./images/innovation-culture-image5.webp" alt="Innovation & Culture Image 5" />
+              <img src="./assets/./images/innovation-culture-image6.webp" alt="Innovation & Culture Image 6" />
+              <img src="./assets/./images/innovation-culture-image7.webp" alt="Innovation & Culture Image 7" />
+              <img src="./assets/./images/innovation-culture-image8.webp" alt="Innovation & Culture Image 8" />
+              <img src="./assets/./images/innovation-culture-image9.webp" alt="Innovation & Culture Image 9" />
+              <img src="./assets/./images/innovation-culture-image10.webp" alt="Innovation & Culture Image 10" />
             </div>
           </div>
         </div>
-      </section>
-      <!--===== patents & Research =====-->
-      <section class="patents-research w-100 h-auto">
-        <div class="container">
-          <ul class="patent-research-list" style="list-style-type: disc">
-            <div class="card-left">
-              <div class="card-heding">
-                <div>
-                  <h4>
-                    <img src="./assets/images/patents_img.png" width="150px" />
-                  </h4>
-                </div>
-                <div>
-                  <h3>15<sup>+</sup></h3>
-                </div>
-              </div>
-              <div class="patents" id="leftUp">
-                <div class="view-more">
-                  <img
-                    src="./assets/images/up_down_arrow.png"
-                    id="leftDown"
-                    width="10px"
-                  />
-                </div>
-                <div class="list">
-                  <li>BigMoji</li>
-                  <li>IME Test Suite</li>
-                  <li>Head Cartoonification</li>
-                  <li>Emoji Bar</li>
-                  <li>Intent Prompt in Keyword</li>
-                  <li>
-                    Speech Recognition using Machine translation and transfer
-                    learning for Devnagari Hindi Language
-                  </li>
-                  <li>Transliteration</li>
-                </div>
-                <div class="read-more">
-                  <span id="readMoreLeft">Read all...</span>
-                </div>
-              </div>
-            </div>
-            <div class="card-right">
-              <div class="card-heding">
-                <div>
-                  <h4>
-                    <img src="./assets/images/reserch_img.png" width="200px" />
-                  </h4>
-                </div>
-                <div>
-                  <h3>5<sup>+</sup></h3>
-                </div>
-              </div>
-              <div class="reserch" id="rightUp">
-                <div class="view-more">
-                  <img
-                    src="./assets/images/up_down_arrow.png"
-                    id="rightDown"
-                    width="10px"
-                  />
-                </div>
-                <div class="list">
-                  <li>Image-to-Image Translation</li>
-                  <li>Quality Improvement of Low-Light Images</li>
-                  <li>IR to Visible Conversion</li>
-                  <li>Decoding Image Integrity</li>
-                  <li>Synthentically Generated Facial Imagery Detection</li>
-                </div>
-                <div class="read-more">
-                  <span id="readMoreRight">Read all...</span>
-                </div>
-              </div>
-            </div>
-          </ul>
-        </div>
-      </section>
-      <!--===== Make Change Happen =====-->
+      </div>
+    </section>
 
-      <section class="section w-100 h-auto">
-        <div class="container">
-          <div class="row">
-            <div class="last-section col-sm-12 mt-5">
-              <p class="section-p">
-                Contribute to making smartphones more expressive and productive!
-              </p>
-            </div>
+    <!--===== Innovation & Culture for mobile only =====-->
+    <section class="innovation-culture-mobile hide-in-web w-100 h-auto">
+      <div class="contant">
+        <h2>Innovation & Culture</h2>
+        <div class="grid-container">
+          <div class="grid-item rowspan">
+            <img src="./assets/images/img-mob-only-1.webp" alt="Image 1" />
           </div>
-          <div class="row">
-            <div class="col-sm-12 mt-5 mission">
-              <a href="" class="joinBtn" title="Join our Mission"
-                >Join Our Mission</a
-              >
-            </div>
+          <div class="grid-item">
+            <img src="./assets/images/img-mob-only-2.webp" alt="Image 2" />
           </div>
-          <div class="missionGif text-center">
-            <img
-              src="./assets/./images/join-our-mission.gif"
-              alt="Join Our Mission"
-            />
+          <div class="grid-item">
+            <img src="./assets/images/img-mob-only-3.webp" alt="Image 3" />
+          </div>
+          <div class="grid-item">
+            <img src="./assets/images/img-mob-only-4.webp" alt="Image 4" />
+          </div>
+          <div class="grid-item">
+            <img src="./assets/images/img-mob-only-5.webp" alt="Image 5" />
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+    <!--===== patents & Research =====-->
+    <section class="patents-research w-100 h-auto">
+      <div class="container">
+        <ul class="patent-research-list" style="list-style-type: disc">
+          <div class="card-left">
+            <div class="card-heding">
+              <div>
+                <h4>
+                  <img src="./assets/images/patents_img.png" width="150px" />
+                </h4>
+              </div>
+              <div>
+                <h3>15<sup>+</sup></h3>
+              </div>
+            </div>
+            <div class="patents" id="leftUp">
+              <div class="view-more">
+                <img src="./assets/images/up_down_arrow.png" id="leftDown" width="10px" />
+              </div>
+              <div class="list">
+                <li>BigMoji</li>
+                <li>IME Test Suite</li>
+                <li>Head Cartoonification</li>
+                <li>Emoji Bar</li>
+                <li>Intent Prompt in Keyword</li>
+                <li>
+                  Speech Recognition using Machine translation and transfer
+                  learning for Devnagari Hindi Language
+                </li>
+                <li>Transliteration</li>
+              </div>
+              <div class="read-more">
+                <span id="readMoreLeft">Read all...</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-right">
+            <div class="card-heding">
+              <div>
+                <h4>
+                  <img src="./assets/images/reserch_img.png" width="200px" />
+                </h4>
+              </div>
+              <div>
+                <h3>5<sup>+</sup></h3>
+              </div>
+            </div>
+            <div class="reserch" id="rightUp">
+              <div class="view-more">
+                <img src="./assets/images/up_down_arrow.png" id="rightDown" width="10px" />
+              </div>
+              <div class="list">
+                <li>Image-to-Image Translation</li>
+                <li>Quality Improvement of Low-Light Images</li>
+                <li>IR to Visible Conversion</li>
+                <li>Decoding Image Integrity</li>
+                <li>Synthentically Generated Facial Imagery Detection</li>
+              </div>
+              <div class="read-more">
+                <span id="readMoreRight">Read all...</span>
+              </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+    </section>
+    <!--===== Make Change Happen =====-->
 
-      <!--===== Footer =====-->
-      <footer class="footer section w-100 h-auto">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="logo">
-                <a href="./index.html" title="Bobble AI">
-                  <img
-                    src="./assets/./images/bobbleAI-logo.webp"
-                    alt="Bobble AI"
-                  />
-                </a>
-              </div>
+    <section class="section w-100 h-auto">
+      <div class="container">
+        <div class="row">
+          <div class="last-section col-sm-12 mt-5">
+            <p class="section-p">
+              Contribute to making smartphones more expressive and productive!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12 mt-5 mission">
+            <a href="" class="joinBtn" title="Join our Mission">Join Our Mission</a>
+          </div>
+        </div>
+        <div class="missionGif text-center">
+          <img src="./assets/./images/join-our-mission.gif" alt="Join Our Mission" />
+        </div>
+      </div>
+    </section>
+
+    <!--===== Footer =====-->
+    <footer class="footer section w-100 h-auto">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="logo">
+              <a href="./index.html" title="Bobble AI">
+                <img src="./assets/./images/bobbleAI-logo.webp" alt="Bobble AI" />
+              </a>
             </div>
-            <div class="col-sm-3">
-              <h6>ABOUT</h6>
-              <ul class="footer-listing">
+          </div>
+          <div class="col-sm-3">
+            <h6>ABOUT</h6>
+            <ul class="footer-listing">
+              <li>
+                <a href="" title="Home">Home</a>
+              </li>
+              <li>
+                <a href="" title="Careers">Careers</a>
+              </li>
+              <li>
+                <a href="" title="Privacy Policy">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="" title="Terms of Service">Terms of Service</a>
+              </li>
+              <li>
+                <a href="" title="Contact Us">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <h6>BUSINESS</h6>
+            <ul class="footer-listing">
+              <li>
+                <a href="" title="Branding Solutions">Branding Solutions </a>
+              </li>
+              <li>
+                <a href="" title="Performance Solutions">Performance Solutions</a>
+              </li>
+              <li>
+                <a href="" title="Technology Solutions">Technology Solutions</a>
+              </li>
+              <li>
+                <a href="" title="Data Solutions">Data Solutions</a>
+              </li>
+              <li>
+                <a href="" title="Merchandizing Solutions">Merchandizing Solutions</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <h6>TECHNOLOGY</h6>
+            <ul class="footer-listing">
+              <li>
+                <a href="" title="Whitelabel Keyboard SDK">Whitelabel Keyboard SDK</a>
+              </li>
+              <li>
+                <a href="" title="Selfie to Bobblehead">Selfie to Bobblehead</a>
+              </li>
+              <li>
+                <a href="" title="Selfie to Bobblehead">Indic language suite</a>
+              </li>
+              <li>
+                <a href="" title="IME test suite">IME test suite</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <h6 class="specific-left-spacing">CONTENT</h6>
+            <ul class="footer-listing specific-left-spacing">
+              <li>
+                <a href="" title="Stickers">Stickers</a>
+              </li>
+              <li>
+                <a href="" title="GIFs">GIFs</a>
+              </li>
+              <li>
+                <a href="" title="Stories">Stories</a>
+              </li>
+              <li>
+                <a href="" title="Memes">Memes</a>
+              </li>
+              <li>
+                <a href="" title="Generative AI">Generative AI</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-12">
+            <h6>Follow Us</h6>
+            <div class="d-flex justify-content-between">
+              <ul class="social-links">
                 <li>
-                  <a href="" title="Home">Home</a>
+                  <a href="" title="Youtube">
+                    <img src="./assets/./images/youtube.webp" alt="Youtube" />
+                  </a>
                 </li>
                 <li>
-                  <a href="" title="Careers">Careers</a>
+                  <a href="" title="Twitter">
+                    <img src="./assets/./images/twitter.webp" alt="Twitter" />
+                  </a>
                 </li>
                 <li>
-                  <a href="" title="Privacy Policy">Privacy Policy</a>
+                  <a href="" title="Instagram">
+                    <img src="./assets/./images/instagram.webp" alt="Instagram" />
+                  </a>
                 </li>
                 <li>
-                  <a href="" title="Terms of Service">Terms of Service</a>
+                  <a href="" title="Facebook">
+                    <img src="./assets/./images/facebook.webp" alt="Facebook" />
+                  </a>
                 </li>
                 <li>
-                  <a href="" title="Contact Us">Contact Us</a>
+                  <a href="" title="LinkedIn">
+                    <img src="./assets/./images/linkedIn.webp" alt="LinkedIn" />
+                  </a>
                 </li>
               </ul>
-            </div>
-            <div class="col-sm-3">
-              <h6>BUSINESS</h6>
-              <ul class="footer-listing">
-                <li>
-                  <a href="" title="Branding Solutions">Branding Solutions </a>
-                </li>
-                <li>
-                  <a href="" title="Performance Solutions"
-                    >Performance Solutions</a
-                  >
-                </li>
-                <li>
-                  <a href="" title="Technology Solutions"
-                    >Technology Solutions</a
-                  >
-                </li>
-                <li>
-                  <a href="" title="Data Solutions">Data Solutions</a>
-                </li>
-                <li>
-                  <a href="" title="Merchandizing Solutions"
-                    >Merchandizing Solutions</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-3">
-              <h6>TECHNOLOGY</h6>
-              <ul class="footer-listing">
-                <li>
-                  <a href="" title="Whitelabel Keyboard SDK"
-                    >Whitelabel Keyboard SDK</a
-                  >
-                </li>
-                <li>
-                  <a href="" title="Selfie to Bobblehead"
-                    >Selfie to Bobblehead</a
-                  >
-                </li>
-                <li>
-                  <a href="" title="Selfie to Bobblehead"
-                    >Indic language suite</a
-                  >
-                </li>
-                <li>
-                  <a href="" title="IME test suite">IME test suite</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-3" >
-              <h6 class="specific-left-spacing" >CONTENT</h6>
-              <ul class="footer-listing specific-left-spacing">
-                <li>
-                  <a href="" title="Stickers">Stickers</a>
-                </li>
-                <li>
-                  <a href="" title="GIFs">GIFs</a>
-                </li>
-                <li>
-                  <a href="" title="Stories">Stories</a>
-                </li>
-                <li>
-                  <a href="" title="Memes">Memes</a>
-                </li>
-                <li>
-                  <a href="" title="Generative AI">Generative AI</a>
-                </li>
-              </ul>
-            </div>
-            <div class="col-sm-12">
-              <h6>Follow Us</h6>
-              <div class="d-flex justify-content-between">
-                <ul class="social-links">
-                  <li>
-                    <a href="" title="Youtube">
-                      <img src="./assets/./images/youtube.webp" alt="Youtube" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" title="Twitter">
-                      <img src="./assets/./images/twitter.webp" alt="Twitter" />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" title="Instagram">
-                      <img
-                        src="./assets/./images/instagram.webp"
-                        alt="Instagram"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" title="Facebook">
-                      <img
-                        src="./assets/./images/facebook.webp"
-                        alt="Facebook"
-                      />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="" title="LinkedIn">
-                      <img
-                        src="./assets/./images/linkedIn.webp"
-                        alt="LinkedIn"
-                      />
-                    </a>
-                  </li>
-                </ul>
-                <a href="#section0" class="nav-links">
-                  <img src="./assets/images/Footer/Ellipse 5.svg" alt="" />
-                </a>
-              </div>
+              <a href="#section0" class="nav-links">
+                <img src="./assets/images/Footer/Ellipse 5.svg" alt="" />
+              </a>
             </div>
           </div>
         </div>
-      </footer>
-      <script src="./assets/js/bootstrap.bundle.min.js"></script>
-      <script src="./assets/js/custom.js"></script>
-    </div>
-  </body>
+      </div>
+    </footer>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/custom.js"></script>
+  </div>
+</body>
+
 </html>
 
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>

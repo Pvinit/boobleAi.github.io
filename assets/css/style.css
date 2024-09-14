@@ -2490,9 +2490,9 @@ footer h6 {
   }
 
   /* ===== innovation-culture for mobile only=====*/
-  .hide-in-mob {
+  /* .hide-in-mob {
     display: none;
-  }
+  } */
 
   /* ===== patents & Research  =====*/
   .patents-research .patent-research-list {

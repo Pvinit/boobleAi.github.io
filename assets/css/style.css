@@ -617,7 +617,7 @@ video.home_video {
 }
 
 video {
-  padding-top: 40px;
+  padding-top: 10px;
   width: 100%;
   height: auto;
   max-height: 100vh;

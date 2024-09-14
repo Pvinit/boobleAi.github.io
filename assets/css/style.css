@@ -2,9 +2,7 @@
   padding: 0;
   margin: 0;
 }
-html{
-  scroll-behavior: smooth !important;
-}
+
 :root {
   font-size: 14px;
   scroll-behavior: smooth;
@@ -2748,6 +2746,11 @@ footer h6 {
 @media only screen and (min-width: 360px) and (max-width: 391px) {
   .category-specific{
     margin-left: 0px !important;
+  }
+  .category-box-inner ul li {
+    /* border: solid 0.3px; */
+    margin: 10px 10px 15px 0;
+    padding: 8px 12px;
   }
 }
 /* Styles for screens exactly 390px */
